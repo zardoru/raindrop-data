@@ -85,7 +85,9 @@ function SetupJudgmentsDisplay(player)
 	fmtext = fmtext .. string.format("\nMax Combo: %d", ScoreKeeper:GetScore(ST_MAX_COMBO))
 	fmtext = fmtext .. string.format("\nNotes hit: %d%%", ScoreKeeper:GetPercentScore(PST_NH))
 	fmtext = fmtext .. string.format("\nAccuracy: %d%%", ScoreKeeper:GetPercentScore(PST_ACC))
+	fmtext = fmtext .. string.format("\nEX%%: %d%%", ScoreKeeper:GetPercentScore(PST_EX))
 	fmtext = fmtext .. string.format("\nAverage hit (ms): %.2f" , ScoreKeeper.AvgHit)
+	fmtext = fmtext .. string.format("\nStandard Deviation (ms): %.2f" , ScoreKeeper.StDev)
 	fmtext = fmtext .. "\nraindrop rank: "
 
 	if ScoreKeeper.Rank > 0 then
@@ -171,6 +173,41 @@ function Init()
 	SetupHistogram(p)
 	ScreenFade.Init()
 	ScreenFade.Out()
+
+	displayWindows(p.Scorekeeper)
+	displaySigma(p.Scorekeeper)
+end
+
+function displayWindows(sc)
+	print ("judgment windows for current stage: ")
+	for i=0,8 do 
+		print(string.format("W%d: %d", i, sc:GetJudgmentWindow(i)))
+	end
+end
+
+function displaySigma(sc)
+	local indecaSigma = {}
+	local decaSigma = sc.StDev / 10
+	local totPoints = 0
+
+	for i=-128,127 do
+		local sigmaDecile = floor(math.abs(i) / decaSigma) + 1
+		if not indecaSigma[sigmaDecile] then 
+			indecaSigma[sigmaDecile] = 0
+		end
+
+		indecaSigma[sigmaDecile] = sc:GetHistogramPoint(i) + indecaSigma[sigmaDecile]
+		totPoints = totPoints + sc:GetHistogramPoint(i)
+	end
+
+	for i=2, #indecaSigma do 
+		indecaSigma[i] = indecaSigma[i] + indecaSigma[i - 1]
+	end
+
+	print ("total points: ", totPoints)
+	for k,v in ipairs(indecaSigma) do 
+		print (string.format("%.1f sigma (%04.2f ms): %.0f hits, %.2f%%", k / 10, sc.StDev * k / 10, v, v / totPoints * 100));
+	end
 end
 
 function Cleanup()

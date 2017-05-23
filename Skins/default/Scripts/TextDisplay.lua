@@ -135,6 +135,7 @@ function PlayerText:Run(dt)
 	fmtext = fmtext .. string.format("\nMaxCombo: %d", ScoreKeeper:GetScore(ST_MAX_COMBO))
 	fmtext = fmtext .. string.format("\nBPM: %d", self.Player.BPM)
   	fmtext = fmtext .. string.format("\nAvg. Hit (ms): %f", ScoreKeeper.AvgHit)
+	fmtext = fmtext .. string.format("\nSt. Dev (ms): %f", ScoreKeeper.StDev)
 
 	self.judgments.Text = fmtext
 end
