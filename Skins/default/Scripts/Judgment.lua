@@ -159,11 +159,11 @@ function Judgment:OnHit(JudgmentValue, Time, l, h, r, pn)
 
 	if self.Value == 0 then
 		self.Object.Lighten = (1)
-		self.Object.LightenFactor = (1.5)
+		self.Object.LightenFactor = (2.0)
 		self.Value = 1
 	else
-		self.Object.Lighten = 0
-		self.Object.LightenFactor = 0
+		--self.Object.Lighten = 0
+		--self.Object.LightenFactor = 0
 	end
 
 	if self.LastAlternation == 0 then

@@ -231,7 +231,7 @@ Channels16 = {
 
     GearHeight = GearHeightCommon,
     GearWidth = GearWidthByChannels[16],
-    GearStartX = 80,
+    GearStartX = GearStartX,
     NoteHeight = 16,
     BarlineWidth = GearWidthByChannels[16],
 
@@ -344,7 +344,7 @@ Channels12 = {
     
     GearHeight = GearHeightCommon,
     GearWidth = GearWidthByChannels[12],
-    GearStartX = 80,
+    GearStartX = GearStartX,
     NoteHeight = 16,
     BarlineWidth = GearWidthByChannels[12],
 	
@@ -429,7 +429,7 @@ Channels9 = {
     Key9Down = C4D,
 
 	GearHeight = GearHeightCommon,
-	GearStartX = 80,
+	GearStartX = GearStartX,
   NoteHeight = 16,
 	GearWidth = GearWidthByChannels[9],
   BarlineWidth = GearWidthByChannels[9],
@@ -500,7 +500,7 @@ Channels8Special = {
 	Key8Down = C4D,
 
 	GearHeight = GearHeightCommon,
-	GearStartX = 80,
+	GearStartX = GearStartX,
     NoteHeight = 16,
 	GearWidth = Special8KWidth,
 	BarlineWidth = Special8KWidth,
@@ -566,7 +566,7 @@ Channels8Special = {
 		Key8Down = C1D,
 
 		GearHeight = GearHeightCommon,
-    GearStartX = 80,
+    GearStartX = GearStartX,
     NoteHeight = 16,
 		GearWidth = GearWidthByChannels[8],
 		BarlineWidth = GearWidthByChannels[8],
@@ -631,7 +631,7 @@ Channels7 = {
     Key7Down = C4D,
 
     GearHeight = GearHeightCommon,
-    GearStartX = 80,
+    GearStartX = GearStartX,
     NoteHeight = 16,
     GearWidth = GearWidthByChannels[7],
     BarlineWidth = GearWidthByChannels[7],
@@ -716,7 +716,7 @@ Channels7 = {
 		
 		GearWidth = Special6KWidth,
 		BarlineWidth = Special6KWidth,
-    GearStartX = 80,
+    GearStartX = GearStartX,
     NoteHeight = 16
 	}
 
@@ -763,7 +763,7 @@ Channels7 = {
 		
 		GearWidth = GearWidthByChannels[6],
 		BarlineWidth = GearWidthByChannels[6],
-    GearStartX = 80,
+    GearStartX = GearStartX,
     NoteHeight = 16
 	}
 
@@ -807,7 +807,7 @@ Channels5 = {
 	Key5X = Channels5Positions[5],
 	GearWidth = GearWidthByChannels[5],
   BarlineWidth = GearWidthByChannels[5],
-  GearStartX = 80,
+  GearStartX = GearStartX,
   NoteHeight = 16
 }
 
@@ -844,7 +844,7 @@ Channels4 = {
     Key4X = Channels4Positions[4],
     GearWidth = GearWidthByChannels[4],
     BarlineWidth = GearWidthByChannels[4],
-    GearStartX = 80,
+    GearStartX = GearStartX,
     NoteHeight = 16
 }
 
@@ -859,7 +859,7 @@ Channels1 = {
 	Key1X = Channels1Positions[1],
 	GearWidth = GearWidthByChannels[1],
 	BarlineWidth = GearWidthByChannels[1],
-  GearStartX = 80,
+  GearStartX = GearStartX,
   NoteHeight = 16
 }
 

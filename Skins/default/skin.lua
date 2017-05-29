@@ -1,13 +1,9 @@
 -- Default skin configuration.
 
--- Backgrounds
+-- Backgrounds (dotcur mostly, exception being default)
 DefaultBackground = "Global/MenuBackground.png"
-SelectMusicBackground = ""
 EvaluationBackground = DefaultBackground
-EvaluationBackground7K = DefaultBackground
-MainMenuBackground = ""
 DefaultGameplayBackground = DefaultBackground
-DefaultGameplay7KBackground = DefaultBackground
 
 -- Gameplay
 
@@ -64,6 +60,8 @@ AudioManifest = {
 	end
 }
 
+Hitlightning = 1
+
 -- 7K mode configuration.
 -- Time that the 'miss' layer will be shown on BMS when a miss occurs.
 OnMissBGATime = 0.5
@@ -74,16 +72,17 @@ ScreenFilter = 0.9
 -- Whether to display the in-game histogram.
 Histogram = 0
 
-Hitlightning = 1
-
--- show up to 999 ms off
-HitErrorDisplayLimiter = 999
-
 -- Whether to go to song select inmediately on failure
 GoToSongSelectOnFailure = 0
 
 -- Whether to not wait for enter to be pressed to start playing
 InmediateActivation = 1
+
+-- Size of the playfield (For Green Number calculation)
+PlayfieldSize = 768 * 0.8
+
+-- How big is one 4/4 measure
+UnitsPerMeasure = PlayfieldSize
 
 -- 1 is first after processing SV, 1 is mmod, 2 is cmod, anything else is default.
 -- default: first speed before processing SV
