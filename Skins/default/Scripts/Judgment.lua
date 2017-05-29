@@ -38,10 +38,10 @@ function Judgment:Init()
   print ("Judgment Default Pos: ", self.defaultX, self.defaultY)
   
 	self.Object = ScreenObject {
-		Layer = 30,
+		Layer = 28,
 		Centered = 1,
 		Texture = self.Atlas.File,
-		Alpha = 1
+		Alpha = 0
 	}
 
 	self.Transform = Transformation()

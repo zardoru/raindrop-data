@@ -6,6 +6,7 @@ local State = {
     LastSign = 0,
     Time = 0,
     ScrollSpeed = 0,
+	Cursor = nil
 }
 
 
@@ -46,17 +47,20 @@ function OnItemHover(Index, BoundIndex, Line, Selected)
 end
 
 function OnItemHoverLeave(Index, BoundIndex, Line, Selected)
-	Wheel.CursorIndex = Wheel.SelectedIndex
+	State.Cursor = Wheel.SelectedIndex
 end
 
 function OnItemClick(Index, BoundIndex, Line, Song)
-	print (Index, BoundIndex, Line, Song, Wheel.ListIndex, Wheel.SelectedIndex, Wheel.CursorIndex)
+	-- print (Index, BoundIndex, Line, Song, Wheel.ListIndex, Wheel.SelectedIndex, Wheel.CursorIndex)
 	if Song and (Index == Wheel.SelectedIndex) then
 		Wheel:ConfirmSelection()
 	else
 		Wheel.SelectedIndex = Index
 		if not Song then
 			Wheel:ConfirmSelection() -- Go into directories inmediately
+		else
+			updText()
+			State.Cursor = Index
 		end
 	end
 end
@@ -75,7 +79,7 @@ end
 -- This recieves song and difficulty changes.
 function OnSongChange(Song, Diff)
 	updText()
-	Wheel.CursorIndex = Wheel.SelectedIndex
+	State.Cursor = Wheel.SelectedIndex
 end
 
 function CreateWheelItems()
@@ -259,4 +263,9 @@ function UpdateWheel(Delta)
 	local centerCurrentIndex = floor(-State.ListY / ItemHeight)
 	Wheel.DisplayStartIndex = centerCurrentIndex
 
+end
+
+function WheelOnScroll()
+	State.Cursor = Wheel.SelectedIndex
+	Wheel.CursorIndex = State.Cursor
 end

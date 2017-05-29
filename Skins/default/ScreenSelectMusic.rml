@@ -57,6 +57,13 @@ function speedamt_change(event)
 	System.SetConfig("SpeedAmount", event.parameters["value"], "Speed")
 end
 
+function gn_change(event)
+	local v = (event.parameters["value"] ~= "")
+	-- print (v, event.parameters["value"])
+	Global:GetParameters(0).GreenNumber = v
+end
+
+savedGN = System.ReadConfigF("GreenNumber", "Speed")
 savedSpeedClass = System.ReadConfigF("SpeedClass", "Speed")
 savedSpeedAmt = System.ReadConfigF("SpeedAmount", "Speed")
 
@@ -64,9 +71,12 @@ function onready(document)
 	-- restore speed stuff from config...
 	local scElem = document:GetElementById("sc" .. savedSpeedClass)
 	local scaElem = document:GetElementById("spdamt")
+	local gnElem = document:GetElementById("gn")
 
 	scaElem:SetAttribute("value", savedSpeedAmt)
 	scElem:SetAttribute("selected", 1)
+
+	gnElem:SetAttribute("value", savedGN)
 end</script>
 	</head>
 
@@ -134,7 +144,14 @@ end</script>
 				</select>
 			</div>
 			<h1> Target Speed </h1>
+
+			<div style="display: inline-block; text-align: center;">
+			<input type="checkbox" style="margin-right: 10px" id="gn" onchange="gn_change(event, element)" /> 
+			Green Number
+			</div>
 			<input type="text" id="spdamt" onchange="speedamt_change(event, element)" value="0"/>	</div>
+			
+			
 	
 			<div class="boxes">
 				<div class="fl">

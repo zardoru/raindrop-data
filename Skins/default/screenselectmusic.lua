@@ -102,7 +102,7 @@ end
 function ScrollEvent(xoff, yoff)
 	print (yoff, Wheel.SelectedIndex, Wheel.SelectedIndex - yoff)
 	Wheel.SelectedIndex = Wheel.SelectedIndex - yoff
-	Wheel.CursorIndex = Wheel.SelectedIndex
+	WheelOnScroll()
 end
 
 function Update(Delta)
