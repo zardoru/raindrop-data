@@ -4,10 +4,10 @@
 		<script>function activateAuto(elem)
 	if elem.id == "autobtn" then
 		elem.id = "autobtnac"
-		Global:GetParameters(0).Autoplay = 1
+		Global:GetParameters(0).Autoplay = true
 	else
 		elem.id = "autobtn"
-		Global:GetParameters(0).Autoplay = 0
+		Global:GetParameters(0).Autoplay = false
 	end
 end
 
@@ -57,13 +57,22 @@ function speedamt_change(event)
 	System.SetConfig("SpeedAmount", event.parameters["value"], "Speed")
 end
 
-function gn_change(event)
-	local v = (event.parameters["value"] ~= "")
-	-- print (v, event.parameters["value"])
+function gn_change(event, elem)
+	local v = (elem.attributes.checked == "")
 	Global:GetParameters(0).GreenNumber = v
+
+	local sv 
+	if v then sv = 1 else sv = 0 end
+
+	System.SetConfig("SpeedAmount", sv, "GreenNumber")
 end
 
-savedGN = System.ReadConfigF("GreenNumber", "Speed")
+function w0_change(event, elem)
+	local v = (elem.attributes.checked == "")
+	Global:GetParameters(0).UseW0 = v
+end
+
+savedGN = (System.ReadConfigF("GreenNumber", "Speed") ~= 0)
 savedSpeedClass = System.ReadConfigF("SpeedClass", "Speed")
 savedSpeedAmt = System.ReadConfigF("SpeedAmount", "Speed")
 
@@ -76,7 +85,7 @@ function onready(document)
 	scaElem:SetAttribute("value", savedSpeedAmt)
 	scElem:SetAttribute("selected", 1)
 
-	gnElem:SetAttribute("value", savedGN)
+	gnElem.attributes.checked = savedGN
 end</script>
 	</head>
 
@@ -132,6 +141,7 @@ end</script>
 				<option value="5">rd/AutoBMS</option>
 				<option value="6">rd/RDArcade</option>
 			</select><br/>
+			<input type="checkbox" id="w0" onchange="w0_change(event, element)"/> Enable XGreat
 			</div>
 			<h1> Speed Class</h1>
 			<div class="boxes">
