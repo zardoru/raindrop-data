@@ -54,9 +54,10 @@ function Init()
 	BackgroundAnimation:Init()
 	ScreenFade.Init()
 
-	font = Fonts.TruetypeFont(GetSkinFile("font.ttf"), 24)
+	font = Fonts.TruetypeFont(GetSkinFile("font.ttf"))
 		
 	dd = StringObject2D()
+	dd.FontSize = 34
 	dd.Font = font
 	dd.Y = 327
 	dd.X = 620

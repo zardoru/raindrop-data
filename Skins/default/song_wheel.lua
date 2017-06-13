@@ -121,27 +121,31 @@ function CreateWheelItems()
 	strLevel = StringObject2D()
 	strSubtitle = StringObject2D()
 
-	wheelfont = Fonts.TruetypeFont(GetSkinFile("font.ttf"), 30)
-	infofont = Fonts.TruetypeFont(GetSkinFile("font.ttf"), 18)
+	wheelfont = Fonts.TruetypeFont(GetSkinFile("font.ttf"))
 
 	strName.Font = wheelfont
-	strArtist.Font = font
-	strDuration.Font = infofont
-	strLevel.Font = infofont
-	strSubtitle.Font = infofont 
+	strName.FontSize = 26
+	strArtist.Font = wheelfont
+	strArtist.FontSize = 24
+	strDuration.Font = wheelfont
+	strDuration.FontSize = 30
+	strLevel.Font = wheelfont
+	strLevel.FontSize = 16
+	strSubtitle.Font = wheelfont 
+	strSubtitle.FontSize = 22
 
 	local dur_x = 50
 	
 	-- Transform these strings according to what they are
 	WheelItemStrings[Wheel:AddString(strName)] = function(Song, IsSelected, Index, Txt)
-		strName.X = strName.X + 10
+		strName.X = strName.X + 5
 		if Song then
 			strName.Text = Song.Title
 		else
 		    strName.Text = Txt
 		end
 
-		local w = wheelfont:GetLength(strName.Text)
+		local w = strName.TextSize
 		local m = ItemWidth - dur_x - 20
 		if w > m then
 			strName.ScaleX = m / w
@@ -165,7 +169,7 @@ function CreateWheelItems()
 			strArtist.Green = 0.3
 		end
 
-		local w = infofont:GetLength(strArtist.Text)
+		local w = strArtist.TextSize
 		local m = ItemWidth - 20
 
 		if w > m then
@@ -199,14 +203,14 @@ function CreateWheelItems()
 
 	WheelItemStrings[Wheel:AddString(strSubtitle)] = function(Song, IsSelected, Index, Txt)
 		strSubtitle.X = strSubtitle.X + 10
-		strSubtitle.Y = strSubtitle.Y + 30
+		strSubtitle.Y = strSubtitle.Y + 25
 		if Song then
 			strSubtitle.Text = Song.Subtitle
 		else
 			strSubtitle.Text = ""
 		end
 
-		local w = infofont:GetLength(strSubtitle.Text)
+		local w = strSubtitle.TextSize
 		local m = ItemWidth - 20
 
 		if w > m then

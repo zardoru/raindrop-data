@@ -50,6 +50,7 @@ end
 function Init()
   elastic = Ease.ElasticSquare(1.5)
 	ScreenFade:Init()
+	Time = 0
 		
 	targLogo = Engine:CreateObject() 
 	targLogo.Texture = "MainMenu/FRONTs.png"
@@ -66,15 +67,16 @@ function Init()
 	targBadge.Centered = 1
 	targBadge.Layer = 31
 	
-	font = Fonts.TruetypeFont(GetSkinFile("font.ttf"), 24)
+	font = Fonts.TruetypeFont(GetSkinFile("font.ttf"))
 
 	s = "press any key..."
 	title = StringObject2D()
 	title.Font = font
-	title.X = ScreenWidth / 2 - font:GetLength(s) / 2
+	title.X = ScreenWidth / 2 - font:GetLength(s) / 2 / 512 * 36
 	title.Y = ScreenHeight * 3 / 4
 	title.Text = s
 	title.Z = 31
+	title.FontSize = 36
 	Engine:AddTarget(title)
 
 	-- Rocket UI not initialized yet...
@@ -86,6 +88,7 @@ end
 badgeRotSpeed = 1080
 
 function Update(Delta)
+	Time = Time + Delta
 
 	badgeRotSpeed = math.max(badgeRotSpeed - Delta * 240, 120)
 	targBadge.Rotation = targBadge.Rotation - badgeRotSpeed * Delta
