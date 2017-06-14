@@ -72,9 +72,9 @@ function Init()
 	s = "press any key..."
 	title = StringObject2D()
 	title.Font = font
-	title.X = ScreenWidth / 2 - font:GetLength(s) / 2 / 512 * 36
 	title.Y = ScreenHeight * 3 / 4
 	title.Text = s
+	title.X = ScreenWidth / 2 - title.TextSize / 2
 	title.Z = 31
 	title.FontSize = 36
 	Engine:AddTarget(title)
@@ -90,6 +90,8 @@ badgeRotSpeed = 1080
 function Update(Delta)
 	Time = Time + Delta
 
+	title.KernScale = 2 + sin(Time)
+	title.X = ScreenWidth / 2 - title.TextSize / 2
 	badgeRotSpeed = math.max(badgeRotSpeed - Delta * 240, 120)
 	targBadge.Rotation = targBadge.Rotation - badgeRotSpeed * Delta
 	BackgroundAnimation:Update(Delta)

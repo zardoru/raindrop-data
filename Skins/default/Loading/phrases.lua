@@ -111,9 +111,10 @@ Phrases = {
 
 function Phrases.Init()
 	Phrases.VSize = 22
-	PhraseFont = Fonts.TruetypeFont(GetSkinFile("font.ttf"), Phrases.VSize);
+	PhraseFont = Fonts.TruetypeFont(GetSkinFile("font.ttf"));
 	Phrases.Text = StringObject2D()
 	Phrases.Text.Font = PhraseFont
+	Phrases.Text.FontSize = Phrases.VSize
 	
 	local selected = Phrases.Content[math.random(#Phrases.Content)]
 	Phrases.Text.Text = selected

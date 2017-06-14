@@ -5,7 +5,7 @@ skin_require "Global/FadeInScreen"
 skin_require "Scripts/ScoreDisplay"
 
 function SetupFonts()
-	EvalFont = Fonts.TruetypeFont(GetSkinFile("font.ttf"), 30);
+	EvalFont = Fonts.TruetypeFont(GetSkinFile("font.ttf"));
 end
 
 function GetRankImage(ScoreKeeper)
@@ -49,10 +49,10 @@ function SetupRank(player)
 
 	RankStr = StringObject2D()
 	RankStr.Text = "rank" .. str
-	RankStr.X = RankPic.X - EvalFont:GetLength("rank") / 2
+	RankStr.X = RankPic.X - RankStr.TextSize / 2
 	RankStr.Y = ScreenHeight / 2 + RankPic.Height / 2 + 10
 	RankStr.Font = EvalFont
-
+	RankStr.FontSize = 30
 	Engine:AddTarget(RankStr)
 end
 
@@ -61,6 +61,7 @@ function SetupJudgmentsDisplay(player)
   local ScoreKeeper = player.Scorekeeper
 	JudgeStr = StringObject2D()
 	JudgeStr.Font = EvalFont
+	JudgeStr.FontSize = 26
 
 	w0 = ScoreKeeper:GetJudgmentCount(SKJ_W0)
 	w1 = ScoreKeeper:GetJudgmentCount(SKJ_W1)
@@ -127,9 +128,10 @@ function SetSongTitle(diff)
 	local Text = string.format ("%s by %s (Chart: %s)", Global:GetSelectedSong().Title, Global:GetSelectedSong().Author, difftxt)
 	TitleText.Text = Text
 	TitleText.Font = EvalFont
+	TitleText.FontSize = 30
 
 	TitleText.Y = ScreenHeight - 40
-	TitleText.X = ScreenWidth / 2 - EvalFont:GetLength(Text) / 2
+	TitleText.X = ScreenWidth / 2 - TitleText.TextSize / 2
 
 	Engine:AddTarget(TitleText)
 end
@@ -145,6 +147,7 @@ function SetupHistogram(p)
 
 	hStr = StringObject2D()
 	hStr.Font = EvalFont
+	hStr.FontSize = 26
 	hStr.X = histogram.X
 	hStr.Y = histogram.Y + histogram.Height
 	hStr.Text = "histogram"
@@ -163,6 +166,7 @@ function Init()
 
 	scoreStr = StringObject2D()
 	scoreStr.Font = EvalFont
+	scoreStr.FontSize = 36
 	scoreStr.X = sd.X
 	scoreStr.Y = sd.Y + sd.H
 	scoreStr.Text = "score"
