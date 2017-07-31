@@ -152,7 +152,7 @@ BgAlpha = 0
 -- You can only call Engine:CreateObject, LoadImage and LoadSkin during and after Init is called
 -- Not on preload time.
 function Init()
-	AutoadjustBackground()
+	AutoadjustBackground({AdjustByWidth = true})
 	AnimatedObjects.Init()
 
 

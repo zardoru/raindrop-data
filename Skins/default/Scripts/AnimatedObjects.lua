@@ -54,6 +54,7 @@ function Pulse:Init()
 		BlendMode = BlendAdd,
 		Layer = 11,
 		Alpha = 0,
+		Width = self.Noteskin.GearWidth
     })
     self.Object.X = self.Noteskin.GearStartX
     self.Object.Y = self.Player.JudgmentY - self.Object.Height
@@ -68,15 +69,9 @@ librd.make_new(Pulse, Pulse.Init)
 function Pulse:Run(Delta)
   
 	if Game.Active ~= 0 then
-		local BeatNth = 2
-		local BeatMultiplied = self.Player.Beat * BeatNth
-		local NthOfBeat = 1
+		local Beat = math.pow(math.abs(sin(self.Player.Beat * math.pi)), 4)
 
-		if floor(BeatMultiplied) % BeatNth == 0 then
-			NthOfBeat = fract(BeatMultiplied)
-		end
-
-		self.Object.Alpha = 1 - NthOfBeat
+		self.Object.Alpha = Beat
 	else
 		self.Object.Alpha = 0
 	end

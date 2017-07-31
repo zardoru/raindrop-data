@@ -202,13 +202,13 @@ Channels16 = {
     Key8 = C1,
     
     Key9 = C3, -- scratch channel on the right side
-    Key10 = C1,
-    Key11 = C2,
-    Key12 = C1,
-    Key13 = C2,
-    Key14 = C1,
-    Key15 = C2,
-    Key16 = C1,
+    Key10 = C4,
+    Key11 = C5,
+    Key12 = C4,
+    Key13 = C5,
+    Key14 = C4,
+    Key15 = C5,
+    Key16 = C4,
 
 
     Key1Down = C3D, -- scratch channel on the left side
@@ -221,13 +221,13 @@ Channels16 = {
     Key8Down = C1D,
     
     Key9Down = C3D, -- scratch channel on the right side
-    Key10Down = C1D,
-    Key11Down = C2D,
-    Key12Down = C1D,
-    Key13Down = C2D,
-    Key14Down = C1D,
-    Key15Down = C2D,
-    Key16Down = C1D,
+    Key10Down = C4D,
+    Key11Down = C5D,
+    Key12Down = C4D,
+    Key13Down = C5D,
+    Key14Down = C4D,
+    Key15Down = C5D,
+    Key16Down = C4D,
 
     GearHeight = GearHeightCommon,
     GearWidth = GearWidthByChannels[16],
@@ -246,13 +246,13 @@ Channels16 = {
     Key8Image = NoteImage1,
     
     Key9Image = NoteImage3,
-    Key10Image = NoteImage1,
-    Key11Image = NoteImage2,
-    Key12Image = NoteImage1,
-    Key13Image = NoteImage2,
-    Key14Image = NoteImage1,
-    Key15Image = NoteImage2,
-    Key16Image = NoteImage1,
+    Key10Image = NoteImage4,
+    Key11Image = NoteImage5,
+    Key12Image = NoteImage4,
+    Key13Image = NoteImage5,
+    Key14Image = NoteImage4,
+    Key15Image = NoteImage5,
+    Key16Image = NoteImage4,
 
     -- Hold Bodies
     Key1HoldImage = NoteImageHold3,
@@ -265,13 +265,13 @@ Channels16 = {
     Key8HoldImage = NoteImageHold1,
     
     Key9HoldImage = NoteImageHold3,
-    Key10HoldImage = NoteImageHold1,
-    Key11HoldImage = NoteImageHold2,
-    Key12HoldImage = NoteImageHold1,
-    Key13HoldImage = NoteImageHold2,
-    Key14HoldImage = NoteImageHold1,
-    Key15HoldImage = NoteImageHold2,
-    Key16HoldImage = NoteImageHold1,
+    Key10HoldImage = NoteImageHold4,
+    Key11HoldImage = NoteImageHold5,
+    Key12HoldImage = NoteImageHold4,
+    Key13HoldImage = NoteImageHold5,
+    Key14HoldImage = NoteImageHold4,
+    Key15HoldImage = NoteImageHold5,
+    Key16HoldImage = NoteImageHold4,
 
     -- Lane positions
     Key1X = Channels16Positions[1],
@@ -284,13 +284,13 @@ Channels16 = {
     Key8X = Channels16Positions[8],
 
     Key9X = Channels16Positions[16],
-    Key10X = Channels16Positions[10],
-    Key11X = Channels16Positions[11],
-    Key12X = Channels16Positions[12],
-    Key13X = Channels16Positions[13],
-    Key14X = Channels16Positions[14],
-    Key15X = Channels16Positions[15],
-    Key16X = Channels16Positions[9],
+    Key10X = Channels16Positions[9],
+    Key11X = Channels16Positions[10],
+    Key12X = Channels16Positions[11],
+    Key13X = Channels16Positions[12],
+    Key14X = Channels16Positions[13],
+    Key15X = Channels16Positions[14],
+    Key16X = Channels16Positions[15],
 
     -- Lane Widths
     Key1Width = Channels16Sizes[1],

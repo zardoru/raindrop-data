@@ -5,6 +5,9 @@ Phrases = {
 		"communication is beautiful",
 		"TRUST. BELIEVE. SUCCEED.",
 		"not even kaiden yet",
+		"show me your metrics.ini",
+		"random is cheating",
+		"Must wear shoes, no baby powder allowed",
 		"a noodle soup a day and your skills won't decay",
 		"hey girl im kaiden want to go out",
 		"now with more drops, sadly rain does not produce dubstep.",
@@ -14,6 +17,9 @@ Phrases = {
 		"did you hear about this cool game called beatmani?",
 		"to be honest, it's not ez to dj.",
 		"at least we won't lose our source code.",
+		"I'm going to download your chart only to put it in the recycle bin",
+		"mania style games",
+		"top 10 bms plays",
 		"less woosh more drop",
 		"studies show that certain rhythm game communities contain more cancerous and autistic people than other communities.",
 		"hot new bonefir remix knife party",
@@ -22,10 +28,7 @@ Phrases = {
 		"studies show that combo-based scoring is the biggest factor of broken equipment in the rhythm game community",
 		"YOU GET 200 GOLD CROWNS! IT IS EXTRAORDINARY!! YOU ARE THE TRUE TATSUJIN",
 		"nice meme",
-		"S P A C E  T I M E",
 		"End Time.",
-		"I'm sending out a message, a message so sincere..",
-		"A message so sincere.. I need you more.",
 		"You gonna finish that ice cream sandwich?",
 		"TWO DEE ECKS GOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOLD",
 		"dude nice",
@@ -34,10 +37,7 @@ Phrases = {
 		"\"your face is buggy\" - peppy",
 		"holy firetruck",
 		"CHAMPION OF THE ssssssssssssssssssssSUN",
-		"what a dumb ass nightingale",
-		"C H A O S M A I D  G U Y",
 		"What the hell is that.",
-		"I'm not good enough for Blocko.",
 		"Evasiva coches.",
 		"future metallic can - premium skin",
 		"2/10",
@@ -48,10 +48,7 @@ Phrases = {
 		"rice and noodles erryday",
 		"reticulating splines",
 		":^)",
-		"hi spy",
-		"hi arcwin",
 		"protip: to be overjoy you just have to avoid missing",
-		"Find us at http://vsrg.club !",
 		"\"Eating children is part of our lives.\"",
 		"Don't you put it in your mouth.",
 		"\"Like the game you may all know stepmania\"",
@@ -62,7 +59,6 @@ Phrases = {
 		"\"mario paint music!!\" - peppy",
 		"very spammy",
 		"your favourite chart is shit",
-		"1.33 -> 0.33 -> 1.0 <=/=> 1.5 -> 0.5 -> 1.0",
 		"rip words",
 		"misses are bad",
 		"aiae lmao",
@@ -74,7 +70,7 @@ Phrases = {
 		"You'll full combo it this time.",
 		"You're gonna carry that weight.",
 		"fappables/duck.gif",
-		"16 hours of B.O. blocko power!",
+		"R.I.P. BMS Culture (1995-201X)",
 		"how can there be 714 bpm if theres only 60 seconds in a minute?",
 		"Far East Nightbird (Twitch remix)",
 		"Just hold on. You'll be fine, I promise. Everyday.",
@@ -87,7 +83,8 @@ Phrases = {
 		"Re:apparantly wearing a fedora improves sightreading???",
 		"\"How does your osu have all notes go to one place?\"",
 		"Fuga Fuuuga Fuuuuuckga Fuuuuuuuuckga Darkstar PAZO light TRASH ACE WOOD HELL",
-		"JESUS WON'T COME TO SAVE YOU IN RHYTHM GAME HELL SON",
+		"JESUS WON'T COME TO SAVE YOU IN MUSIC GAME HELL SON",
+		"hunter2",
 		"slapping colorful hamburgers is one of my many hobbies",
 		"our park isn't very sunny in fact its raining",
 		"big colorful buttons",
@@ -97,20 +94,14 @@ Phrases = {
 		"To Abcdullah: your cheating is obvious, doing 100.00% on lv.26-28 maps from the first attempt is cheating, admit it.",
 		"konmai",
 		"haha facerolling",
-		"But the one in front of the gun lives forever.",
-		"children of the sky..",
-		"Open up you heart, no, peace, love for everyone",
-		"Come on, everybody in the universe, come on",
-		"I thought I was doing the most when somebody said to me...",
-		"when somebody said to me...",
-		"World, hold on! Instead of messing with our future, Tell me no more lies",
-		"If you ever meet your inner child, don’t cry. Tell them everything is gonna be alright",
+		"lunatic rave? more like lunatic lame!",
+		"max 300",
 		"now with more bms!"
 	}
 }
 
 function Phrases.Init()
-	Phrases.VSize = 22
+	Phrases.VSize = 40
 	PhraseFont = Fonts.TruetypeFont(GetSkinFile("font.ttf"));
 	Phrases.Text = StringObject2D()
 	Phrases.Text.Font = PhraseFont
@@ -121,24 +112,27 @@ function Phrases.Init()
 	Phrases.Text.Layer = 12
 	Phrases.Text.Alpha = 0
 	Phrases.Text.Rotation = 0
-	Phrases.Text.X = 0
-	Phrases.Text.Y = -Phrases.VSize
+	Phrases.Text.X = - Phrases.Text.TextSize / 2 + ScreenWidth / 2
+	Phrases.Text.Y = ScreenHeight * 3 / 4
 	
 	Phrases.BG = Engine:CreateObject()
 
-	Phrases.BG.Texture = "Global/filter.png"
-	Phrases.BG.Height = 30
+	Phrases.BG.Texture = "Global/white.png"
+	Phrases.BG.Height = Phrases.VSize + 20
 	Phrases.BG.Layer = 11
 	Phrases.BG.Width = ScreenWidth
 	Phrases.BG.X = 0
+	Phrases.BG.Y = ScreenHeight * 3 / 4
+	Phrases.BG.Red = 0.15
+	Phrases.BG.Green = 0.15
+	Phrases.BG.Blue = 0.15
+	Phrases.BG.Alpha = 0.85
 	
 	Engine:AddTarget(Phrases.Text)
 end
 
 function Phrases.Fade(frac)
 	Phrases.Text.Alpha = frac
-	Phrases.Text.Y = -Phrases.VSize + Phrases.VSize * frac
 	
 	Phrases.BG.Alpha = frac
-	Phrases.BG.Y = -Phrases.BG.Height + Phrases.BG.Height * frac
 end

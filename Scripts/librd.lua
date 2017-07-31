@@ -110,6 +110,7 @@ function AdjustInBox(transform, params)
 	local y = params.y or 0
 	local w = params.w or ScreenWidth
 	local h = params.h or ScreenHeight
+	local adjustByWidth = params.AdjustByWidth or false
 	local oldWidth = transform.Width
 	local oldHeight = transform.Height
 	local Background = transform or params.Background
@@ -120,6 +121,10 @@ function AdjustInBox(transform, params)
 	Background.Y = y
 
 	local VRatio = h / Background.Height
+
+	if adjustByWidth then 
+		VRatio = w / Background.Width
+	end
 
 	Background.ScaleX = VRatio
 	Background.ScaleY = VRatio

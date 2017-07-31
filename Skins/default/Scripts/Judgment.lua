@@ -133,7 +133,13 @@ function Judgment:Run(Delta)
 			self.Transform.Rotation = (-self.Tilt * ComboLerp)
 		end
 
-		if self.Value ~= 1 and self.ShowTimingIndicator then -- not a "flawless"
+		local bestValue = 1
+		if self.Player.Scorekeeper.UsesW0 then 
+			bestValue = 0
+		end
+
+		if self.Value ~= bestValue
+			and self.ShowTimingIndicator then -- not a "flawless"
 			self.IndicatorObject.Alpha = AlphaRatio
 
 			if self.Early then -- early
@@ -157,10 +163,12 @@ function Judgment:OnHit(JudgmentValue, Time, l, h, r, pn)
 	end
 	self.Value = JudgmentValue
 
+	local kvalue = self.Value
 	if self.Value == 0 then
 		self.Object.Lighten = (1)
 		self.Object.LightenFactor = (2.0)
-		self.Value = 1
+		self.Value = 0
+		kvalue = 1
 	else
 		--self.Object.Lighten = 0
 		--self.Object.LightenFactor = 0
@@ -172,9 +180,9 @@ function Judgment:OnHit(JudgmentValue, Time, l, h, r, pn)
 		self.LastAlternation = 0
 	end
 
-	self.Atlas:SetObjectCrop(self.Object, self.Table[self.Value])
-	self.Object.Height = self.Atlas.Sprites[self.Table[self.Value]].h
-	self.Object.Width = self.Atlas.Sprites[self.Table[self.Value]].w
+	self.Atlas:SetObjectCrop(self.Object, self.Table[kvalue])
+	self.Object.Height = self.Atlas.Sprites[self.Table[kvalue]].h
+	self.Object.Width = self.Atlas.Sprites[self.Table[kvalue]].w
 
 	if JudgmentValue ~= 5 then
 		if JudgmentValue ~= -1 then
