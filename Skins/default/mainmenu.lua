@@ -90,8 +90,13 @@ badgeRotSpeed = 1080
 function Update(Delta)
 	Time = Time + Delta
 
-	title.KernScale = 2 + sin(Time)
-	title.X = ScreenWidth / 2 - title.TextSize / 2
+	title.KernScale = 2 + 0.5 * sin(Time)
+
+	local sc = sin(Time) * 0.2 + 1.2
+
+	title.ScaleX = sc
+	title.ScaleY = sc
+	title.X = ScreenWidth / 2 - title.TextSize * sc / 2
 	badgeRotSpeed = math.max(badgeRotSpeed - Delta * 240, 120)
 	targBadge.Rotation = targBadge.Rotation - badgeRotSpeed * Delta
 	BackgroundAnimation:Update(Delta)
