@@ -102,8 +102,8 @@ end</script>
 				<option value="1">Title</option>
 				<option value="2">Author</option>
 				<option value="3">Length</option>
-				<option value="4">Max NPS</option>
-				<option value="5">Min NPS</option>
+				<option value="4">Max Level</option>
+				<option value="5">Min Level</option>
 			</select>
 			</div>
 		</div>

@@ -72,25 +72,20 @@ end
 function updText()
 	local sng = Global:GetSelectedSong()
 	if sng then
-		local s7k = toSong7K(sng)
-		if s7k then
-			local diff = Global:GetDifficulty(0)
-			if diff then
-				local author = diff.Author
-				local nps = diff.Objects / diff.Duration
-				if string.len(author) > 0 then
-					author = " by " .. author
-				end
-
-				dd.Text = "Selected " .. diff.Name .. author .. 
-					string.format("\n%d of %d", Wheel.DifficultyIndex+1, s7k.DifficultyCount) ..
-					"\n" .. diff.Channels .. " Channels" ..
-					"\nLevel " .. diff.Level .. 
-					" (" .. string.format("%.02f", nps) .. " nps)"
-
+		local diff = Global:GetDifficulty(0)
+		if diff then
+			local author = diff.Author
+			local nps = diff.Objects / diff.Duration
+			if string.len(author) > 0 then
+				author = " by " .. author
 			end
-		else
-			dd.Text = "dotcur mode song";
+
+			dd.Text = "Selected " .. diff.Name .. author .. 
+				string.format("\n%d of %d", Wheel.DifficultyIndex+1, sng.DifficultyCount) ..
+				"\n" .. diff.Channels .. " Channels" ..
+				"\nLevel " .. diff.Level .. 
+				" (" .. string.format("%.02f", nps) .. " nps)"
+
 		end
 	else
 		dd.Text = ""

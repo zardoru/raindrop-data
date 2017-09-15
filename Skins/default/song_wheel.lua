@@ -182,13 +182,8 @@ function CreateWheelItems()
 
 	WheelItemStrings[Wheel:AddString(strDuration)] = function(Song, IsSelected, Index, Txt)
 		if Song then
-			local sng = toSong7K(Song)
-			if not sng then
-				sng = toSongDC(Song)
-			end
-
-			local s = floor(sng:GetDifficulty(0).Duration % 60)
-			local m = floor( (sng:GetDifficulty(0).Duration - s) / 60 )
+			local s = floor(Song:GetDifficulty(0).Duration % 60)
+			local m = floor((Song:GetDifficulty(0).Duration - s) / 60)
 			strDuration.Text = string.format("%d:%02d", m, s)
 		else
 			strDuration.Text = ""
