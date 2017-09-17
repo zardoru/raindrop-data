@@ -111,7 +111,7 @@ function PlayerText:Run(dt)
 
 	self.lifebar.Text = string.format("%03d%%", self.Player.LifebarPercent);
 
-	local mlt = self.Player.SpeedMultiplier
+	local mlt = self.Player.UserSpeedMultiplier
 	local vspd = self.Player.Speed
 	local fmtext = string.format("Speed: %02.2fx (%.0f -> %.0f)\n", mlt, vspd, mlt*vspd)
 	local ScoreKeeper = self.Player.Scorekeeper

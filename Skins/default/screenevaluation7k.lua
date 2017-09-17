@@ -118,7 +118,7 @@ function SetSongTitle(diff)
 
 	TitleText = StringObject2D()
 
-	sng = toSong7K(Global:GetSelectedSong())
+	sng = Global:GetSelectedSong()
 	if diff.Author ~= "" then
 		difftxt = string.format("%s by %s", diff.Name, diff.Author)
 	else
