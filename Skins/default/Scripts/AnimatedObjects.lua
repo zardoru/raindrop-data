@@ -20,7 +20,9 @@ function ProgressTick:Init()
 	self.Object = ScreenObject {
 		Texture = self.Image,
 		Layer = 18,
-    X = self.Noteskin.GearStartX - 16
+    X = self.Noteskin.GearStartX - 16,
+		Width = 16,
+		Height = 16
 	}
   
   if self.Transformation then

@@ -39,35 +39,36 @@ function UpdateExit(frac, delta)
 end
 
 function Init()
-	font = Fonts.TruetypeFont(GetSkinFile("ftb_font.ttf"), 100)
-	fontSmall = Fonts.TruetypeFont(GetSkinFile("ftb_font.ttf"), 60)
-	fontSmallest = Fonts.TruetypeFont(GetSkinFile("ftb_font.ttf"), 40)
+	font = Fonts.TruetypeFont(GetSkinFile("ftb_font.ttf"))
 	
 	nowLoading = StringObject2D()
 	nowLoading.Font = font
+	nowLoading.FontSize = 100
 	nowLoading.Text = "Now loading..."
-	nowLoading.X = ScreenWidth / 2 - font:GetLength(nowLoading.Text) / 2
+	nowLoading.X = ScreenWidth / 2 - nowLoading.TextSize / 2
 	nowLoading.Layer = 12
 	
 	Engine:AddTarget(nowLoading)
 	
 	songTitle = StringObject2D()
-	songTitle.Font = fontSmall
+	songTitle.Font = font
+	songTitle.FontSize = 60
 	
 	songTitle.Text = Global:GetSelectedSong().Title
 	songTitle.Y = ScreenHeight / 2 + 120
 	Engine:AddTarget(songTitle)
 	
-	local len = fontSmall:GetLength(songTitle.Text)
+	local len = (songTitle.TextSize)
 	songTitleStart = -len
 	songTitleCenter = ScreenWidth / 2 - len / 2
 	
 	songAuthor = StringObject2D()
-	songAuthor.Font = fontSmallest
+	songAuthor.Font = font
+	songAuthor.FontSize = 40
 	songAuthor.Text = Global:GetSelectedSong().Author
 	songAuthor.Y = songTitle.Y + 85
 	
-	len = fontSmallest:GetLength(songAuthor.Text)
+	len = songAuthor.TextSize
 	songAuthorStart = ScreenWidth
 	songAuthorCenter = ScreenWidth / 2 - len / 2
 	songAuthorEnd = -len

@@ -248,13 +248,12 @@ end
 
 function CreateText()
 	miniFont = Fonts.TruetypeFont(GetSkinFile("ftb_font.ttf"), 16)
-	largeFont = Fonts.TruetypeFont(GetSkinFile("ftb_font.ttf"), 36)
-	xlFont = Fonts.TruetypeFont(GetSkinFile("ftb_font.ttf"), 61)
 	
 	print "Creating text."
 	lblCombo = StringObject2D()
 	lblCombo.Font = miniFont
 	lblCombo.Text = "Combo"
+	lblCombo.FontSize = 16
 	lblCombo.X = 45
 	lblCombo.Y = 665
 	Engine:AddTarget(lblCombo)
@@ -264,6 +263,7 @@ function CreateText()
 	lblmaxCombo = StringObject2D()
 	lblmaxCombo.Font = miniFont
 	lblmaxCombo.Text = "MAX COMBO"
+	lblmaxCombo.FontSize = 16
 	lblmaxCombo.X = 230
 	lblmaxCombo.Y = 665
 	Engine:AddTarget(lblmaxCombo)
@@ -271,28 +271,32 @@ function CreateText()
 	lblmaxCombo.Layer = 24
 	
 	lblcurCombo = StringObject2D()
-	lblcurCombo.Font = largeFont
+	lblcurCombo.Font = miniFont 
+	lblcurCombo.FontSize = 30
 	lblcurCombo.X = 45
-	lblcurCombo.Y = 665
-	lblcurCombo.Layer = 24
+	lblcurCombo.Y = 675
+	lblcurCombo.Layer = 30
 	Engine:AddTarget(lblcurCombo)
 	
 	lblcurMaxCombo = StringObject2D()
-	lblcurMaxCombo.Font = largeFont
+	lblcurMaxCombo.Font = miniFont 
+	lblcurMaxCombo.FontSize = 30
 	lblcurMaxCombo.Text = "0"
-	lblcurMaxCombo.Y = 665
+	lblcurMaxCombo.Y = 675
 	lblcurMaxCombo.Layer = 24
 	Engine:AddTarget(lblcurMaxCombo)
 	
 	lblScore = StringObject2D()
-	lblScore.Font = xlFont
-	lblScore.Y = 680
+	lblScore.Font = miniFont 
+	lblScore.FontSize = 40
+	lblScore.Y = 700
 	lblScore.X = 45
 	lblScore.Layer = 24
 	Engine:AddTarget(lblScore)
 	
 	lblstScore = StringObject2D()
 	lblstScore.Font = miniFont
+	lblstScore.FontSize = 16
 	lblstScore.Text = "score"
 	lblstScore.Y = 740
 	lblstScore.X = 155
@@ -305,10 +309,10 @@ function UpdateText()
 	local ScoreKeeper = Game:GetPlayer(0).Scorekeeper
 	lblcurCombo.Text = ScoreKeeper:GetScore(ST_COMBO)
 	lblcurMaxCombo.Text = ScoreKeeper:GetScore(ST_MAX_COMBO)
-	lblcurMaxCombo.X = 312 - largeFont:GetLength(lblcurMaxCombo.Text)
+	lblcurMaxCombo.X = 312 - (lblcurMaxCombo.TextSize)
 	
 	lblScore.Text = string.format("%08d", Game:GetPlayer(0).Score)
-	local len = xlFont:GetLength(lblScore.Text)
+	local len = (lblScore.TextSize)
 	lblScore.X = 42 + math.abs(GearWidth - len) / 2
 	
 end
