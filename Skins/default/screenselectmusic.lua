@@ -75,7 +75,6 @@ function updText()
 		local diff = Global:GetDifficulty(0)
 		if diff then
 			local author = diff.Author
-			local nps = diff.Objects / diff.Duration
 			if string.len(author) > 0 then
 				author = " by " .. author
 			end
@@ -83,9 +82,7 @@ function updText()
 			dd.Text = "Selected " .. diff.Name .. author .. 
 				string.format("\n%d of %d", Wheel.DifficultyIndex+1, sng.DifficultyCount) ..
 				"\n" .. diff.Channels .. " Channels" ..
-				"\nLevel " .. diff.Level .. 
-				" (" .. string.format("%.02f", nps) .. " nps)"
-
+				"\nLevel " .. diff.Level
 		end
 	else
 		dd.Text = ""

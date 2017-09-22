@@ -46,6 +46,7 @@ end
 function Components:Update(delta)
 	local SongTime = Game:GetPlayer(0).Time
 	local SongDuration = Game:GetPlayer(0).Duration
+	local CurrentBPM = Game:GetPlayer(0).BPM
 	self.BPM:update(CurrentBPM)
 
 	local left = SongDuration - SongTime
@@ -64,8 +65,8 @@ function Components:Update(delta)
 	local ScoreKeeper = Game:GetPlayer(0).Scorekeeper
 
 	self.Score:update(ScoreKeeper:GetScore(ST_EX))
-	local int = math.floor(Player.SpeedMultiplier)
-	local frac = math.floor((Player.SpeedMultiplier - int) * 100)
+	local int = math.floor(Player.UserSpeedMultiplier)
+	local frac = math.floor((Player.UserSpeedMultiplier - int) * 100)
 	self.MulLeft:update(int)
 	self.MulRight:update(frac, true)
 	self.Gauge:update(delta)

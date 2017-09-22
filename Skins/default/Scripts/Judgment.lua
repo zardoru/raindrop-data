@@ -170,8 +170,8 @@ function Judgment:OnHit(JudgmentValue, Time, l, h, r, pn)
 		self.Value = 0
 		kvalue = 1
 	else
-		--self.Object.Lighten = 0
-		--self.Object.LightenFactor = 0
+		self.Object.Lighten = 0
+		self.Object.LightenFactor = 0
 	end
 
 	if self.LastAlternation == 0 then
