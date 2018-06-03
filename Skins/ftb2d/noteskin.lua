@@ -94,5 +94,5 @@ DrawLift = drawNormalInternal
 DrawMine = drawMineInternal
 
 DrawHoldHead = drawNormalInternal
-DrawHoldTail = nil
+DrawHoldTail = drawMineInternal -- 'nil'
 DrawHoldBody = drawHoldBodyInternal

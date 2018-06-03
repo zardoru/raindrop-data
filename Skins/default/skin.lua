@@ -15,29 +15,6 @@ DefaultGameplayBackground = DefaultBackground
 
 ]]
 
-Cursor = {
-	RotationSpeed = 140,
-	Centered = 1,
-	Zooming = 1,
-	Size = 60
-}
-
-Judgment = {
-	Rotation = -90,
-	X = 40,
-	Y = 370,
-	Centered = 1
-	-- Size unused. Determined from image size.
-}
-
-Lifebar = {
-	Height = 84, -- Width is automatically calculated for now.
-	X = ScreenWidth - 42,
-	Y = 384,
-	Rotation = 90,
-	Centered = 1
-}
-
 -- Audio
 AudioManifest = {
 	Miss = "miss.wav",
@@ -67,7 +44,7 @@ Hitlightning = 1
 OnMissBGATime = 0.5
 
 -- Set screen filter transparency on 7K.
-ScreenFilter = 0.9
+ScreenFilter = 0.97
 
 -- Whether to display the in-game histogram.
 Histogram = 0

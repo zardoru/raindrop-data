@@ -2,16 +2,26 @@ require "utils"
 require "librd"
 
 -- Auxiliary variables.
-NoteImage1 = "VSRG/note1.png"
-NoteImage2 = "VSRG/note2.png"
-NoteImage3 = "VSRG/note3.png"
-NoteImage4 = "VSRG/note4.png"
-NoteImage5 = "VSRG/note5.png"
-NoteImageHold1 = "VSRG/note1L.png"
-NoteImageHold2 = "VSRG/note2L.png"
-NoteImageHold3 = "VSRG/note3L.png"
-NoteImageHold4 = "VSRG/note4L.png"
-NoteImageHold5 = "VSRG/note5L.png"
+--[[
+    Key1 = C4,
+    Key2 = C1,
+    Key3 = C2,
+    Key4 = C3,
+    Key5 = C2,
+    Key6 = C1,
+    Key7 = C4,
+]]
+
+NoteImage1 = "VSRG/note5.png"
+NoteImage2 = "VSRG/note3.png"
+NoteImage3 = "VSRG/note2.png"
+NoteImage4 = "VSRG/note1.png"
+NoteImage5 = "VSRG/note4.png"
+NoteImageHold1 = "VSRG/note5L.png"
+NoteImageHold2 = "VSRG/note3L.png"
+NoteImageHold3 = "VSRG/note2L.png"
+NoteImageHold4 = "VSRG/note1L.png"
+NoteImageHold5 = "VSRG/note4L.png"
 
 GearStartX = 80
 
@@ -177,16 +187,16 @@ GearHeightCommon = 135
 -- Lane X positions are always centered.
 --
 
-C1 = "key1.png"
-C1D = "key1d.png"
-C2 = "key2.png"
-C2D = "key2d.png"
-C3 = "key3.png"
-C3D = "key3d.png"
-C4 = "key4.png"
-C4D = "key4d.png"
-C5 = "key5.png"
-C5D = "key5d.png"
+C1 = "key5.png"
+C1D = "key5d.png"
+C2 = "key3.png"
+C2D = "key3d.png"
+C3 = "key2.png"
+C3D = "key2d.png"
+C4 = "key1.png"
+C4D = "key1d.png"
+C5 = "key4.png"
+C5D = "key4d.png"
 
 -- Channels16 is, of course, DP.
 Channels16 = {

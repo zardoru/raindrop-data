@@ -224,6 +224,13 @@ function MissEvent(TimeOff, Lane, IsHold)
 end
 
 function KeyEvent(Key, Code, IsMouseInput)
+	if Key == 262 and Code == 1 then  -- right arrow
+		Game:GetPlayer(0).UserSpeedMultiplier = Game:GetPlayer(0).UserSpeedMultiplier + 0.25
+	end
+
+	if Key == 263 and Code == 1 then  -- left arrow
+		Game:GetPlayer(0).UserSpeedMultiplier = Game:GetPlayer(0).UserSpeedMultiplier - 0.25
+	end
 end
 
 function GearKeyEvent (Lane, IsKeyDown)

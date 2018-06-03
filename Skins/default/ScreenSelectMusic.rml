@@ -150,7 +150,7 @@ end</script>
 					<option value="0" id="sc0">First (after SV)</option>
 					<option value="1" id="sc1">Max Speed</option>
 					<option value="2" id="sc2">Constant Speed</option>
-					<option value="4" id="sc4">Mode</option> 
+					<option value="4" id="sc4">Most Common</option> 
 				</select>
 			</div>
 			<h1> Target Speed </h1>

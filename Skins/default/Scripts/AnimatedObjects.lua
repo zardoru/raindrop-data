@@ -120,7 +120,7 @@ function MissHighlight:OnMiss(t, l, h, pn)
   end
   
 	self.CurrentTime[l] = 0
-  local spb = 60 / self.Player.BPM
+  local spb = 60 / math.abs(self.Player.BPM)
 
 	if spb ~= math.huge then
 		self.Time[l] = math.min(spb / 4, 0.5)

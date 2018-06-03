@@ -83,7 +83,7 @@ function HitLightning:GearKeyEvent(Lane, IsKeyDown, pn)
 		return
 	end
   
-  local spb = 60 / self.Player.BPM
+  local spb = 60 / math.abs(self.Player.BPM)
 
 	if spb ~= math.huge then
 		self.OffTime[Lane] = math.min(spb / 1.5, 1)

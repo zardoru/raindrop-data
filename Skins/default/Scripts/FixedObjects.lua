@@ -8,7 +8,8 @@ function Filter:Init()
 		return
 	end
 	
-	FilterVal = GetConfigF("ScreenFilter", "")
+	local FilterVal = GetConfigF("ScreenFilter", "")
+	-- print (FilterVal, "========================")
 
 	self.Object = Engine:CreateObject()
 
@@ -19,6 +20,32 @@ function Filter:Init()
 	self.Object.Height = ScreenHeight
 	self.Object.Alpha = FilterVal
 	self.Object.Layer = 1
+
+	local lines = {}
+	self.Lines = lines
+	for i=1, self.Player.Channels do
+		self:AddLine(i, -self.Noteskin["Key" .. i .. "Width"] / 2)
+	end
+
+	-- +1
+	self:AddLine(self.Player.Channels, self.Noteskin["Key" .. self.Player.Channels .. "Width"] / 2)
+end
+
+function Filter:AddLine(i, offset)
+	local obj = Engine:CreateObject()
+	self.Lines[#self.Lines+1] = obj
+	obj.Texture = "Global/white.png"
+	with(obj, {
+		Width = 1,
+		Height = ScreenHeight,
+		Y = 0,
+		X = self.Noteskin["Key" .. i .. "X"] + offset,
+		Layer = 2,
+		Alpha = self.Object.Alpha,
+		Red = 0.4,
+		Green = 0.4,
+		Blue = 0.4
+	})
 end
 
 librd.make_new(Filter, Filter.Init)

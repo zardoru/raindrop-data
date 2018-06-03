@@ -87,7 +87,10 @@ function SetupJudgmentsDisplay(player)
 	fmtext = fmtext .. string.format("\nNotes hit: %d%%", ScoreKeeper:GetPercentScore(PST_NH))
 	fmtext = fmtext .. string.format("\nAccuracy: %d%%", ScoreKeeper:GetPercentScore(PST_ACC))
 	fmtext = fmtext .. string.format("\nEX%%: %d%%", ScoreKeeper:GetPercentScore(PST_EX))
-	fmtext = fmtext .. string.format("\nAverage hit (ms): %.2f" , ScoreKeeper.AvgHit)
+	fmtext = fmtext .. string.format("\nAverage hit (ms): %.2f / Offset Distrust: %.2f%%", 
+										ScoreKeeper.AvgHit, 
+										ScoreKeeper.OffsetDistrust * 100)
+
 	fmtext = fmtext .. string.format("\nStandard Deviation (ms): %.2f" , ScoreKeeper.StDev)
 	fmtext = fmtext .. "\nraindrop rank: "
 
