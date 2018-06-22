@@ -30,12 +30,12 @@ function Lifebar:Init()
 
 	self.Position = { 
 		x = self.Noteskin.GearStartX + self.Noteskin.GearWidth + self.Width / 2 + 8,
-		y = ScreenHeight - h / 2
+		y = Screen.Height - h / 2
 	}
 
 	self.CurrentPosition = {
 		x = self.Position.x,
-		y = ScreenHeight
+		y = Screen.Height
 	}
 
 	self.Margin.X = self.CurrentPosition.x
@@ -50,7 +50,7 @@ function Lifebar:Init()
 	self.Fill2.Texture = self.FillFile
 	self.Fill2.Layer = 26
 	self.Fill2.Centered = 1
-	self.Fill2.BlendMode = BlendAdd
+	self.Fill2.BlendMode = BlendMode.Add
 	self.Fill2.Width = self.Fill.Width
 	self.Display = 0
 
@@ -68,8 +68,8 @@ function Lifebar:Run(Delta)
 	local partA = self.Display * 0.98
 	local partB = self.Display * 0.02 * DP
 	local Display = partA + partB
-	local NewY = ScreenHeight - self.FillSize * (Display) / 2
-	local NewYFixed = ScreenHeight - self.FillSize * (self.Display) / 2
+	local NewY = Screen.Height - self.FillSize * (Display) / 2
+	local NewYFixed = Screen.Height - self.FillSize * (self.Display) / 2
 
 	self.CurrentPosition = self.Position
 
@@ -123,6 +123,6 @@ function Jambar:Run(Delta)
 
   local Offset = remaining * self.Height
   self.BarFG.ScaleY = remaining
-  self.BarFG.Y = ScreenHeight - Offset / 2
+  self.BarFG.Y = Screen.Height - Offset / 2
   self.BarFG:SetCropByPixels( 0, self.Width, self.BarFG.Height - Offset, self.BarFG.Height )
 end

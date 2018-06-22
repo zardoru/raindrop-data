@@ -22,8 +22,8 @@ function ScreenFade.Init()
 	ScreenFade.Black.Texture = "Global/filter.png"
 
 	with(ScreenFade.Black, {
-		Width = ScreenWidth,
-		Height = ScreenHeight,
+		Width = Screen.Width,
+		Height = Screen.Height,
 		Alpha = 0,
 		Layer = 31
 	})
@@ -39,20 +39,20 @@ function ScreenFade.Init()
 	Black1.Centered = 1
 	Black2.Centered = 1
 	
-	Black1.X = ScreenWidth/2
-	Black2.X = ScreenWidth/2
+	Black1.X = Screen.Width/2
+	Black2.X = Screen.Width/2
 	
-	Black1.Y = ScreenWidth/4
-	Black2.Y = ScreenWidth*3/4
+	Black1.Y = Screen.Width/4
+	Black2.Y = Screen.Width*3/4
 	
 	Black1.Alpha = 1
 	Black2.Alpha = 1
 	
-	Black1.Width = ScreenWidth
-	Black2.Width = ScreenWidth
+	Black1.Width = Screen.Width
+	Black2.Width = Screen.Width
 	
-	Black1.Height = ScreenHeight/2
-	Black2.Height = ScreenHeight/2
+	Black1.Height = Screen.Height/2
+	Black2.Height = Screen.Height/2
 	Black1.Z = 31
 	Black2.Z = 31
 	
@@ -70,18 +70,18 @@ function ScreenFade.In(nobg)
 		Delay = BackgroundAnimation.Duration
 	end
 	
-	Engine:AddAnimation(Black1, "FadeInA1", EaseNone, ScreenFade.Duration, Delay)
+	Engine:AddAnimation(Black1, "FadeInA1", Easing.None, ScreenFade.Duration, Delay)
 	return --[[ Lines beyond are previous implementation.
 	Engine:StopAnimation(Black1)
 	Engine:StopAnimation(Black2)
-	Engine:AddAnimation(Black1, "FadeInA1", EaseNone, 0.2, 0)
-	Engine:AddAnimation(Black2, "FadeInA2", EaseNone, 0.2, 0)
+	Engine:AddAnimation(Black1, "FadeInA1", Easing.None, 0.2, 0)
+	Engine:AddAnimation(Black2, "FadeInA2", Easing.None, 0.2, 0)
 	]]
 end
 
 function ScreenFade.Out(nobg)
 	Engine:StopAnimation(ScreenFade.Black)
-	Engine:AddAnimation(nil, "IFadeInA1", EaseNone, ScreenFade.Duration, 0)
+	Engine:AddAnimation(nil, "IFadeInA1", Easing.None, ScreenFade.Duration, 0)
 	
 	if not nobg then
 		BackgroundAnimation:Out()
@@ -90,7 +90,7 @@ function ScreenFade.Out(nobg)
 	return --[[
 	Engine:StopAnimation(Black1)
 	Engine:StopAnimation(Black2)
-	Engine:AddAnimation(Black1, "IFadeInA1", EaseNone, 0.2, 0)
-	Engine:AddAnimation(Black2, "IFadeInA2", EaseNone, 0.2, 0)
+	Engine:AddAnimation(Black1, "IFadeInA1", Easing.None, 0.2, 0)
+	Engine:AddAnimation(Black2, "IFadeInA2", Easing.None, 0.2, 0)
 	]]
 end

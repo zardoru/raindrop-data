@@ -10,17 +10,17 @@ end
 
 function GetRankImage(ScoreKeeper)
 	local scorerank = ScoreKeeper.BMRank
-	if scorerank == PMT_AAA then
+	if scorerank == PacemakerType.PMT_AAA then
 		return "AAA"
-	elseif scorerank == PMT_AA then
+	elseif scorerank == PacemakerType.PMT_AA then
 		return "AA"
-	elseif scorerank == PMT_A then
+	elseif scorerank == PacemakerType.PMT_A then
 		return "A"
-	elseif scorerank == PMT_B then
+	elseif scorerank == PacemakerType.PMT_B then
 		return "B"
-	elseif scorerank == PMT_C then
+	elseif scorerank == PacemakerType.PMT_C then
 		return "C"
-	elseif scorerank == PMT_D then
+	elseif scorerank == PacemakerType.PMT_D then
 		return "D"
 	else
 		return "F"
@@ -32,14 +32,14 @@ function SetupRank(player)
 	RankPic = Engine:CreateObject()
 	RankPic.Texture = "Evaluation/score" .. GetRankImage(player.Scorekeeper) .. ".png"
 	RankPic.Centered = 1
-	RankPic.X = ScreenWidth / 2 - RankPic.Width / 2
-	RankPic.Y = ScreenHeight / 2
+	RankPic.X = Screen.Width / 2 - RankPic.Width / 2
+	RankPic.Y = Screen.Height / 2
 
 	-- resize to something acceptable
 	if RankPic.X < RankPic.Width / 2 then
-		local Rat = (ScreenWidth / 2) / (RankPic.Width)
+		local Rat = (Screen.Width / 2) / (RankPic.Width)
 		RankPic:SetScale(Rat)
-		RankPic.X = ScreenWidth / 2 - RankPic.Width / 2 * Rat
+		RankPic.X = Screen.Width / 2 - RankPic.Width / 2 * Rat
 	end
 
 	local str = ""
@@ -50,7 +50,7 @@ function SetupRank(player)
 	RankStr = StringObject2D()
 	RankStr.Text = "rank" .. str
 	RankStr.X = RankPic.X - RankStr.TextSize / 2
-	RankStr.Y = ScreenHeight / 2 + RankPic.Height / 2 + 10
+	RankStr.Y = Screen.Height / 2 + RankPic.Height / 2 + 10
 	RankStr.Font = EvalFont
 	RankStr.FontSize = 30
 	Engine:AddTarget(RankStr)
@@ -63,12 +63,12 @@ function SetupJudgmentsDisplay(player)
 	JudgeStr.Font = EvalFont
 	JudgeStr.FontSize = 26
 
-	w0 = ScoreKeeper:GetJudgmentCount(SKJ_W0)
-	w1 = ScoreKeeper:GetJudgmentCount(SKJ_W1)
-	w2 = ScoreKeeper:GetJudgmentCount(SKJ_W2)
-	w3 = ScoreKeeper:GetJudgmentCount(SKJ_W3)
-	w4 = ScoreKeeper:GetJudgmentCount(SKJ_W4)
-	w5 = ScoreKeeper:GetJudgmentCount(SKJ_MISS)
+	w0 = ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W0)
+	w1 = ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W1)
+	w2 = ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W2)
+	w3 = ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W3)
+	w4 = ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W4)
+	w5 = ScoreKeeper:GetJudgmentCount(Judgment.SKJ_MISS)
 	Score = player.Score
 	
 	fmtext = ""
@@ -83,10 +83,10 @@ function SetupJudgmentsDisplay(player)
 		fmtext = fmtext .. string.format("Flawless*: %04d\nFlawless: %04d\nSweet: %04d\nNice: %04d\nOK: %04d\nMiss: %04d", w0, w1, w2, w3, w4, w5)
 	end
 
-	fmtext = fmtext .. string.format("\nMax Combo: %d", ScoreKeeper:GetScore(ST_MAX_COMBO))
-	fmtext = fmtext .. string.format("\nNotes hit: %d%%", ScoreKeeper:GetPercentScore(PST_NH))
-	fmtext = fmtext .. string.format("\nAccuracy: %d%%", ScoreKeeper:GetPercentScore(PST_ACC))
-	fmtext = fmtext .. string.format("\nEX%%: %d%%", ScoreKeeper:GetPercentScore(PST_EX))
+	fmtext = fmtext .. string.format("\nMax Combo: %d", ScoreKeeper:GetScore(ScoreType.ST_MAX_COMBO))
+	fmtext = fmtext .. string.format("\nNotes hit: %d%%", ScoreKeeper:GetPercentScore(PercentScoreType.PST_NH))
+	fmtext = fmtext .. string.format("\nAccuracy: %d%%", ScoreKeeper:GetPercentScore(PercentScoreType.PST_ACC))
+	fmtext = fmtext .. string.format("\nEX%%: %d%%", ScoreKeeper:GetPercentScore(PercentScoreType.PST_EX))
 	fmtext = fmtext .. string.format("\nAverage hit (ms): %.2f / Offset Distrust: %.2f%%", 
 										ScoreKeeper.AvgHit, 
 										ScoreKeeper.OffsetDistrust * 100)
@@ -102,11 +102,11 @@ function SetupJudgmentsDisplay(player)
 
 	JudgeStr.Text = fmtext
 
-	ScoreDisplay.X = ScoreDisplay.W / 2 + ScreenWidth / 2
+	ScoreDisplay.X = ScoreDisplay.W / 2 + Screen.Width / 2
 	ScoreDisplay.Y = RankStr.Y + 30
 
 	JudgeStr.X = ScoreDisplay.X
-	JudgeStr.Y = ScreenHeight / 2 - RankPic.Height / 2
+	JudgeStr.Y = Screen.Height / 2 - RankPic.Height / 2
 
 	Engine:AddTarget(JudgeStr)
 end
@@ -115,8 +115,8 @@ function SetSongTitle(diff)
 	Filter = Engine:CreateObject()
 	Filter.Texture = "Global/filter.png"
 	Filter.X = 0
-	Filter.Y = ScreenHeight - 30
-	Filter.Width = ScreenWidth
+	Filter.Y = Screen.Height - 30
+	Filter.Width = Screen.Width
 	Filter.Height = 40
 
 	TitleText = StringObject2D()
@@ -133,15 +133,15 @@ function SetSongTitle(diff)
 	TitleText.Font = EvalFont
 	TitleText.FontSize = 30
 
-	TitleText.Y = ScreenHeight - 40
-	TitleText.X = ScreenWidth / 2 - TitleText.TextSize / 2
+	TitleText.Y = Screen.Height - 40
+	TitleText.X = Screen.Width / 2 - TitleText.TextSize / 2
 
 	Engine:AddTarget(TitleText)
 end
 
 function SetupHistogram(p)
 	histogram = Histogram:new(p)
-	histogram:SetPosition(ScreenWidth / 2 - 255 / 2, 20)
+	histogram:SetPosition(Screen.Width / 2 - 255 / 2, 20)
 	histogram:SetColor(30 / 255, 50 / 255, 200 / 255)
 	hist_bg = histogram:SetBackground("Global/white.png")
 	hist_bg.Red = 0.2

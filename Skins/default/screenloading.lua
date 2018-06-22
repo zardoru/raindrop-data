@@ -40,7 +40,7 @@ function Init()
 	wb = targBadge.Width
 
 	targBadge.X = 48
-	targBadge.Y = ScreenHeight / 2 - 48
+	targBadge.Y = Screen.Height / 2 - 48
 	targBadge.Layer = 16
 
 
@@ -53,19 +53,19 @@ function Init()
 		Blue = 0.03,
 		Green = 0.03,
 		Alpha = 0.65,
-		Height = ScreenHeight / 3,
-		Width = ScreenWidth,
+		Height = Screen.Height / 3,
+		Width = Screen.Width,
 		Layer = 15,
 		Y = 0,
-		X = ScreenWidth / 2,
+		X = Screen.Width / 2,
 		Centered = 1,
 		ChainTransformation = BgStuff
 	})
 	
-	local ls = 1 / 9 * ScreenHeight 
-	local lx = ScreenHeight / 2 - ls / 2
-	local l1 = - 1 / 9 * ScreenHeight
-	local l2 = 1 / 9 * ScreenHeight
+	local ls = 1 / 9 * Screen.Height 
+	local lx = Screen.Height / 2 - ls / 2
+	local l1 = - 1 / 9 * Screen.Height
+	local l2 = 1 / 9 * Screen.Height
 
 	BgStuff.Y = lx
 
@@ -119,11 +119,11 @@ function Init()
 	BG = Engine:CreateObject()
 	BG.Texture = "STAGEFILE" -- special constant
 	BG.Centered = 1
-	BG.X = ScreenWidth / 2
-	BG.Y = ScreenHeight / 2
+	BG.X = Screen.Width / 2
+	BG.Y = Screen.Height / 2
 	
-	local HRatio = ScreenHeight / BG.Height
-	local VRatio = ScreenWidth / BG.Width
+	local HRatio = Screen.Height / BG.Height
+	local VRatio = Screen.Width / BG.Width
 	
 	BG.ScaleX = math.max(HRatio, VRatio)
 	BG.ScaleY = math.max(HRatio, VRatio)

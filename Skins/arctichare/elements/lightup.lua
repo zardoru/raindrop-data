@@ -48,7 +48,7 @@ local Lightup = {
 				Y = self.Lights[i].Height / 2 * SkinScale,
 				X = self.coords[i],
 				Layer = 25,
-				BlendMode = BlendAdd
+				BlendMode = BlendMode.Add
 			})
 
 			self.Lights[i].Alpha = 0

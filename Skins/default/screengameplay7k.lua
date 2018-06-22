@@ -61,7 +61,7 @@ AnimatedObjects = {
 		Lifebar,
 		MissHighlight,
     Keys,
-		Judgment,
+		JudgmentObject,
 		Explosions,
 		Jambar,
 		PlayerText,
@@ -159,7 +159,7 @@ function Init()
 
 	if GetConfigF("Histogram", "") ~= 0 then
 		histogram = Histogram:new()
-		histogram:SetPosition(ScreenWidth - 255, ScreenHeight - 100 - ScoreDisplay.DigitHeight)
+		histogram:SetPosition(Screen.Width - 255, Screen.Height - 100 - ScoreDisplay.DigitHeight)
 		histogram:SetColor(30 / 255, 50 / 255, 200 / 255)
 		hist_bg = histogram:SetBackground("Global/white.png")
 		hist_bg.Red = 0.2
@@ -183,7 +183,7 @@ end
 
 -- Returns duration of failure animation.
 function OnFailureEvent()
-	if Global.CurrentGaugeType ~= LT_GROOVE then
+	if Global.CurrentGaugeType ~= LifeType.LT_GROOVE then
 		DoFailAnimation()
 		return FailAnimation.Duration
 	else
@@ -200,6 +200,11 @@ end
 function HitEvent(JudgmentValue, TimeOff, Lane, IsHold, IsHoldRelease, PNum)
 	-- When hits happen, this function is called.
 	AnimatedObjects.OnHit(JudgmentValue, TimeOff, Lane, IsHold, IsHoldRelease, PNum)
+
+	-- 'hit' misses
+	if JudgmentValue == Judgment.SKJ_MISS then
+		AnimatedObjects.OnMiss(TimeOff, Lane, IsHold, PNum)
+	end
 
 	if histogram then
 	  	histogram:UpdatePoints()

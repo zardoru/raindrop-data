@@ -81,7 +81,7 @@ function OnFullComboEvent()
 end
 
 function OnFailureEvent()
-	if Global:GetCurrentCurrentGauge(0) ~= LT_GROOVE then
+	if Global:GetCurrentCurrentGauge(0) ~= LifeType.LT_GROOVE then
 		DoFailAnimation()
 		return FailAnimation.Duration
 	else

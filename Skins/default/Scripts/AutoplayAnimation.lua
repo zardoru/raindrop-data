@@ -13,7 +13,7 @@ function AutoAnimation:Init()
 
 	self.AutoBN.Centered = 1
 
-	Engine:AddAnimation(self.AutoBN, "BnMoveFunction", EaseOut, 0.75, 0 )
+	Engine:AddAnimation(self.AutoBN, "BnMoveFunction", Easing.Out, 0.75, 0 )
 
 	local w = self.AutoBN.Width
 	local h = self.AutoBN.Height
@@ -30,7 +30,7 @@ librd.make_new(AutoAnimation, AutoAnimation.Init)
 
 function AutoAnimation:OnSongFinish()
 	if self.AutoBN then
-		Engine:AddAnimation (AutoBN, "AutoFinishAnimation", EaseOut, 0.35, 0)
+		Engine:AddAnimation (AutoBN, "AutoFinishAnimation", Easing.Out, 0.35, 0)
 		RunAutoAnimation = false
 	end
 end

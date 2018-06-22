@@ -1,3 +1,5 @@
+--- A module to draw a histogram given a Player instance.
+-- @gamemodule Histogram
 game_require "librd"
 
 Histogram = {}
@@ -30,6 +32,7 @@ function Histogram:GenerateObjects(w, h)
   self:UpdatePoints()
 end
 
+--- Update all objects on the histogram according to the ScoreKeeper instance of the assigned player.
 function Histogram:UpdatePoints()
   local skeep = self.Player.Scorekeeper
   local top_point = skeep.HistogramHighestPoint
@@ -55,6 +58,8 @@ function Histogram:UpdatePoints()
   end
 end
 
+--- Set the layer of the histogram.
+-- @param layer The Layer/Z index.
 function Histogram:SetLayer(layer)
   if not layer then return end
 
@@ -67,6 +72,10 @@ function Histogram:SetLayer(layer)
   end
 end
 
+--- Set the color of the histogram.
+-- @param r Red value on the 0 to 1 range
+-- @param g Green value on the 0 to 1 range
+-- @param b Blue value on the 0 to 1 range
 function Histogram:SetColor(r, g, b)
   for k,v in pairs(self.Objects) do
     v.Red = r or v.Red
@@ -79,12 +88,17 @@ function Histogram:SetColor(r, g, b)
   self.centerSep.Blue = b * 0.5 or self.centerSep.Blue
 end
 
+--- Set the position of the top-left of the histogram
+-- @param x X coordinate
+-- @param y Y coordinate
 function Histogram:SetPosition(x, y)
   self.X = x or self.X
   self.Y = y or self.Y
   self:UpdatePoints()
 end
 
+--- Set the background image of the histogram
+-- @param image The path to the image, relative to the skin directory.
 function Histogram:SetBackground(image)
   if self.bg then
     self.bg.Image = image
@@ -100,6 +114,11 @@ function Histogram:SetBackground(image)
   return self.bg
 end
 
+--- Create a new histogram.
+-- @param player The player from which to draw points.
+-- @param width The histogram's width.
+-- @param height The histogram's height.
+-- @param layer The histogram's layer/Z-index.
 function Histogram:new(player, width, height, layer)
   local out = {}
   local skeep = player.Scorekeeper

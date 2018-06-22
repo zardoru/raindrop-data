@@ -23,10 +23,10 @@ end
 
 function ComboDisplay:Init()
   self.X = self.Position and self.Position.x or self.Noteskin.GearStartX + self.Noteskin.GearWidth / 2
-  self.Y = self.Position and self.Position.y or 0.3 * ScreenHeight
+  self.Y = self.Position and self.Position.y or 0.3 * Screen.Height
   
   if self.Player.Upscroll then
-    self.Y = ScreenHeight - self.Y
+    self.Y = Screen.Height - self.Y
   end
 
 	self.Atlas = TextureAtlas:skin_new(self.AtlasFile)

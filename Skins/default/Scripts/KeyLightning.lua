@@ -51,7 +51,7 @@ function HitLightning:Init()
 		
 		self[i].Texture = self.Image
 		self[i].Centered = 1
-		self[i].BlendMode = BlendAdd
+		self[i].BlendMode = BlendMode.Add
 		
 		self[i].Width = self.Noteskin["Key"..i.."Width"]
 		self[i].Height = self.Height

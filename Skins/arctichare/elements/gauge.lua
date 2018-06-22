@@ -33,9 +33,9 @@ local Gauge = {
 		}
 
 		local gt = Global:GetCurrentGaugeType(0)
-		if gt == LT_GROOVE then
+		if gt == LifeType.LT_GROOVE then
 			self.GaugeBG.Texture = "assets/gauge-groove-off.png"
-		elseif gt == LT_EASY or gt == LT_O2JAM or gt == LT_STEPMANIA then
+		elseif gt == LifeType.LT_EASY or gt == LifeType.LT_O2JAM or gt == LifeType.LT_STEPMANIA then
 			self.GaugeBG.Texture = "assets/gauge-green-off.png"
 		else
 			self.GaugeBG.Texture = "assets/gauge-survival-off.png"
@@ -52,9 +52,9 @@ local Gauge = {
 				Lighten = 1
 			}
 
-			if gt == LT_GROOVE then
+			if gt == LifeType.LT_GROOVE then
 				self.GaugeHealth.Texture = "assets/gauge-groove-on.png"
-			elseif gt == LT_EASY or gt == LT_O2JAM or gt == LT_STEPMANIA then
+			elseif gt == LifeType.LT_EASY or gt == LifeType.LT_O2JAM or gt == LifeType.LT_STEPMANIA then
 				self.GaugeHealth.Texture = "assets/gauge-green-on.png"
 			else
 				self.GaugeHealth.Texture = "assets/gauge-survival-on.png"

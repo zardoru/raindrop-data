@@ -112,17 +112,17 @@ function Phrases.Init()
 	Phrases.Text.Layer = 12
 	Phrases.Text.Alpha = 0
 	Phrases.Text.Rotation = 0
-	Phrases.Text.X = - Phrases.Text.TextSize / 2 + ScreenWidth / 2
-	Phrases.Text.Y = ScreenHeight * 3 / 4
+	Phrases.Text.X = - Phrases.Text.TextSize / 2 + Screen.Width / 2
+	Phrases.Text.Y = Screen.Height * 3 / 4
 	
 	Phrases.BG = Engine:CreateObject()
 
 	Phrases.BG.Texture = "Global/white.png"
 	Phrases.BG.Height = Phrases.VSize + 20
 	Phrases.BG.Layer = 11
-	Phrases.BG.Width = ScreenWidth
+	Phrases.BG.Width = Screen.Width
 	Phrases.BG.X = 0
-	Phrases.BG.Y = ScreenHeight * 3 / 4
+	Phrases.BG.Y = Screen.Height * 3 / 4
 	Phrases.BG.Red = 0.15
 	Phrases.BG.Green = 0.15
 	Phrases.BG.Blue = 0.15

@@ -163,7 +163,7 @@ Notes.BarlineOffset = Noteskin[Lanes].NoteHeight / 2
 print ("Noteskin lanes is ")
 Notes.BarlineStartX = Noteskin[Lanes].GearStartX
 Notes.BarlineWidth = Noteskin[Lanes].BarlineWidth
-Notes.JudgmentY = ScreenHeight - (1560 * SkinScale - NoteHeight / 2)
+Notes.JudgmentY = Screen.Height - (1560 * SkinScale - NoteHeight / 2)
 Notes.DecreaseHoldSizeWhenBeingHit = 1
 Notes.DanglingHeads = 1
 

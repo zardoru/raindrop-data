@@ -17,28 +17,28 @@ function DoFullComboAnimation()
 	fcnotify = Engine:CreateObject ()
 	fcnotify.Texture = "VSRG/fullcombo.png"
 
-	fcnotify.X = ScreenWidth / 2
+	fcnotify.X = Screen.Width / 2
 	fcnotify.Y = -fcnotify.Height / 2
 	fcnotify.Z = 30
 	fcnotify.Centered = 1
-	fcanim = getMoveFunction(fcnotify.X, ScreenHeight + fcnotify.Height/2, fcnotify.X, ScreenHeight*3/4, fcnotify)
+	fcanim = getMoveFunction(fcnotify.X, Screen.Height + fcnotify.Height/2, fcnotify.X, Screen.Height*3/4, fcnotify)
 
 	fcnotify2 = Engine:CreateObject()
 	fcnotify2.Texture = "VSRG/fullcombo.png"
 
-	fcnotify2.X = ScreenWidth / 2
-	fcnotify2.Y =  ScreenHeight*3/4
+	fcnotify2.X = Screen.Width / 2
+	fcnotify2.Y =  Screen.Height*3/4
 	fcnotify2.Z = 30
 	fcnotify2.Centered = 1
 	fcnotify2.Alpha = 0
-	fcnotify2.BlendMode = BlendAdd
+	fcnotify2.BlendMode = BlendMode.Add
 	fcnotify2.Lighten = 1
 
 	fcnotfade = getFadeFunction(1, 0, fcnotify)
 
-	Engine:AddAnimation(fcnotify, "fcanim", EaseOut, 0.75, 3)
-	Engine:AddAnimation(fcnotify2, "fcnot2f", EaseOut, 0.25, 0.75 + 3)
-	Engine:AddAnimation(fcnotify, "fcnotfade", EaseNone, 0.5, 4)
+	Engine:AddAnimation(fcnotify, "fcanim", Easing.Out, 0.75, 3)
+	Engine:AddAnimation(fcnotify2, "fcnot2f", Easing.Out, 0.25, 0.75 + 3)
+	Engine:AddAnimation(fcnotify, "fcnotfade", Easing.None, 0.5, 4)
 end
 
 function FadeInBlack(frac)
@@ -61,10 +61,10 @@ function FadeToBlack()
 	Black = Engine:CreateObject()
 	Black.Texture = "Global/filter.png"
 	Black.Alpha = 0
-	Black.Width = ScreenWidth
-	Black.Height = ScreenHeight
+	Black.Width = Screen.Width
+	Black.Height = Screen.Height
 	Black.Z = 29
-	Engine:AddAnimation(Black, "FadeInBlack", EaseNone, 0.5, 3)
+	Engine:AddAnimation(Black, "FadeInBlack", Easing.None, 0.5, 3)
 end
 
 function DoSuccessAnimation()
@@ -73,8 +73,8 @@ function DoSuccessAnimation()
 	StageClear = Engine:CreateObject()
 	StageClear.Texture = "VSRG/stageclear.png"
 	StageClear.Centered = 1
-	StageClear.X = ScreenWidth / 2
-	StageClear.Y = ScreenHeight / 2
+	StageClear.X = Screen.Width / 2
+	StageClear.Y = Screen.Height / 2
 	StageClear.Z = 31
 	StageClear.Alpha = 0
 	
@@ -84,8 +84,8 @@ function DoSuccessAnimation()
 	end
 
 	Engine:Sort()
-	Engine:AddAnimation(StageClear, "ZoomVertIn", EaseOut, 0.75, 3)
-	Engine:AddAnimation(StageClear, "ZoomVertOut", EaseNone, 1, 4)
+	Engine:AddAnimation(StageClear, "ZoomVertIn", Easing.Out, 0.75, 3)
+	Engine:AddAnimation(StageClear, "ZoomVertOut", Easing.None, 1, 4)
 end
 
 
@@ -122,7 +122,7 @@ function FailAnim(frac)
 end
 
 function WhiteFailAnim(frac)
-	White.Height = ScreenHeight * frac
+	White.Height = Screen.Height * frac
 	return 1
 end
 
@@ -131,21 +131,21 @@ function DoFailAnimation()
 	FailNotif = Engine:CreateObject()
 
 	White.Centered = 1
-	White.X = ScreenWidth / 2
-	White.Y = ScreenHeight / 2
+	White.X = Screen.Width / 2
+	White.Y = Screen.Height / 2
 	White.Height = 0
 	White.Texture = "Global/white.png"
-	White.Width = ScreenWidth
+	White.Width = Screen.Width
 	FailNotif.Texture = "VSRG/stagefailed.png"
 	FailNotif.Centered = 1
-	FailNotif.X = ScreenWidth / 2
-	FailNotif.Y = ScreenHeight / 2
+	FailNotif.X = Screen.Width / 2
+	FailNotif.Y = Screen.Height / 2
 
 	White.Z = 30
 	FailNotif.Z = 31
 
-	Engine:AddAnimation(White, "WhiteFailAnim", EaseIn, 0.35, 0)
-	Engine:AddAnimation(FailNotif, "FailAnim", EaseNone, 0.75, 0)
+	Engine:AddAnimation(White, "WhiteFailAnim", Easing.In, 0.35, 0)
+	Engine:AddAnimation(FailNotif, "FailAnim", Easing.None, 0.75, 0)
 	
 	BE = {}
 	BE.FnA = Engine:CreateObject()
@@ -155,12 +155,12 @@ function DoFailAnimation()
 	BE.FnB.Texture = "VSRG/stagefailed.png"
 	BE.FnC.Texture = "VSRG/stagefailed.png"
 
-	BE.FnA.X = ScreenWidth/2
-	BE.FnB.X = ScreenWidth/2 
-	BE.FnC.X = ScreenWidth/2
-	BE.FnA.Y = ScreenHeight/2
-	BE.FnB.Y = ScreenHeight/2
-	BE.FnC.Y = ScreenHeight/2
+	BE.FnA.X = Screen.Width/2
+	BE.FnB.X = Screen.Width/2 
+	BE.FnC.X = Screen.Width/2
+	BE.FnA.Y = Screen.Height/2
+	BE.FnB.Y = Screen.Height/2
+	BE.FnC.Y = Screen.Height/2
 	BE.FnA.Centered = 1
 	BE.FnB.Centered = 1
 	BE.FnC.Centered = 1
@@ -172,5 +172,5 @@ function DoFailAnimation()
 	BE.FnC.Z = 31
 
 	Engine:Sort()
-	Engine:AddAnimation(BE.FnA, "FailBurst", EaseOut, 0.7, 0.33 * 0.75)
+	Engine:AddAnimation(BE.FnA, "FailBurst", Easing.Out, 0.7, 0.33 * 0.75)
 end

@@ -43,8 +43,8 @@ function BackgroundAnimation.Init(self)
 	self.Pink.Texture  = "Global/pink.png"
 	self.Blue.Texture  = "Global/tile_aqua.png"
 
-	self.Blue.Height = ScreenHeight
-	self.Blue.Width = ScreenWidth
+	self.Blue.Height = Screen.Height
+	self.Blue.Width = Screen.Width
 	self.Blue.Shader = self.shader
 
 	self.Pink.Y = -self.Pink.Height
@@ -67,11 +67,11 @@ function BGAIn(frac)
 end
 
 function BackgroundAnimation:In()
-	Engine:AddAnimation(self.Pink, "BGAIn", EaseIn, BackgroundAnimation.Duration, 0)
+	Engine:AddAnimation(self.Pink, "BGAIn", Easing.In, BackgroundAnimation.Duration, 0)
 end
 
 function BackgroundAnimation:Out()
-	Engine:AddAnimation(self.Pink, "BGAOut", EaseOut, BackgroundAnimation.Duration, 0)
+	Engine:AddAnimation(self.Pink, "BGAOut", Easing.Out, BackgroundAnimation.Duration, 0)
 end
 
 function BackgroundAnimation.UpdateObjects(self)

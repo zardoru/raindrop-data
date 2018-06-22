@@ -13,7 +13,7 @@ function UpdateIntro(p, delta)
 	local S = elastic(p)
   
   -- At 1/3rd of the screen, please.
-	targBadge.Y = ScreenHeight * 3/7 * (S) - targBadge.Height
+	targBadge.Y = Screen.Height * 3/7 * (S) - targBadge.Height
 	targLogo.Y = targBadge.Y
 	Update(delta)
 	BGAOut(p*p)
@@ -54,16 +54,16 @@ function Init()
 		
 	targLogo = Engine:CreateObject() 
 	targLogo.Texture = "MainMenu/FRONTs.png"
-	targLogo.X = ScreenWidth / 2
-	targLogo.Y = ScreenHeight / 4
+	targLogo.X = Screen.Width / 2
+	targLogo.Y = Screen.Height / 4
 	targLogo.Centered = 1
 	targLogo.Alpha = 1
 	targLogo.Layer = 31
 
 	targBadge = Engine:CreateObject()
 	targBadge.Texture = "MainMenu/BACKs.png"
-	targBadge.X = ScreenWidth / 2
-	targBadge.Y = ScreenHeight / 4
+	targBadge.X = Screen.Width / 2
+	targBadge.Y = Screen.Height / 4
 	targBadge.Centered = 1
 	targBadge.Layer = 31
 	
@@ -72,9 +72,9 @@ function Init()
 	s = "press any key..."
 	title = StringObject2D()
 	title.Font = font
-	title.Y = ScreenHeight * 3 / 4
+	title.Y = Screen.Height * 3 / 4
 	title.Text = s
-	title.X = ScreenWidth / 2 - title.TextSize / 2
+	title.X = Screen.Width / 2 - title.TextSize / 2
 	title.Z = 31
 	title.FontSize = 36
 	Engine:AddTarget(title)
@@ -96,7 +96,7 @@ function Update(Delta)
 
 	title.ScaleX = sc
 	title.ScaleY = sc
-	title.X = ScreenWidth / 2 - title.TextSize * sc / 2
+	title.X = Screen.Width / 2 - title.TextSize * sc / 2
 	badgeRotSpeed = math.max(badgeRotSpeed - Delta * 240, 120)
 	targBadge.Rotation = targBadge.Rotation - badgeRotSpeed * Delta
 	BackgroundAnimation:Update(Delta)

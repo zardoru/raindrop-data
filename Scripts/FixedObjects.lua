@@ -1,7 +1,19 @@
+--- A module to ease creation of a medium amount of objects 
+-- @gamemodule FixedObjects
 game_require "librd"
 
-FixedObjects = { XRatio = 1, YRatio = 1 }
-
+FixedObjects = { 
+--- Multiply width and X coordinates by this. 1 by default.
+-- @modvar XRatio
+	XRatio = 1, 
+--- Multiply height and Y coordinates by this. 1 by default.
+-- @modvar YRatio
+	YRatio = 1
+}
+--- Create a new object from the given parameters.
+-- If a field has "text" instead of a value, it'll be replaced by constants["text"].
+-- @param tbl An array of arrays that follow a structure of Tex,Name,X,Y,Z,Rot,Sx,Sy
+-- @param constants A table defining constants for use in each of these fields. 
 function FixedObjects:CreateObjectFromParameters(tbl, constants)
 	local Object = Engine:CreateObject()
 
@@ -25,6 +37,10 @@ function FixedObjects:CreateObjectFromParameters(tbl, constants)
 	self.Sprites[name] = Object
 end
 
+--- Create game objects from a CSV file. The CSV file must follow
+-- the structure of CreateObjectFromParameters.
+-- @param file A filename to read from. Read relative to skin directory.
+-- @param constants A table of constants to pass to CreateObjectFromParameters.
 function FixedObjects:CreateFromCSV(file, constants)
 	local File = io.open(GetSkinFile(file))
 	print ("Opening " .. GetSkinFile(file))

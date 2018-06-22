@@ -218,7 +218,7 @@ function CreateWheelItems()
 
 	WheelSeparator = Engine:CreateObject()
 	WheelSeparator.Texture = "Global/white.png"
-	WheelSeparator.Height = ScreenHeight
+	WheelSeparator.Height = Screen.Height
 	WheelSeparator.Width = 5
 	WheelSeparator.Y = 0
 	
@@ -228,7 +228,7 @@ function CreateWheelItems()
 	wheeltick.Width = 16
 	wheeltick.Layer = 25
 
-	Wheel.DisplayItemCount = ceil(ScreenHeight / ItemHeight) + 1
+	Wheel.DisplayItemCount = ceil(Screen.Height / ItemHeight) + 1
 	--Wheel.DisplayItemOffset = - Wheel.DisplayItemCount / 2
 end
 
@@ -236,11 +236,11 @@ function UpdateWheel(Delta)
     State.X = clamp(State.X + (WheelEnterX - State.X) * Delta * WheelSpeed, WheelExitX, WheelEnterX)
 
 	WheelSeparator.X = State.X + ItemWidth
-	wheeltick.Width = math.max(16, ScreenWidth / Wheel.ItemCount)
-	wheeltick.X = (Wheel.SelectedIndex % Wheel.ItemCount) / (Wheel.ItemCount - 1) * (ScreenWidth - wheeltick.Width)
+	wheeltick.Width = math.max(16, Screen.Width / Wheel.ItemCount)
+	wheeltick.X = (Wheel.SelectedIndex % Wheel.ItemCount) / (Wheel.ItemCount - 1) * (Screen.Width - wheeltick.Width)
 	wheeltick.Y = 86
 	
-    local Offset = ScreenHeight / 2 - ItemHeight / 2
+    local Offset = Screen.Height / 2 - ItemHeight / 2
 	local SelectedSongCenterY = math.floor(-Wheel.SelectedIndex * ItemHeight + Offset)
 	State.PendingY = SelectedSongCenterY - State.ListY 
 	State.ScrollSpeed = -math.abs(State.PendingY) / 0.25

@@ -13,8 +13,8 @@ with(ScoreDisplay, {
 })
 
 with(ScoreDisplay, {
-    X = ScreenWidth - ScoreDisplay.W, -- Topleft
-    Y = ScreenHeight - ScoreDisplay.H,
+    X = Screen.Width - ScoreDisplay.W, -- Topleft
+    Y = Screen.Height - ScoreDisplay.H,
     Layer = 20
 })
 

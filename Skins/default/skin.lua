@@ -10,7 +10,7 @@ DefaultGameplayBackground = DefaultBackground
 --[[ Considerations.
 
 	Playing field size is 800x600. This won't change.
-	ScreenWidth and ScreenHeight are set automatically.
+	Screen.Width and Screen.Height are set automatically.
 	"Centered" means to use the center of the image instead of the top-left.
 
 ]]
@@ -19,7 +19,7 @@ DefaultGameplayBackground = DefaultBackground
 AudioManifest = {
 	Miss = "miss.wav",
 	Fail = function()
-		return Global.CurrentGaugeType ~= LT_GROOVE and "stage_failed.ogg" or ""
+		return Global.CurrentGaugeType ~= LifeType.LT_GROOVE and "stage_failed.ogg" or ""
 	end,
 	ClickPlay = "drop.wav",
 

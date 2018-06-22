@@ -42,7 +42,7 @@ function Explosions:Init()
 		
 		Object.Alpha = 0
     Object.Layer = 18
-    Object.BlendMode = BlendAdd
+    Object.BlendMode = BlendMode.Add
 		self.Sprites[i] = Object
 	end
 end

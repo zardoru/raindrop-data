@@ -2,7 +2,7 @@ skin_require "skin_defs"
 skin_require "custom_defs"
 game_require "TextureAtlas"
 
-local Judgment = {
+local JudgmentObject = {
 	JudgeMap = {
 		"judge-perfect.png", -- w1 etc
 		"judge-great.png",
@@ -152,7 +152,7 @@ local Judgment = {
 
 				-- Blink and alpha stuff.
 		if blink_frame and blink_frame ~= 6 then
-			local combo_str = tostring(ScoreKeeper:GetScore(ST_COMBO))
+			local combo_str = tostring(ScoreKeeper:GetScore(ScoreType.ST_COMBO))
 			local digit_w = 70
 			local combo_w = #combo_str * digit_w * SkinScale
 
@@ -196,5 +196,5 @@ local Judgment = {
 	end
 }
 
-Judgment.__index = Judgment
-return Judgment
+JudgmentObject.__index = JudgmentObject
+return JudgmentObject

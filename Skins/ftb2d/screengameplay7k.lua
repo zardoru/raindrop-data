@@ -101,7 +101,7 @@ function Init()
 	
 	Glow.TotalFrames = 35
 	Glow.Object.X = GearStartX
-	Glow.Object.Y = ScreenHeight - GearWidth + 25
+	Glow.Object.Y = Screen.Height - GearWidth + 25
 	Glow.Object.Height = 20
 	Glow.Object.Width = 280
 	Glow.Object.Layer = 20
@@ -207,13 +207,13 @@ function JUDGE(JudgmentValue, Lane)
 	end
 	
 	JudgmentAtlas:SetObjectCrop(Judgments[Lane], map[JudgmentValue] .. ".png")
-	Engine:AddAnimation(Judgments[Lane], "Judgment", EaseIn, 0.4, 0)
+	Engine:AddAnimation(Judgments[Lane], "Judgment", Easing.In, 0.4, 0)
 end
 
 function HitEvent(JudgmentValue, TimeOff, Lane, IsHold, IsHoldRelease)
   local MapLane = Noteskin[Game:GetPlayer(0).Channels].Map[Lane]
   
-	Engine:AddAnimation(Explosions[MapLane].EffectExplosion.Object, "Explode", EaseNone, 0.25, 0)
+	Engine:AddAnimation(Explosions[MapLane].EffectExplosion.Object, "Explode", Easing.None, 0.25, 0)
 	Explosions[MapLane].EffectExplosion.CurrentTime = 0
 	
 	JUDGE(JudgmentValue, MapLane)
@@ -314,8 +314,8 @@ end
 
 function UpdateText()
 	local ScoreKeeper = Game:GetPlayer(0).Scorekeeper
-	lblcurCombo.Text = ScoreKeeper:GetScore(ST_COMBO)
-	lblcurMaxCombo.Text = ScoreKeeper:GetScore(ST_MAX_COMBO)
+	lblcurCombo.Text = ScoreKeeper:GetScore(ScoreType.ST_COMBO)
+	lblcurMaxCombo.Text = ScoreKeeper:GetScore(ScoreType.ST_MAX_COMBO)
 	lblcurMaxCombo.X = 312 - (lblcurMaxCombo.TextSize)
 	
 	lblScore.Text = string.format("%08d", Game:GetPlayer(0).Score)
@@ -339,13 +339,13 @@ function Update(Delta)
 	
 	local SongPercentage = Game:GetPlayer(0).Time / Game:GetPlayer(0).Duration
 	
-	SongPosition.Y = ScreenHeight - ScreenHeight * SongPercentage
+	SongPosition.Y = Screen.Height - Screen.Height * SongPercentage
 	SongPosition.ScaleY = SongPercentage
 	SongPosition:SetCropByPixels(0, 4, 404 - 404 * SongPercentage, 404)
 	
 	local ScoreKeeper = Game:GetPlayer(0).Scorekeeper
 	local Acc = ScoreKeeper.JudgedNotes / ScoreKeeper.MaxNotes
-	Flair.Y = ScreenHeight - ScreenHeight * Acc
+	Flair.Y = Screen.Height - Screen.Height * Acc
 	Flair.ScaleY = Acc
 	Flair:SetCropByPixels(0, 4, 404 - 404 * Acc, 404)
 	

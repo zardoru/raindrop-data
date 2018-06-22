@@ -17,7 +17,7 @@ function Filter:Init()
   
 	self.Object.X = self.Noteskin.GearStartX
 	self.Object.Width = self.Noteskin.GearWidth
-	self.Object.Height = ScreenHeight
+	self.Object.Height = Screen.Height
 	self.Object.Alpha = FilterVal
 	self.Object.Layer = 1
 
@@ -36,8 +36,8 @@ function Filter:AddLine(i, offset)
 	self.Lines[#self.Lines+1] = obj
 	obj.Texture = "Global/white.png"
 	with(obj, {
-		Width = 1,
-		Height = ScreenHeight,
+		Width = 3,
+		Height = Screen.Height,
 		Y = 0,
 		X = self.Noteskin["Key" .. i .. "X"] + offset,
 		Layer = 2,
@@ -73,12 +73,12 @@ function StageLines:Init()
 	
 	self.Left.Texture = self.ImageLeft
 	self.Left.X = self.Noteskin.GearStartX - self.Left.Width
-	self.Left.Height = ScreenHeight
+	self.Left.Height = Screen.Height
 	self.Left.Layer = 16
 
 	self.Right.Texture = (self.ImageRight)
 	self.Right.X = (self.Noteskin.GearStartX + self.Noteskin.GearWidth)
-	self.Right.Height = ScreenHeight
+	self.Right.Height = Screen.Height
 	self.Right.Layer = 20
 end
 

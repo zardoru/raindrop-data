@@ -1,8 +1,14 @@
+--- A simple texture atlas.
+-- @gamemodule TextureAtlas
 game_require "librd"
 
 TextureAtlas = {}
 TextureAtlas.__index = TextureAtlas
 
+--- Set the object to use the crop defined by a sprite of this atlas.
+-- @param Object The object to apply the crop to.
+-- @param Sprite The filename defined in the atlas to set the crop to.
+-- @param resize[opt] Whether to resize the object to the size of the crop. Defaults to false.
 function TextureAtlas:SetObjectCrop(Object, Sprite, resize)
 	local Tab = self.Sprites[Sprite]
 	if Tab ~= nil then
@@ -19,6 +25,7 @@ function TextureAtlas:SetObjectCrop(Object, Sprite, resize)
 		end
 	end
 end
+
 
 function TextureAtlas:AssignFrames(Filename)
 	local Atlas = self
@@ -50,6 +57,12 @@ function TextureAtlas:AssignFrames(Filename)
 	end
 end
 
+--- Create a new texture atlas from a file.
+-- The file must be a CSV file 
+-- and the first line must be the actual image to read from
+-- and every line after is a sprite definition consisting of name, x, y, width and height values.
+-- @param filename The path (based off the working directory) to read the CSV from.
+-- @return A new TextureAtlas.
 function TextureAtlas:new(filename)
 	local NewAtlas = {}
 	setmetatable(NewAtlas, TextureAtlas)
@@ -57,6 +70,8 @@ function TextureAtlas:new(filename)
 	return NewAtlas
 end
 
+--- Same as new(), but using a filename relative to the skin directory.
+-- @see new
 function TextureAtlas:skin_new(filename)
 	return self:new(GetSkinFile(filename))
 end

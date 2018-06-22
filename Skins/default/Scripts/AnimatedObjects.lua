@@ -2,7 +2,7 @@
 ProgressTick = {
 	Image = "VSRG/progress_tick.png",
   Start = -8,
-  End = ScreenHeight
+  End = Screen.Height
 }
 
 Pulse = {
@@ -53,7 +53,7 @@ function Pulse:Init()
 
 	self.Object.Texture = self.Image
 	with(self.Object, {
-		BlendMode = BlendAdd,
+		BlendMode = BlendMode.Add,
 		Layer = 11,
 		Alpha = 0,
 		Width = self.Noteskin.GearWidth
@@ -88,13 +88,13 @@ function MissHighlight:Init()
 			Centered = 1,
 			Texture = self.Image,
 			X = self.Noteskin["Key" .. i .. "X"],
-			Y = ScreenHeight / 2,
+			Y = Screen.Height / 2,
 			Alpha = 0,
 			Layer = 15
 		}
 
 		self[i].Width = self.Noteskin["Key" .. i .. "Width"]
-		self[i].Height = ScreenHeight
+		self[i].Height = Screen.Height
 
 		self.Time[i] = 1
 		self.CurrentTime[i] = 1

@@ -18,7 +18,7 @@ function PlayerText:Init()
 	
 	-- matches default judgment
 	local jX = self.Noteskin.GearWidth / 2 + self.Noteskin.GearStartX
-  	local jY = ScreenHeight * 0.4
+  	local jY = Screen.Height * 0.4
 
 
 	self.pacemaker1.Text = "";
@@ -117,12 +117,12 @@ function PlayerText:Run(dt)
 	local ScoreKeeper = self.Player.Scorekeeper
 	local w0, w1, w2, w3, w4, w5
 
-	w0 = ScoreKeeper:GetJudgmentCount(SKJ_W0)
-	w1 = ScoreKeeper:GetJudgmentCount(SKJ_W1)
-	w2 = ScoreKeeper:GetJudgmentCount(SKJ_W2)
-	w3 = ScoreKeeper:GetJudgmentCount(SKJ_W3)
-	w4 = ScoreKeeper:GetJudgmentCount(SKJ_W4)
-	w5 = ScoreKeeper:GetJudgmentCount(SKJ_MISS)
+	w0 = ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W0)
+	w1 = ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W1)
+	w2 = ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W2)
+	w3 = ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W3)
+	w4 = ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W4)
+	w5 = ScoreKeeper:GetJudgmentCount(Judgment.SKJ_MISS)
 	if ScoreKeeper.UsesW0 == false then
 		if ScoreKeeper.UsesO2 == false then
 			fmtext = fmtext .. string.format("E:%04d\nS:%04d\nN:%04d\nO:%04d\nM:%04d", w1, w2, w3, w4, w5)
@@ -135,7 +135,7 @@ function PlayerText:Run(dt)
 		fmtext = fmtext .. string.format("F:%04d\nE:%04d\nS:%04d\nN:%04d\nO:%04d\nM:%04d", w0, w1, w2, w3, w4, w5)
 	end
 
-	fmtext = fmtext .. string.format("\nMaxCombo: %d", ScoreKeeper:GetScore(ST_MAX_COMBO))
+	fmtext = fmtext .. string.format("\nMaxCombo: %d", ScoreKeeper:GetScore(ScoreType.ST_MAX_COMBO))
 	fmtext = fmtext .. string.format("\nBPM: %d", self.Player.BPM)
 	  fmtext = fmtext .. string.format("\nAvg. Hit (ms): %.2f / Offset Distrust: %.2f%%", 
 											ScoreKeeper.AvgHit, 

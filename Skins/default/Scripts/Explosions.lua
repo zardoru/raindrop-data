@@ -33,7 +33,7 @@ function Explosions:ObjectPosition(Obj, Atlas, i, Scale)
 	end
 
 	Obj.Layer = (28)
-	Obj.BlendMode = BlendAdd -- Add
+	Obj.BlendMode = BlendMode.Add -- Add
 	Obj:SetScale(Scale)
   Obj.Alpha = 0
 end

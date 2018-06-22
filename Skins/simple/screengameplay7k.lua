@@ -156,7 +156,7 @@ function Init()
 			Key[i] = Sprites["l" .. i]
 
 			Key[i].Alpha = 0
-			Key[i].BlendMode = BlendAdd
+			Key[i].BlendMode = BlendMode.Add
 		end
 
 		Lightning[i] = {}
@@ -164,7 +164,7 @@ function Init()
 		Lightning[i].CurrentTime = 0
 
 		Lightning[i].Object = Sprites["beam_k" .. i]
-		Lightning[i].Object.BlendMode = BlendAdd
+		Lightning[i].Object.BlendMode = BlendMode.Add
 		Lightning[i].Object.Alpha = 1
 		Lightning[i].Object.Centered = 1
 		Lightning[i].Object.Y = Lightning[i].Object.Y + Lightning[i].Object.Height / 2
@@ -201,7 +201,7 @@ function Init()
 	Pulse = Sprites["pulse"]
 	Pulse.Y = 485 * YR - Pulse.Height
 	Pulse.Lighten = 1
-	Pulse.BlendMode = BlendAdd
+	Pulse.BlendMode = BlendMode.Add
 end
 
 function Cleanup()
@@ -212,7 +212,7 @@ function OnFullComboEvent()
 end
 
 function OnFailureEvent()
-	if Global:GetCurrentGaugeType(0) ~= LT_GROOVE then
+	if Global:GetCurrentGaugeType(0) ~= LifeType.LT_GROOVE then
 		DoFailAnimation()
 		return FailAnimation.Duration
 	else

@@ -1,4 +1,4 @@
-Judgment = {
+JudgmentObject = {
 	FadeoutTime = 0.5,
 	FadeoutDuration = 0.15,
 	Tilt = 7, -- in degrees
@@ -27,13 +27,13 @@ Judgment = {
 }
 
 
-function Judgment:Init()
+function JudgmentObject:Init()
   print "Judgment Initializing."
 	self.Atlas = TextureAtlas:skin_new("VSRG/judgment.csv")
   
   
   self.defaultX = self.Noteskin.GearWidth / 2 + self.Noteskin.GearStartX
-  self.defaultY = ScreenHeight * 0.4
+  self.defaultY = Screen.Height * 0.4
   self.ScaleLerp = self.ScaleLerp or function (x) return x end
   print ("Judgment Default Pos: ", self.defaultX, self.defaultY)
   
@@ -76,16 +76,16 @@ function Judgment:Init()
   --self.Value = 0
 end
 
-librd.make_new(Judgment, Judgment.Init)
+librd.make_new(JudgmentObject, JudgmentObject.Init)
 
-function Judgment:GetComboLerp()
+function JudgmentObject:GetComboLerp()
 	local AAAThreshold = 8.0 / 9.0
 	return clerp(self.Player.Combo,  -- cur
 							 0, self.Player.Scorekeeper.MaxNotes * AAAThreshold, -- start end
 							 0, 1) -- start val end val
 end
 
-function Judgment:Run(Delta)
+function JudgmentObject:Run(Delta)
 	local ComboLerp = self:GetComboLerp()
 	
 	if Game.Active and self.Value then
@@ -157,7 +157,7 @@ function Judgment:Run(Delta)
 	end
 end
 
-function Judgment:OnHit(JudgmentValue, Time, l, h, r, pn)
+function JudgmentObject:OnHit(JudgmentValue, Time, l, h, r, pn)
 	if pn ~= self.Player.Number then
 		return
 	end
@@ -199,6 +199,6 @@ function Judgment:OnHit(JudgmentValue, Time, l, h, r, pn)
 	self.Early = Time < 0
 end
 
-function Judgment:OnMiss(t, l, h, pn)
+function JudgmentObject:OnMiss(t, l, h, pn)
   self:OnHit(5, t, l, h, h, pn)
 end

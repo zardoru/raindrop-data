@@ -42,7 +42,7 @@ function Explosions:Init()
   for i=1, 4 do
 		local Object = Engine:CreateObject()
 		Object.Texture = "ReceptorFlash.png"
-    Object.BlendMode = BlendAdd
+    Object.BlendMode = BlendMode.Add
 		Locate(Object, i)
 
 		self.ReceptorFlash[i] = Object
@@ -51,7 +51,7 @@ function Explosions:Init()
   for i=1, 4 do
 		local Object = Engine:CreateObject()
 		Object.Texture = "Down Tap Explosion Bright.png"
-    Object.BlendMode = BlendAdd
+    Object.BlendMode = BlendMode.Add
     Object.Alpha = 0
 		Locate(Object, i)
 
@@ -62,7 +62,7 @@ function Explosions:Init()
 	for i=1, Channels do
 		local Object = Engine:CreateObject()
 		Object.Texture = "Down Tap Explosion Dim.png"
-    Object.BlendMode = BlendAdd
+    Object.BlendMode = BlendMode.Add
     Object.Lighten = 1
     Object.LightenFactor = 1
 		Locate(Object, i)

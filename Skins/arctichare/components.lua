@@ -2,7 +2,7 @@ skin_require "skin_defs"
 Gauge = skin_require "elements.gauge"
 Numbers = skin_require "elements.numbers"
 Lightup = skin_require "elements.lightup"
-Judgment = skin_require "elements.judgement"
+JudgmentObject = skin_require "elements.judgement"
 
 local Components = {}
 function Components:Init()
@@ -24,7 +24,7 @@ function Components:Init()
 		self.MC = Numbers:new(1130 * SkinScale, 2060 * SkinScale, false, 4)
 
 		self.Lightup = Lightup:new(1)
-		self.Judgment = Judgment:new(1)
+		self.JudgmentObject = JudgmentObject:new(1)
 	else
 		self.Score = Numbers:new(2540 * SkinScale, 40 * SkinScale, true, 6)
 		self.MulLeft = Numbers:new(2570 * SkinScale, 1720 * SkinScale, true, 2)
@@ -39,7 +39,7 @@ function Components:Init()
 		self.MC = Numbers:new(3650 * SkinScale, 2060 * SkinScale, false, 4)
 
 		self.Lightup = Lightup:new(2)
-		self.Judgment = Judgment:new(2)
+		self.JudgmentObject = JudgmentObject:new(2)
 	end
 end
 
@@ -64,30 +64,30 @@ function Components:Update(delta)
 	local Player = Game:GetPlayer(0)
 	local ScoreKeeper = Game:GetPlayer(0).Scorekeeper
 
-	self.Score:update(ScoreKeeper:GetScore(ST_EX))
+	self.Score:update(ScoreKeeper:GetScore(ScoreType.ST_EX))
 	local int = math.floor(Player.UserSpeedMultiplier)
 	local frac = math.floor((Player.UserSpeedMultiplier - int) * 100)
 	self.MulLeft:update(int)
 	self.MulRight:update(frac, true)
 	self.Gauge:update(delta)
 
-	self.J1:update(ScoreKeeper:GetJudgmentCount(SKJ_W1))
-	self.J2:update(ScoreKeeper:GetJudgmentCount(SKJ_W2))
-	self.J3:update(ScoreKeeper:GetJudgmentCount(SKJ_W3))
-	self.J4:update(ScoreKeeper:GetJudgmentCount(SKJ_W4))
-	self.JM:update(ScoreKeeper:GetJudgmentCount(SKJ_MISS))
-	self.MC:update(ScoreKeeper:GetScore(ST_MAX_COMBO))
+	self.J1:update(ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W1))
+	self.J2:update(ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W2))
+	self.J3:update(ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W3))
+	self.J4:update(ScoreKeeper:GetJudgmentCount(Judgment.SKJ_W4))
+	self.JM:update(ScoreKeeper:GetJudgmentCount(Judgment.SKJ_MISS))
+	self.MC:update(ScoreKeeper:GetScore(ScoreType.ST_MAX_COMBO))
 
 	self.Lightup:update(delta, KeyArray)
-	self.Judgment:update(delta)
+	self.JudgmentObject:update(delta)
 end
 
 function Components:OnHit(judge, timeoff)
-	self.Judgment:onJudge(judge, timeoff)
+	self.JudgmentObject:onJudge(judge, timeoff)
 end
 
 function Components:OnMiss(judge, timeoff)
-	self.Judgment:onJudge(judge, timeoff)
+	self.JudgmentObject:onJudge(judge, timeoff)
 end
 
 return Components

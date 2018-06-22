@@ -29,7 +29,7 @@ end
 function changerate(v)
 	rt = tonumber(v)
 	if rt and rt > 0 then
-		Global:GetParameters(0).Rate = rt
+		--Global:GetParameters(0).Rate = rt
 	end
 end
 
@@ -179,9 +179,9 @@ end</script>
 				</div>
 			</div>
 			<h1>Rate</h1>
-			<div class="boxes">
+			<!-- <div class="boxes">
 			<input type="text" id="rate" value="1" cols="5" onchange="changerate(element.attributes.value)"/>
-			</div>
+			</div> -->
 			
 		</form>
 		</div>

@@ -90,7 +90,7 @@ Notes.BarlineEnabled = 1
 Notes.BarlineOffset = NoteHeight / 2
 Notes.BarlineStartX = GearStartX
 Notes.BarlineWidth = Noteskin[Lanes].BarlineWidth * XR
-Notes.JudgmentY = ScreenHeight - 485 * YR
+Notes.JudgmentY = Screen.Height - 485 * YR
 Notes.DecreaseHoldSizeWhenBeingHit = 1
 Notes.DanglingHeads = 1
 
