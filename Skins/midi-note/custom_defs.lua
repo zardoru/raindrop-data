@@ -1,5 +1,6 @@
 require "utils"
 
+print "============================="
 print "Running midi-note custom defs"
 Channels4Sizes = {
 	100,

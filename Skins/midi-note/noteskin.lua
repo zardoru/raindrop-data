@@ -1,3 +1,5 @@
+game_require "librd"
+
 function doMidiNote()
 	-- All notes have their origin centered.
 
@@ -22,9 +24,11 @@ function doMidiNote()
 	tapSizePixels = 1024 / 8
 
 	function setNoteStuff(note, i, rot)
-		note.Width = Noteskin[Notes.Channels]['Key' .. i .. 'Width']
-		note.X = Noteskin[Notes.Channels]['Key' .. i .. 'X']
-		note.Height = Noteskin[Notes.Channels].NoteHeight
+		local chans = Notes.Channels
+		local w = Channels4['Key' .. i .. 'Width']
+		note.Width = w
+		note.X = Channels4['Key' .. i .. 'X']
+		note.Height = Channels4.NoteHeight
 		note.Layer = 14
 		note.Lighten = 1
 		note.LightenFactor = 0
@@ -95,10 +99,10 @@ function doMidiNote()
 		end
 		
 		if Player.Upscroll then
-			note.Y = loc + Noteskin[4].NoteHeight / 2
+			note.Y = loc + Channels4.NoteHeight / 2
 			note.Rotation = 0
 		else 
-			note.Y = loc - Noteskin[4].NoteHeight / 2
+			note.Y = loc - Channels4.NoteHeight / 2
 			note.Rotation = 180
 		end
 		
@@ -175,10 +179,10 @@ function doMidiNote()
 	-- From now on, only engine variables are being set.
 	-- Barline
 	Notes.BarlineEnabled = false
-	Notes.BarlineOffset = Noteskin[Notes.Channels].NoteHeight / 2
-	Notes.BarlineStartX = Noteskin[Notes.Channels].GearStartX
+	Notes.BarlineOffset = Channels4.NoteHeight / 2
+	Notes.BarlineStartX = Channels4.GearStartX
 	Notes.BarlineWidth = 400
-	Notes.JudgmentY = Noteskin[Notes.Channels].GearHeight
+	Notes.JudgmentY = Channels4.GearHeight
 	Notes.DecreaseHoldSizeWhenBeingHit = 1
 	Notes.DanglingHeads = false
 
@@ -197,7 +201,7 @@ function doMidiNote()
 end
 
 if Notes.Channels == 4 then
-	skin_require("custom_defs")
+	skin_require "custom_defs"
 	doMidiNote()
 else
 	fallback_require("noteskin")
