@@ -1,6 +1,6 @@
 
-Filter = { Image = "Global/Filter.png" }
-JudgeLine = { Image = "VSRG/JudgeLine.png" }
+Filter = { Image = "Global/filter.png" }
+JudgeLine = { Image = "VSRG/judgeline.png" }
 StageLines = { ImageLeft = "VSRG/stage-left.png", ImageRight = "VSRG/stage-right.png" }
 
 function Filter:Init()
