@@ -178,8 +178,10 @@ end</script>
 					Random <input type="checkbox" id="random" onchange="changesetting(element.id, element)"/>
 				</div>
 			</div>
+			
+			<!--
 			<h1>Rate</h1>
-			<!-- <div class="boxes">
+			 <div class="boxes">
 			<input type="text" id="rate" value="1" cols="5" onchange="changerate(element.attributes.value)"/>
 			</div> -->
 			
