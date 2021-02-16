@@ -1,5 +1,5 @@
 font.tga {
-	minfilter: nearest-mipmap-linear;
+	minfilter: nearest;
 	maxfilter: nearest;
 }
 loading.png {

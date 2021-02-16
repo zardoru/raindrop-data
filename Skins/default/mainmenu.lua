@@ -42,13 +42,14 @@ function UpdateExit(p, delta)
 end
 
 function KeyEvent(k, c, mouse)
-	if c == 1 then 
+	print(k, c, mouse)
+	if c then 
 		Global:StartScreen("songselect")
 	end
 end
 
 function Init()
-  elastic = Ease.ElasticSquare(1.5)
+  	elastic = Ease.ElasticSquare(1.5)
 	ScreenFade:Init()
 	Time = 0
 		

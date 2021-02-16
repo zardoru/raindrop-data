@@ -5,6 +5,7 @@ ExitDuration = 0
 Keys = {}
 
 function Init()
+	print "start screen_keytest"	
 	font = Fonts.BitmapFont()
 	Fonts.LoadBitmapFont(font, "font.tga", 8, 16, 6, 15, 0)
 	display = StringObject2D()
@@ -22,7 +23,7 @@ end
 --is_mouse_input: 0 if not mouse input, 1 if it is.
 --]]
 function KeyEvent(key, code, is_mouse_input)
-	if code == 1 then
+	if code then
 		Keys[key] = code
 	else
 		Keys[key] = nil
@@ -47,7 +48,7 @@ end
 function Update(Delta)
 	local text = "key input test. input code appended below.\n"
 	for key, value in pairs(Keys) do
-		if value == 1 then
+		if value then
 			text = text .. "keycode: " .. key .. "\n"
 		end
 	end
