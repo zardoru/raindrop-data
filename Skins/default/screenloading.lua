@@ -9,7 +9,7 @@ badgeEase = Ease.ElasticSquare(1.5)
 
 
 function UpdateIntro(frac, delta)
-	targBadge:SetScale(badgeEase(frac))
+	targBadge.Scale = badgeEase(frac)
 	targBadge.Rotation = 360 * frac 
 
 	frac =  1 - math.pow(1 - frac, 2)
