@@ -70,7 +70,7 @@ function JudgmentObject:Init()
 		Centered = 1,
 		Alpha = 0,
 	}
-	self.IndicatorObject:SetScale( 1 / self.Scale )
+	self.IndicatorObject.Scale =  1 / self.Scale
 
 	self.IndicatorObject.ChainTransformation = self.Transform
   --self.Value = 0
@@ -187,12 +187,12 @@ function JudgmentObject:OnHit(JudgmentValue, Time, l, h, r, pn)
 	if JudgmentValue ~= 5 then
 		if JudgmentValue ~= -1 then
 			local CLerp = self:GetComboLerp()
-			self.Object:SetScale (self.ScaleHit + CLerp * self.ScaleExtra)
+			self.Object.Scale = (self.ScaleHit + CLerp * self.ScaleExtra)
 		else
-			self.Object:SetScale (self.Scale)
+			self.Object.Scale = (self.Scale)
 		end
 	else
-		self.Object:SetScale (self.ScaleMiss)
+		self.Object.Scale = (self.ScaleMiss)
 	end
 
 	self.Time = 0
