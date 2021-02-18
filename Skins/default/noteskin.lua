@@ -22,11 +22,12 @@ function setNoteStuff(note, i)
 end
 
 function Init()
-
+	print(skin)
 	for i=1,Notes.Channels do
 		normalNotes[i] = Object2D()
 		local note = normalNotes[i]
-		note.Texture = skin[Notes.Channels]['Key' .. i .. 'Image']
+		local tbl = skin[Notes.Channels]
+		note.Texture = tbl['Key' .. i .. 'Image']
 		setNoteStuff(note, i)
 		
 		holdBodies[i] = Object2D()

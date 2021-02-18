@@ -18,6 +18,11 @@ function Keys:Init()
     obj.X = self.Noteskin["Key" .. i .. "X"]
     obj.Texture = self.KeyAtlas.File
     obj.Layer = 27
+    
+    if self.Noteskin["Key" .. i] == "" then
+      obj.Alpha = 0
+    end
+    
     self.KeysUp[i] = self.Noteskin["Key" .. i]
     self.KeysDown[i] = self.Noteskin["Key" .. i .. "Down"]
 

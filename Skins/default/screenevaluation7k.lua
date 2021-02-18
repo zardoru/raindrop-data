@@ -38,7 +38,7 @@ function SetupRank(player)
 	-- resize to something acceptable
 	if RankPic.X < RankPic.Width / 2 then
 		local Rat = (Screen.Width / 2) / (RankPic.Width)
-		RankPic:SetScale(Rat)
+		RankPic.Scale = (Rat)
 		RankPic.X = Screen.Width / 2 - RankPic.Width / 2 * Rat
 	end
 

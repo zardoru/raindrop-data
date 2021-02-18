@@ -139,7 +139,7 @@ function HitLightning:Run(Delta)
 			end
 
 		else
-			self[i]:SetScale(1)
+			self[i].Scale = 1
 			self[i].Alpha = 1
 			self[i].Y = self.Position[i].y
 		end

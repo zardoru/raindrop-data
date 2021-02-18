@@ -71,7 +71,7 @@ librd.make_new(Pulse, Pulse.Init)
 function Pulse:Run(Delta)
   
 	if Game.Active ~= 0 then
-		local Beat = math.pow(math.abs(sin(self.Player.Beat * math.pi)), 4)
+		local Beat = math.pow(1 - (self.Player.Beat - math.floor(self.Player.Beat)), 2)
 
 		self.Object.Alpha = Beat
 	else

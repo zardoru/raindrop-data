@@ -36,7 +36,7 @@ function Filter:AddLine(i, offset)
 	self.Lines[#self.Lines+1] = obj
 	obj.Texture = "Global/white.png"
 	with(obj, {
-		Width = 3,
+		Width = 1,
 		Height = Screen.Height,
 		Y = 0,
 		X = self.Noteskin["Key" .. i .. "X"] + offset,

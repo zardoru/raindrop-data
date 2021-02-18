@@ -1,7 +1,7 @@
 JudgmentObject = {
 	FadeoutTime = 0.5,
 	FadeoutDuration = 0.15,
-	Tilt = 7, -- in degrees
+	Tilt = 3 * math.pi / 180, -- in degrees
 
 	ScaleTime = 0.1,
 	Scale = 0.21,
