@@ -1,6 +1,6 @@
 Keys = {
     KeysSheet = "VSRG/keys.csv"
-  }
+}
 
 function Keys:Init()
 	self.KeysUp = {}

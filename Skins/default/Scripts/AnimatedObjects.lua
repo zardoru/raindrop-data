@@ -20,7 +20,7 @@ function ProgressTick:Init()
 	self.Object = ScreenObject {
 		Texture = self.Image,
 		Layer = 18,
-    X = self.Noteskin.GearStartX - 16,
+      X = self.Noteskin.GearStartX - 16,
 		Width = 16,
 		Height = 16
 	}
@@ -59,7 +59,7 @@ function Pulse:Init()
 		Width = self.Noteskin.GearWidth
     })
     self.Object.X = self.Noteskin.GearStartX
-    self.Object.Y = self.Player.JudgmentY - self.Object.Height
+    self.Object.Y = self.Player.JudgmentY - self.Object.Height + 12
 
   if self.Transformation then
 		self.Object.ChainTransformation = self.Transformation

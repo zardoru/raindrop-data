@@ -56,7 +56,7 @@ function HitLightning:Init()
 		self[i].Width = self.Noteskin["Key"..i.."Width"]
 		self[i].Height = self.Height
 
-    local h = self.Player.JudgmentY
+      local h = self.Player.JudgmentY + 12
 		local scrollY = 0
 		local scrollX = 0
 		scrollX = self.Noteskin["Key" .. i .. "X"]

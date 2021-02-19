@@ -82,7 +82,7 @@ end
 -- From now on, only engine variables are being set.
 -- Barline
 --game_require "debug"
-Notes.BarlineEnabled = 1
+Notes.BarlineEnabled = true
 Notes.BarlineOffset = skin[Notes.Channels].NoteHeight / 2
 Notes.BarlineStartX = GearStartX
 

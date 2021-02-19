@@ -17,11 +17,13 @@ NoteImage2 = "VSRG/note3.png"
 NoteImage3 = "VSRG/note2.png"
 NoteImage4 = "VSRG/note1.png"
 NoteImage5 = "VSRG/note4.png"
+NoteImage6 = "VSRG/note6.png"
 NoteImageHold1 = "VSRG/note5L.png"
 NoteImageHold2 = "VSRG/note3L.png"
 NoteImageHold3 = "VSRG/note2L.png"
 NoteImageHold4 = "VSRG/note1L.png"
 NoteImageHold5 = "VSRG/note4L.png"
+NoteImageHold6 = "VSRG/note6L.png"
 
 GearStartX = 80
 
@@ -371,14 +373,14 @@ Channels12 = {
     BarlineWidth = GearWidthByChannels[12],
 	
     -- Note Images
-    Key1Image = NoteImage3,
+    Key1Image = NoteImage6,
     Key2Image = NoteImage5,
     Key3Image = NoteImage4,
     Key4Image = NoteImage3,
     Key5Image = NoteImage4,
     Key6Image = NoteImage2,
 
-    Key7Image = NoteImage3,
+    Key7Image = NoteImage6,
     Key8Image = NoteImage1,
     Key9Image = NoteImage4,
     Key10Image = NoteImage3,
@@ -386,14 +388,14 @@ Channels12 = {
     Key12Image = NoteImage5,
 
     -- Hold Bodies
-    Key1HoldImage = NoteImageHold3,
+    Key1HoldImage = NoteImageHold6,
     Key2HoldImage = NoteImageHold5,
     Key3HoldImage = NoteImageHold4,
     Key4HoldImage = NoteImageHold3,
     Key5HoldImage = NoteImageHold4,
     Key6HoldImage = NoteImageHold2,
 
-    Key7HoldImage = NoteImageHold3,
+    Key7HoldImage = NoteImageHold6,
     Key8HoldImage = NoteImageHold1,
     Key9HoldImage = NoteImageHold4,
     Key10HoldImage = NoteImageHold3,
