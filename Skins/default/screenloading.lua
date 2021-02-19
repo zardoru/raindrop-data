@@ -68,6 +68,13 @@ function Init()
 	local l1 = - 1 / divideScreenHeightInto * Screen.Height
 	local l2 = 1 / divideScreenHeightInto * Screen.Height
    local textStart = targBadge.X + targBadge.Width / 2 + 38
+   
+   local genre = Global:GetDifficulty(0).Genre 
+   
+   print("scrload: ", genre:len(), genre)
+   if genre:len() == 0 then
+      d = d + l2 / 2
+   end
 
 	BgStuff.Y = lx
 
@@ -81,7 +88,7 @@ function Init()
    strSong = StringObject2D()
 	with (strSong, {
 		Font = ldFont,
-		FontSize = Screen.Height * 1 / 3 * 1 / 4,
+		FontSize = Screen.Height * 1 / 3 * 1 / 3,
 		X = textStart,
 		Y = l1 - ls * 2 / 3 + d,
 		Layer = 16,
@@ -103,19 +110,17 @@ function Init()
 
 	Engine:AddTarget(strAuthor)
 
-	local genre = Global:GetDifficulty(0).Genre 
-
 	strGenre = StringObject2D()
-   strGenre.Text = genre
 	with (strGenre, {
 		Font = ldFont,
-		FontSize = Screen.Height * 1 / 3 * 1 / 3,
-		X = Screen.Width - strGenre.TextSize - 10,
+		FontSize = Screen.Height * 1 / 3 * 1 / 4,
+		X = textStart,
 		Y = strAuthor.Y + strAuthor.FontSize,
 		Layer = 16,
 		ChainTransformation = BgStuff
 	})
 
+   strGenre.Text = genre
 	Engine:AddTarget(strGenre)
 
 	BG = Engine:CreateObject()
