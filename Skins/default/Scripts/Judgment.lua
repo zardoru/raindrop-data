@@ -1,14 +1,16 @@
 JudgmentObject = {
-	FadeoutTime = 0.5,
+	FadeoutTime = 0.4,
 	FadeoutDuration = 0.15,
 	Tilt = 3 * math.pi / 180, -- in degrees
 
-	ScaleTime = 0.1,
+	ScaleTime = 0.075,
 	Scale = 0.21,
-	ScaleHit = 1.1,
+	ScaleHit = 1.5,
 	ScaleOK = 0.9,
-	ScaleMiss = 0.7,
-	ScaleExtra = 0.2,
+	ScaleMiss = 1,
+	ScaleExtra = 0.1,
+   ScaleMaskX = 0,
+   ScaleMaskY = 1,
 
 	-- if not nil it overrides default position
 	--Position = {},
@@ -23,7 +25,7 @@ JudgmentObject = {
 
 	TimingIndicator = "hiterror.png",
 	ShowTimingIndicator = true,
-	ScaleLerp = Ease.ElasticSquare(2.5)
+	ScaleLerp = nil -- function(x) return 1 - (1 - x) * (1 - x) end -- Ease.ElasticSquare(2.5)
 }
 
 
@@ -101,10 +103,13 @@ function JudgmentObject:Run(Delta)
 			sval = self.ScaleMiss
 		end
 
-		local s = lerp(self.ScaleLerp(self.Time / self.ScaleTime), 0, 1, 1, sval)
-
-		self.Transform.ScaleX = s
-		self.Transform.ScaleY = s
+		local s = lerp(self.ScaleLerp(self.Time / self.ScaleTime), 0, 1, sval, 1)
+      
+      -- print(self.ScaleMaskX)
+		self.Transform.ScaleX = 1 + (s - 1) * self.ScaleMaskX
+		self.Transform.ScaleY = 1 + (s - 1) * self.ScaleMaskY
+      
+      -- print(self.Transform.ScaleY)
 
 		if self.Time > self.FadeoutTime then
 			local Time = self.Time - self.FadeoutTime
@@ -187,9 +192,9 @@ function JudgmentObject:OnHit(JudgmentValue, Time, l, h, r, pn)
 	if JudgmentValue ~= 5 then
 		if JudgmentValue ~= -1 then
 			local CLerp = self:GetComboLerp()
-			self.Object.Scale = (self.ScaleHit + CLerp * self.ScaleExtra)
+			-- self.Object.Scale = (self.Scale + CLerp * self.ScaleExtra)
 		else
-			self.Object.Scale = (self.Scale)
+			-- self.Object.Scale = (self.Scale)
 		end
 	else
 		self.Object.Scale = (self.ScaleMiss)

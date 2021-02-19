@@ -1,7 +1,7 @@
 HitLightning = { Enabled = true }
 
 HitLightning.Image = "VSRG/hitlightning.png"
-HitLightning.Height = 250
+HitLightning.Height = 150
 
 local function LightFunction () 
   if GetConfigF("DisableHitlightningAnimation", "") == 1 then 

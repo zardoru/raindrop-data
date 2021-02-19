@@ -62,10 +62,12 @@ function Init()
 		ChainTransformation = BgStuff
 	})
 	
-	local ls = 1 / 9 * Screen.Height 
+   local divideScreenHeightInto = 9
+	local ls = 1 / divideScreenHeightInto * Screen.Height 
 	local lx = Screen.Height / 2 - ls / 2
-	local l1 = - 1 / 9 * Screen.Height
-	local l2 = 1 / 9 * Screen.Height
+	local l1 = - 1 / divideScreenHeightInto * Screen.Height
+	local l2 = 1 / divideScreenHeightInto * Screen.Height
+   local textStart = targBadge.X + targBadge.Width / 2 + 38
 
 	BgStuff.Y = lx
 
@@ -75,24 +77,12 @@ function Init()
 	ldFont = Fonts.TruetypeFont(GetSkinFile("font.ttf"));
 	strAuthor = StringObject2D()
 	strAuthor.ChainTransformation = BgStuff
-
-	with (strAuthor, {
-		Font = ldFont,
-		FontSize = ls * 2 / 3,
-		X = targBadge.X + targBadge.Width / 2 + 38,
-		Y = 0 - ls * 2 / 3 + d,
-		Layer = 16,
-		Text = sng.Author,
-		ChainTransformation = BgStuff
-	})
-
-	Engine:AddTarget(strAuthor)
-
-	strSong = StringObject2D()
+   
+   strSong = StringObject2D()
 	with (strSong, {
 		Font = ldFont,
-		FontSize = ls * 2 / 3,
-		X = targBadge.X + targBadge.Width / 2 + 38,
+		FontSize = Screen.Height * 1 / 3 * 1 / 4,
+		X = textStart,
 		Y = l1 - ls * 2 / 3 + d,
 		Layer = 16,
 		Text = sng.Title,
@@ -101,16 +91,28 @@ function Init()
 
 	Engine:AddTarget(strSong)
 
+	with (strAuthor, {
+		Font = ldFont,
+		FontSize = Screen.Height * 1 / 3 * 1 / 4,
+		X = textStart,
+		Y = strSong.Y + strSong.FontSize,
+		Layer = 16,
+		Text = sng.Author,
+		ChainTransformation = BgStuff
+	})
+
+	Engine:AddTarget(strAuthor)
+
 	local genre = Global:GetDifficulty(0).Genre 
 
 	strGenre = StringObject2D()
+   strGenre.Text = genre
 	with (strGenre, {
 		Font = ldFont,
-		FontSize = ls * 2 / 3,
-		X = targBadge.X + targBadge.Width / 2 + 38,
-		Y = l2 - ls * 2 / 3 + d,
+		FontSize = Screen.Height * 1 / 3 * 1 / 3,
+		X = Screen.Width - strGenre.TextSize - 10,
+		Y = strAuthor.Y + strAuthor.FontSize,
 		Layer = 16,
-		Text = genre,
 		ChainTransformation = BgStuff
 	})
 

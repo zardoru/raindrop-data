@@ -1,7 +1,7 @@
 Explosions = {
 	HitFramerate = 60,
 	HitFrames = 10,
-	HitScale = 1,
+	HitScale = 0.75,
 	HitSheet = "VSRG/explsheet.csv",
 
 	HoldFramerate = 60,
@@ -160,12 +160,12 @@ function Explosions:OnHit(j, t, l, IsHold, IsHoldRelease, pn)
 end
 
 function Explosions:OnMiss(t, l, i, pn)
-	if pn ~= self.Player.Number then
+	--[[if pn ~= self.Player.Number then
     return
   end
   
   if not IsHold then
 		self.HitTime[l] = 0
 		self.HitColorize[l] = true
-	end
+	end]]
 end
