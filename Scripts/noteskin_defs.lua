@@ -32,27 +32,27 @@ Channels1Sizes = {
 }
 
 Channels4Sizes = {
-	84,
-	84,
-	84,
-	84
+	100,
+	100,
+	100,
+	100
 }
 
 Channels5Sizes = {
-	67,
-	67,
-	67,
-	67,
-	67
+	100,
+	90,
+	100,
+	90,
+	100
 }
 
 Channels6Sizes = {
-	56,
-	56,
-	56,
-	56,
-	56,
-	56
+	80,
+	80,
+	80,
+	80,
+	80,
+	80
 }
 
 Channels7Sizes = {
@@ -837,27 +837,27 @@ Channels5 = {
 
 -- 4 Channels. By default, it's DJMax-like.
 Channels4 = {
-    Key1 = C1,
-    Key2 = C2,
-    Key3 = C2,
-    Key4 = C1,
-    Key1Down = C1D,
-    Key2Down = C2D,
-    Key3Down = C2D,
-    Key4Down = C1D,
+    Key1 = C4,
+    Key2 = C3,
+    Key3 = C3,
+    Key4 = C4,
+    Key1Down = C4D,
+    Key2Down = C3D,
+    Key3Down = C3D,
+    Key4Down = C4D,
     GearHeight = GearHeightCommon,
     Key1Binding = 2,
     Key2Binding = 3,
     Key3Binding = 5,
     Key4Binding = 6,
-    Key1Image = NoteImage1,
-    Key2Image = NoteImage2,
-    Key3Image = NoteImage2,
-    Key4Image = NoteImage1,
-    Key1HoldImage = NoteImageHold1,
-    Key2HoldImage = NoteImageHold2,
-    Key3HoldImage = NoteImageHold2,
-    Key4HoldImage = NoteImageHold1,
+    Key1Image = NoteImage4,
+    Key2Image = NoteImage3,
+    Key3Image = NoteImage3,
+    Key4Image = NoteImage4,
+    Key1HoldImage = NoteImageHold4,
+    Key2HoldImage = NoteImageHold3,
+    Key3HoldImage = NoteImageHold3,
+    Key4HoldImage = NoteImageHold4,
     Key1Width = Channels4Sizes[1],
     Key2Width = Channels4Sizes[2],
     Key3Width = Channels4Sizes[3],
