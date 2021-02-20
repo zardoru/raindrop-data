@@ -66,10 +66,9 @@ function Explosions:Run(Delta)
 		
 		if self.GearTime[Lane] < self.KeyupDuration then
 			local newScale = lerp(self.GearTime[Lane], 0, self.KeyupDuration, 0.5, 1)
-			self.Receptors[Lane].ScaleX = newScale
-			self.Receptors[Lane].ScaleY = newScale
+			self.Receptors[Lane].Scale = newScale
 		else
-			self.Receptors[Lane]:SetScale(1)
+			self.Receptors[Lane].Scale = (1)
 		end
 	end
 end

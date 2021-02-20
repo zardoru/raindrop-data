@@ -165,7 +165,7 @@ function Init()
 		obj.Layer = 22
 		obj.Alpha = 0
 		obj.Centered = 1
-		obj:SetScale(1)
+		obj.Scale = (1)
 		obj.X = Noteskin[7]["Key" .. i .. "X"]
 		obj.Y = Game:GetPlayer(0).JudgmentY - obj.Height / 2
 	end
@@ -188,7 +188,7 @@ function OnActivateEvent()
 end
 
 function Explode(frac, targ)
-	targ:SetScale(1 + frac * 2.5)
+	targ.Scale = (1 + frac * 2.5)
   targ.Alpha = 1 - frac
 	return 1
 end

@@ -40,6 +40,6 @@ function AutoAnimation:Run(Delta)
 			local BeatRate = self.Player.Beat / 2
 			local Scale = sin( math.pi * 2 * BeatRate )
 			Scale = Scale * Scale * 0.25 + 0.75
-			self.AutoBN:SetScale(Scale, Scale)
+			self.AutoBN.Scale = (Scale, Scale)
 		end
 end

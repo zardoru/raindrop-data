@@ -8,7 +8,7 @@ SuccessAnimation = {
 
 function fcnot2f(frac)
 	fcnotify2.Alpha = (1 - frac)
-	fcnotify2:SetScale(1 + frac * 1.5)
+	fcnotify2.Scale = (1 + frac * 1.5)
 	fcnotify2.LightenFactor = (0.3 * (1 - frac))
 	return 1
 end
@@ -48,7 +48,7 @@ end
 
 function ZoomVertIn(frac)
 	StageClear.Alpha = (frac)
-	StageClear:SetScale(frac)
+	StageClear.Scale = (frac)
 	return 1
 end
 

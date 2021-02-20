@@ -152,7 +152,7 @@ function ComboDisplay:Run(Delta)
 			self.ExNotifyObject.Y = self.ExNotifyPos.y
 
 			local Factor = 1 + self.ExNotifyExtraBump * Ratio
-			self.ExNotifyObject:SetScale(Factor)
+			self.ExNotifyObject.Scale = (Factor)
 
 		else -- Time only runs if we're not at an "AWESOME" hit.
 			self.ExNotifyCurTime = self.ExNotifyCurTime + Delta
