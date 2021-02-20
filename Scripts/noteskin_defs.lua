@@ -56,37 +56,37 @@ Channels6Sizes = {
 }
 
 Channels7Sizes = {
-	48,
-	48,
-	48,
-	48,
-	48,
-	48,
-	48
+	70,
+	70,
+	70,
+	80,
+	70,
+	70,
+	70
 }
 
 Channels8Sizes = {
-	42,
-	42,
-	42,
-	42,
-	42,
-	42,
-	42,
-	42
+	70,
+	70,
+	70,
+	70,
+	70,
+	70,
+	70,
+	70
 }
 
 
 Channels9Sizes = {
-	40,
-	40,
-	40,
-	40,
-	40,
-	40,
-	40,
-	40,
-	40
+	70,
+	70,
+	70,
+	70,
+	70,
+	70,
+	70,
+	70,
+	70
 }
 
 Channels10Sizes = {
@@ -640,18 +640,18 @@ Channels8Special = {
 Channels7 = {
     -- Gear bindings
     Key1 = C4,
-    Key2 = C1,
-    Key3 = C2,
-    Key4 = C3,
-    Key5 = C2,
-    Key6 = C1,
+    Key2 = C3,
+    Key3 = C4,
+    Key4 = C1,
+    Key5 = C4,
+    Key6 = C3,
     Key7 = C4,
     Key1Down = C4D,
-    Key2Down = C1D,
-    Key3Down = C2D,
-    Key4Down = C3D,
-    Key5Down = C2D,
-    Key6Down = C1D,
+    Key2Down = C3D,
+    Key3Down = C4D,
+    Key4Down = C1D,
+    Key5Down = C4D,
+    Key6Down = C3D,
     Key7Down = C4D,
 
     GearHeight = GearHeightCommon,
@@ -662,20 +662,20 @@ Channels7 = {
 
     -- Note Images
     Key1Image = NoteImage4,
-    Key2Image = NoteImage1,
-    Key3Image = NoteImage2,
-    Key4Image = NoteImage3,
-    Key5Image = NoteImage2,
-    Key6Image = NoteImage1,
+    Key2Image = NoteImage3,
+    Key3Image = NoteImage4,
+    Key4Image = NoteImage1,
+    Key5Image = NoteImage4,
+    Key6Image = NoteImage3,
     Key7Image = NoteImage4,
 
     -- Hold Bodies
     Key1HoldImage = NoteImageHold4,
-    Key2HoldImage = NoteImageHold1,
-    Key3HoldImage = NoteImageHold2,
-    Key4HoldImage = NoteImageHold3,
-    Key5HoldImage = NoteImageHold2,
-    Key6HoldImage = NoteImageHold1,
+    Key2HoldImage = NoteImageHold3,
+    Key3HoldImage = NoteImageHold4,
+    Key4HoldImage = NoteImageHold1,
+    Key5HoldImage = NoteImageHold4,
+    Key6HoldImage = NoteImageHold3,
     Key7HoldImage = NoteImageHold4,
 
     -- Lane positions
@@ -746,28 +746,28 @@ Channels7 = {
 
 	Channels6 = {
     Key1 = C4,
-		Key2 = C1,
-		Key3 = C2,
-		Key4 = C2,
-		Key5 = C1,
+		Key2 = C3,
+		Key3 = C4,
+		Key4 = C4,
+		Key5 = C3,
 		Key6 = C4,
 		Key1Down = C4D,
-		Key2Down = C1D,
-		Key3Down = C2D,
-		Key4Down = C2D,
-		Key5Down = C1D,
+		Key2Down = C3D,
+		Key3Down = C4D,
+		Key4Down = C4D,
+		Key5Down = C3D,
 		Key6Down = C4D,
 		Key1Image = NoteImage4,
-		Key2Image = NoteImage1,
-		Key3Image = NoteImage2,
-		Key4Image = NoteImage2,
-		Key5Image = NoteImage1,
+		Key2Image = NoteImage3,
+		Key3Image = NoteImage4,
+		Key4Image = NoteImage4,
+		Key5Image = NoteImage3,
 		Key6Image = NoteImage4,
 		Key1HoldImage = NoteImageHold4,
-		Key2HoldImage = NoteImageHold1,
-		Key3HoldImage = NoteImageHold2,
-		Key4HoldImage = NoteImageHold2,
-		Key5HoldImage = NoteImageHold1,
+		Key2HoldImage = NoteImageHold3,
+		Key3HoldImage = NoteImageHold4,
+		Key4HoldImage = NoteImageHold4,
+		Key5HoldImage = NoteImageHold3,
 		Key6HoldImage = NoteImageHold4,
     
     GearHeight = GearHeightCommon,
