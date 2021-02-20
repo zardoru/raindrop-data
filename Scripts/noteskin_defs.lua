@@ -90,16 +90,16 @@ Channels9Sizes = {
 }
 
 Channels10Sizes = {
-	36,
-	36,
-	36,
-	36,
-	36,
-	36,
-	36,
-	36,
-	36,
-	36
+	56,
+	56,
+	56,
+	56,
+	56,
+	56,
+	56,
+	56,
+	56,
+	56
 }
 
 Channels12Sizes = {
@@ -431,6 +431,93 @@ Channels12 = {
     Key11Width = Channels12Sizes[11],
     Key12Width = Channels12Sizes[12]
 }
+
+-- Channels10 is of course, 5k DP.
+Channels10 = {
+  -- Gear bindings
+  Key1 = C5,
+  Key2 = C4,
+  Key3 = C3,
+  Key4 = C4,
+  Key5 = C2,
+
+  Key6 = C1,
+  Key7 = C4, 
+  Key8 =C3,
+  Key9 =C4,
+  Key10 =C5,
+
+  Key1Down = C5D,
+  Key2Down = C4D,
+  Key3Down = C3D,
+  Key4Down = C4D,
+  Key5Down = C2D,
+
+  Key6Down = C1D,
+  Key7Down = C4D, 
+  Key8Down =C3D,
+  Key9Down =C4D,
+  Key10Down =C5D,
+  
+  GearHeight = GearHeightCommon,
+  GearWidth = GearWidthByChannels[12],
+  GearStartX = GearStartX,
+  NoteHeight = 24,
+  BarlineWidth = GearWidthByChannels[12],
+
+  -- Note Images
+  Key1Image = NoteImage5,
+  Key2Image = NoteImage4,
+  Key3Image = NoteImage3,
+  Key4Image = NoteImage4,
+  Key5Image = NoteImage2,
+
+  Key6Image = NoteImage1,
+  Key7Image = NoteImage4,
+  Key8Image = NoteImage3,
+  Key9Image = NoteImage4,
+  Key10Image = NoteImage5,
+
+  -- Hold Bodies
+  Key1HoldImage = NoteImageHold5,
+  Key2HoldImage = NoteImageHold4,
+  Key3HoldImage = NoteImageHold3,
+  Key4HoldImage = NoteImageHold4,
+  Key5HoldImage = NoteImageHold2,
+
+  Key6HoldImage = NoteImageHold1,
+  Key7HoldImage = NoteImageHold4,
+  Key8HoldImage = NoteImageHold3,
+  Key9HoldImage = NoteImageHold4,
+  Key10HoldImage = NoteImageHold5,
+
+  -- Lane positions
+  Key1X = Channels10Positions[1],
+  Key2X = Channels10Positions[2],
+  Key3X = Channels10Positions[3],
+  Key4X = Channels10Positions[4],
+  Key5X = Channels10Positions[5],
+
+  Key6X = Channels10Positions[6],
+  Key8X = Channels10Positions[8],
+  Key7X = Channels10Positions[7],
+  Key9X = Channels10Positions[9],
+  Key10X = Channels10Positions[10],
+
+  -- Lane Widths
+  Key1Width = Channels10Sizes[1],
+  Key2Width = Channels10Sizes[2],
+  Key3Width = Channels10Sizes[3],
+  Key4Width = Channels10Sizes[4],
+  Key5Width = Channels10Sizes[5],
+  Key6Width = Channels10Sizes[6],
+  Key7Width = Channels10Sizes[7],
+  Key8Width = Channels10Sizes[8],
+  Key9Width = Channels10Sizes[9],
+  Key10Width = Channels10Sizes[10],
+}
+
+
 -- Channels9 is, by default, pop'n like.
 Channels9 = {
     Key1 = C4,
@@ -895,6 +982,7 @@ Noteskin[6] = Channels6
 Noteskin[7] = Channels7
 Noteskin[8] = Channels8 
 Noteskin[9] = Channels9
+Noteskin[10] = Channels10
 Noteskin[12] = Channels12 
 Noteskin[16] = Channels16
 Noteskin.__index = Noteskin
