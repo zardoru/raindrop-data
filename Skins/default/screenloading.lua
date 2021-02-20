@@ -68,6 +68,7 @@ function Init()
 	local l1 = - 1 / divideScreenHeightInto * Screen.Height
 	local l2 = 1 / divideScreenHeightInto * Screen.Height
    local textStart = targBadge.X + targBadge.Width / 2 + 38
+   local d = 10
    
    local genre = Global:GetDifficulty(0).Genre 
    
@@ -79,7 +80,6 @@ function Init()
 	BgStuff.Y = lx
 
 	local sng = Global:GetSelectedSong()
-	local d = 10
 
 	ldFont = Fonts.TruetypeFont(GetSkinFile("font.ttf"));
 	strAuthor = StringObject2D()
