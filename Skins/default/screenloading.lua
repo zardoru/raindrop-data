@@ -145,7 +145,5 @@ end
 
 function Update(Delta)
 	Acceleration = Acceleration + Delta
-
-	
-	targBadge.Rotation = targBadge.Rotation + (6) 
+	targBadge.Rotation = targBadge.Rotation + (6)
 end
