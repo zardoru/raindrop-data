@@ -4,7 +4,7 @@ JudgmentObject = {
 	Tilt = 3 * math.pi / 180, -- in degrees
 
 	ScaleTime = 0.075,
-	Scale = 0.21,
+	Scale = 0.15,
 	ScaleHit = 1.5,
 	ScaleOK = 0.9,
 	ScaleMiss = 1,
@@ -16,10 +16,10 @@ JudgmentObject = {
 	--Position = {},
 
 	Table = {
-		"judge-excellent.png",
-		"judge-perfect.png",
-		"judge-good.png",
-		"judge-bad.png",
+		"judge-flawless.png",
+		"judge-sweet.png",
+		"judge-nice.png",
+		"judge-ok.png",
 		"judge-miss.png",
 	},
 
