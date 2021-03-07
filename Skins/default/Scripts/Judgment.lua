@@ -1,7 +1,7 @@
 JudgmentObject = {
 	FadeoutTime = 0.4,
 	FadeoutDuration = 0.15,
-	Tilt = 3 * math.pi / 180, -- in degrees
+	Tilt = 0, -- in degrees
 
 	ScaleTime = 0.075,
 	Scale = 0.15,
@@ -20,7 +20,7 @@ JudgmentObject = {
 		"judge-sweet.png",
 		"judge-nice.png",
 		"judge-ok.png",
-		"judge-miss.png",
+		"judge-weak.png",
 	},
 
 	TimingIndicator = "hiterror.png",
