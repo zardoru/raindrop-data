@@ -166,6 +166,12 @@ function JudgmentObject:OnHit(JudgmentValue, Time, l, h, r, pn)
 	if pn ~= self.Player.Number then
 		return
 	end
+
+
+    if JudgmentValue <= 0 or JudgmentValue > #self.Table then
+        return
+    end
+
 	self.Value = JudgmentValue
 
 	local kvalue = self.Value
@@ -185,9 +191,11 @@ function JudgmentObject:OnHit(JudgmentValue, Time, l, h, r, pn)
 		self.LastAlternation = 0
 	end
 
-	self.Atlas:SetObjectCrop(self.Object, self.Table[kvalue])
-	self.Object.Height = self.Atlas.Sprites[self.Table[kvalue]].h
-	self.Object.Width = self.Atlas.Sprites[self.Table[kvalue]].w
+    self.Atlas:SetObjectCrop(self.Object, self.Table[kvalue])
+    self.Object.Height = self.Atlas.Sprites[self.Table[kvalue]].h
+    self.Object.Width = self.Atlas.Sprites[self.Table[kvalue]].w
+    self.Time = 0
+    self.Early = Time < 0
 
 	if JudgmentValue ~= 5 then
 		if JudgmentValue ~= -1 then
@@ -200,8 +208,6 @@ function JudgmentObject:OnHit(JudgmentValue, Time, l, h, r, pn)
 		self.Object.Scale = (self.ScaleMiss)
 	end
 
-	self.Time = 0
-	self.Early = Time < 0
 end
 
 function JudgmentObject:OnMiss(t, l, h, pn)
