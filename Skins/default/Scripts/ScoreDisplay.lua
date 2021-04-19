@@ -59,7 +59,7 @@ end
 librd.make_new(ScoreDisplay, ScoreDisplay.Init)
 
 function ScoreDisplay:Run(Delta)
-  self.Score = self.Player.Score
+    self.Score = self.Player.Score
   
 	self.DisplayScore = math.min((self.Score - self.DisplayScore) * Delta * 40 + self.DisplayScore, self.Score)
 	local Digits = librd.intToDigits(self.DisplayScore)
