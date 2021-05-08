@@ -256,7 +256,7 @@ Channels16 = {
     GearHeight = GearHeightCommon,
     GearWidth = GearWidthByChannels[16],
     GearStartX = GearStartX,
-    NoteHeight = 24,
+    NoteHeight = 40,
     BarlineWidth = GearWidthByChannels[16],
 
     -- Note Images
@@ -369,7 +369,7 @@ Channels12 = {
     GearHeight = GearHeightCommon,
     GearWidth = GearWidthByChannels[12],
     GearStartX = GearStartX,
-    NoteHeight = 24,
+    NoteHeight = 40,
     BarlineWidth = GearWidthByChannels[12],
 	
     -- Note Images
@@ -462,7 +462,7 @@ Channels10 = {
   GearHeight = GearHeightCommon,
   GearWidth = GearWidthByChannels[12],
   GearStartX = GearStartX,
-  NoteHeight = 24,
+  NoteHeight = 40,
   BarlineWidth = GearWidthByChannels[12],
 
   -- Note Images
@@ -541,7 +541,7 @@ Channels9 = {
 
 	GearHeight = GearHeightCommon,
 	GearStartX = GearStartX,
-  NoteHeight = 24,
+  NoteHeight = 40,
 	GearWidth = GearWidthByChannels[9],
   BarlineWidth = GearWidthByChannels[9],
 
@@ -612,7 +612,7 @@ Channels8Special = {
 
 	GearHeight = GearHeightCommon,
 	GearStartX = GearStartX,
-    NoteHeight = 24,
+    NoteHeight = 40,
 	GearWidth = Special8KWidth,
 	BarlineWidth = Special8KWidth,
 
@@ -678,7 +678,7 @@ Channels8Special = {
 
 		GearHeight = GearHeightCommon,
     GearStartX = GearStartX,
-    NoteHeight = 24,
+    NoteHeight = 40,
 		GearWidth = GearWidthByChannels[8],
 		BarlineWidth = GearWidthByChannels[8],
 
@@ -743,7 +743,7 @@ Channels7 = {
 
     GearHeight = GearHeightCommon,
     GearStartX = GearStartX,
-    NoteHeight = 24,
+    NoteHeight = 40,
     GearWidth = GearWidthByChannels[7],
     BarlineWidth = GearWidthByChannels[7],
 
@@ -828,7 +828,7 @@ Channels7 = {
 		GearWidth = Special6KWidth,
 		BarlineWidth = Special6KWidth,
     GearStartX = GearStartX,
-    NoteHeight = 24
+    NoteHeight = 40
 	}
 
 	Channels6 = {
@@ -875,7 +875,7 @@ Channels7 = {
 		GearWidth = GearWidthByChannels[6],
 		BarlineWidth = GearWidthByChannels[6],
     GearStartX = GearStartX,
-    NoteHeight = 24
+    NoteHeight = 40
 	}
 
 -- 5 Channels. By default, ez2dj-like.
@@ -919,7 +919,7 @@ Channels5 = {
 	GearWidth = GearWidthByChannels[5],
   BarlineWidth = GearWidthByChannels[5],
   GearStartX = GearStartX,
-  NoteHeight = 24
+  NoteHeight = 40
 }
 
 -- 4 Channels. By default, it's DJMax-like.
@@ -956,7 +956,7 @@ Channels4 = {
     GearWidth = GearWidthByChannels[4],
     BarlineWidth = GearWidthByChannels[4],
     GearStartX = GearStartX,
-    NoteHeight = 24
+    NoteHeight = 40
 }
 
 Channels1 = {
@@ -971,7 +971,7 @@ Channels1 = {
 	GearWidth = GearWidthByChannels[1],
 	BarlineWidth = GearWidthByChannels[1],
   GearStartX = GearStartX,
-  NoteHeight = 24
+  NoteHeight = 40
 }
 
 Noteskin = {}
