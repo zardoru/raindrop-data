@@ -16,11 +16,12 @@ JudgmentObject = {
 	--Position = {},
 
 	Table = {
-		"judge-flawless.png",
-		"judge-sweet.png",
-		"judge-nice.png",
-		"judge-ok.png",
-		"judge-weak.png",
+		"judge-flawless.png", -- w0/1
+		"judge-sweet.png", -- w2
+		"judge-nice.png", -- w3
+		"judge-ok.png", -- w4
+      "judge-meh.png", -- w5
+		"judge-weak.png", -- w6
 	},
 
 	TimingIndicator = "hiterror.png",
