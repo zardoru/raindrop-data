@@ -7,7 +7,7 @@ ComboDisplay = {
 	BumpFactor = 1.1,
 	BumpVertically = true,
 	BumpHorizontally = false,
-	HeightAddition = -20,
+	HeightAddition = -40,
 	HoldBumpFactor = 1.2,
   AtlasFile = "VSRG/combosheet.csv",
 
@@ -176,7 +176,7 @@ function ComboDisplay:Run(Delta)
 	local HoldScale = 1
 
 	if RebootHT then
-		local BT = Beat * 2
+		local BT = Beat * 4
 		local Ratio = (BT - math.floor(BT))
 		HoldScale = self.HoldBumpFactor - Ratio * (self.HoldBumpFactor - 1)
 	end
