@@ -212,5 +212,5 @@ function JudgmentObject:OnHit(JudgmentValue, Time, l, h, r, pn)
 end
 
 function JudgmentObject:OnMiss(t, l, h, pn)
-  self:OnHit(5, t, l, h, h, pn)
+  self:OnHit(6, t, l, h, h, pn)
 end
