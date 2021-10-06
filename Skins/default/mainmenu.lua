@@ -28,7 +28,6 @@ function OnRestore()
 end
 
 function OnIntroBegin()
-	Engine:SetUILayer(31)
 end
 
 function OnExitBegin()

@@ -1,6 +1,6 @@
 body {
 	font-family: default;
-	font-size: 24;
+	font-size: 24px;
 	text-align: right;
 }
 
@@ -56,9 +56,9 @@ scrollbarvertical sliderarrowdec, sliderarrowinc
 	display: inline;
 	text-align: left;
 	left: 5%;
-	font-size: 48;
-	darken-font-effect: shadow;
-    darken-offset: 1px 1px;
+	font-size: 48px;
+	/*darken-font-effect: shadow;*/
+    /*darken-offset: 1px 1px;*/
     darken-color: grey;
 }
 
@@ -88,7 +88,7 @@ scrollbarvertical sliderarrowdec, sliderarrowinc
 	width: 100%;
     text-align: center;
 	background: rgba(0%,0%,0%,90%);
-    font-size: 28;
+    font-size: 28px;
     darken-font-effect: shadow;
     darken-offset: 1px 1px;
     darken-color: grey;

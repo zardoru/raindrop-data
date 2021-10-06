@@ -64,10 +64,14 @@ function drawHoldBodyInternal(lane, loc, size, active_level)
 		note.Red = 0.5
 		note.Blue = 0.5
 		note.Green = 0.5
-	else
-		note.Red = 1
-		note.Blue = 1
-		note.Green = 1
+	elseif active_level == 1 then
+		note.Red = 0.7
+		note.Blue = 0.7
+		note.Green = 0.7
+    else
+		note.Red   = 1
+        note.Blue  = 1
+        note.Green = 1
 	end
 	
 	if active_level ~= 3 then

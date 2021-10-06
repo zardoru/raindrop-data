@@ -65,8 +65,6 @@ function Init()
 	Engine:AddTarget(dd)
 	
 	CreateWheelItems()
-	
-	Engine:SetUILayer(24)
 end
 
 function updText()

@@ -1,4 +1,4 @@
---- A module to ease creation of a medium amount of objects 
+--- A module to ease creation of a medium amount of objects. Declare with a CSV.
 -- @gamemodule FixedObjects
 game_require "librd"
 

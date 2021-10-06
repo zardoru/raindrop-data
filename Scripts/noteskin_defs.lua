@@ -25,129 +25,127 @@ NoteImageHold4 = "VSRG/note1L.png"
 NoteImageHold5 = "VSRG/note4L.png"
 NoteImageHold6 = "VSRG/note6L.png"
 
-GearStartX = 80
+GearStartX = 300
 
 Channels1Sizes = {
-	84
+    84
 }
 
 Channels4Sizes = {
-	100,
-	100,
-	100,
-	100
+    100,
+    100,
+    100,
+    100
 }
 
 Channels5Sizes = {
-	100,
-	90,
-	100,
-	90,
-	100
+    100,
+    90,
+    100,
+    90,
+    100
 }
 
 Channels6Sizes = {
-	80,
-	80,
-	80,
-	80,
-	80,
-	80
+    80,
+    80,
+    80,
+    80,
+    80,
+    80
 }
 
 Channels7Sizes = {
-	70,
-	70,
-	70,
-	80,
-	70,
-	70,
-	70
+    70,
+    70,
+    70,
+    80,
+    70,
+    70,
+    70
 }
 
 Channels8Sizes = {
-	70,
-	70,
-	70,
-	70,
-	70,
-	70,
-	70,
-	70
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70
 }
 
-
 Channels9Sizes = {
-	70,
-	70,
-	70,
-	70,
-	70,
-	70,
-	70,
-	70,
-	70
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70,
+    70
 }
 
 Channels10Sizes = {
-	56,
-	56,
-	56,
-	56,
-	56,
-	56,
-	56,
-	56,
-	56,
-	56
+    56,
+    56,
+    56,
+    56,
+    56,
+    56,
+    56,
+    56,
+    56,
+    56
 }
 
 Channels12Sizes = {
-	56 * 5,
-	56,
-	56,
-	56,
-	56,
-	56,
-	56 * 5,
-	56,
-	56,
-	56,
-	56,
-	56
+    56 * 5,
+    56,
+    56,
+    56,
+    56,
+    56,
+    56 * 5,
+    56,
+    56,
+    56,
+    56,
+    56
 }
 
 Channels16Sizes = {
-	42,
-	42,
-	42,
-	42,
-	42,
-	42,
-	42,
-	42,
-	42,
-	42,
-	42,
-	42,
-	42,
-	42,
-	42,
-	42
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42
 }
 
 Channels6SizesSpecial = {}
 Channels8SizesSpecial = {}
-for k,v in ipairs(Channels8Sizes) do
-	if k == 1 then
-		Channels6SizesSpecial[k] = Channels6Sizes[k] * 1.3
-		Channels8SizesSpecial[k] = v * 1.3
-	else
-		Channels6SizesSpecial[k] = Channels6Sizes[k]
-		Channels8SizesSpecial[k] = v
-	end
+for k, v in ipairs(Channels8Sizes) do
+    if k == 1 then
+        Channels6SizesSpecial[k] = Channels6Sizes[k] * 1.3
+        Channels8SizesSpecial[k] = v * 1.3
+    else
+        Channels6SizesSpecial[k] = Channels6Sizes[k]
+        Channels8SizesSpecial[k] = v
+    end
 end
-
 
 Channels1Positions = {}
 Channels4Positions = {}
@@ -181,10 +179,10 @@ Sizeup(Channels10Positions, Channels10Sizes, 10)
 -- special treatment for channels12
 local ch12Pos = GearStartX + 56 / 2
 GearWidthByChannels[12] = 56 * 10
-local ch12lanes = {2, 3, 4, 5, 6, 8, 9, 10, 11, 12}
+local ch12lanes = { 2, 3, 4, 5, 6, 8, 9, 10, 11, 12 }
 for k, v in ipairs(ch12lanes) do
-   Channels12Positions[v] = ch12Pos
-   ch12Pos = ch12Pos + 56
+    Channels12Positions[v] = ch12Pos
+    ch12Pos = ch12Pos + 56
 end
 
 Channels12Positions[1] = Channels12Positions[2] + 56 * 4 / 2
@@ -215,7 +213,7 @@ C5D = "key4d.png"
 -- Channels16 is, of course, DP.
 Channels16 = {
     -- Gear bindings
-    
+
     Key1 = C3, -- scratch channel on the left side
     Key2 = C1,
     Key3 = C2,
@@ -224,7 +222,7 @@ Channels16 = {
     Key6 = C1,
     Key7 = C2,
     Key8 = C1,
-    
+
     Key9 = C3, -- scratch channel on the right side
     Key10 = C4,
     Key11 = C5,
@@ -243,7 +241,7 @@ Channels16 = {
     Key6Down = C1D,
     Key7Down = C2D,
     Key8Down = C1D,
-    
+
     Key9Down = C3D, -- scratch channel on the right side
     Key10Down = C4D,
     Key11Down = C5D,
@@ -268,7 +266,7 @@ Channels16 = {
     Key6Image = NoteImage1,
     Key7Image = NoteImage2,
     Key8Image = NoteImage1,
-    
+
     Key9Image = NoteImage3,
     Key10Image = NoteImage4,
     Key11Image = NoteImage5,
@@ -287,7 +285,7 @@ Channels16 = {
     Key6HoldImage = NoteImageHold1,
     Key7HoldImage = NoteImageHold2,
     Key8HoldImage = NoteImageHold1,
-    
+
     Key9HoldImage = NoteImageHold3,
     Key10HoldImage = NoteImageHold4,
     Key11HoldImage = NoteImageHold5,
@@ -347,10 +345,10 @@ Channels12 = {
 
     Key7 = "", -- scratch channel on the right side
     Key8 = C1,
-    Key9 = C4, 
-    Key10 =C3,
-    Key11 =C4,
-    Key12 =C5,
+    Key9 = C4,
+    Key10 = C3,
+    Key11 = C4,
+    Key12 = C5,
 
     Key1Down = "", -- scratch channel on the left side
     Key2Down = C5D,
@@ -361,17 +359,17 @@ Channels12 = {
 
     Key7Down = "", -- scratch channel on the right side
     Key8Down = C1D,
-    Key9Down = C4D, 
-    Key10Down =C3D,
-    Key11Down =C4D,
-    Key12Down =C5D,
-    
+    Key9Down = C4D,
+    Key10Down = C3D,
+    Key11Down = C4D,
+    Key12Down = C5D,
+
     GearHeight = GearHeightCommon,
     GearWidth = GearWidthByChannels[12],
     GearStartX = GearStartX,
     NoteHeight = 40,
     BarlineWidth = GearWidthByChannels[12],
-	
+
     -- Note Images
     Key1Image = NoteImage6,
     Key2Image = NoteImage5,
@@ -434,87 +432,87 @@ Channels12 = {
 
 -- Channels10 is of course, 5k DP.
 Channels10 = {
-  -- Gear bindings
-  Key1 = C5,
-  Key2 = C4,
-  Key3 = C3,
-  Key4 = C4,
-  Key5 = C2,
+    -- Gear bindings
+    Key1 = C5,
+    Key2 = C4,
+    Key3 = C3,
+    Key4 = C4,
+    Key5 = C2,
 
-  Key6 = C1,
-  Key7 = C4, 
-  Key8 =C3,
-  Key9 =C4,
-  Key10 =C5,
+    Key6 = C1,
+    Key7 = C4,
+    Key8 = C3,
+    Key9 = C4,
+    Key10 = C5,
 
-  Key1Down = C5D,
-  Key2Down = C4D,
-  Key3Down = C3D,
-  Key4Down = C4D,
-  Key5Down = C2D,
+    Key1Down = C5D,
+    Key2Down = C4D,
+    Key3Down = C3D,
+    Key4Down = C4D,
+    Key5Down = C2D,
 
-  Key6Down = C1D,
-  Key7Down = C4D, 
-  Key8Down =C3D,
-  Key9Down =C4D,
-  Key10Down =C5D,
-  
-  GearHeight = GearHeightCommon,
-  GearWidth = GearWidthByChannels[12],
-  GearStartX = GearStartX,
-  NoteHeight = 40,
-  BarlineWidth = GearWidthByChannels[12],
+    Key6Down = C1D,
+    Key7Down = C4D,
+    Key8Down = C3D,
+    Key9Down = C4D,
+    Key10Down = C5D,
 
-  -- Note Images
-  Key1Image = NoteImage5,
-  Key2Image = NoteImage4,
-  Key3Image = NoteImage3,
-  Key4Image = NoteImage4,
-  Key5Image = NoteImage2,
+    GearHeight = GearHeightCommon,
+    GearWidth = GearWidthByChannels[12],
+    GearStartX = GearStartX,
+    NoteHeight = 40,
+    BarlineWidth = GearWidthByChannels[12],
 
-  Key6Image = NoteImage1,
-  Key7Image = NoteImage4,
-  Key8Image = NoteImage3,
-  Key9Image = NoteImage4,
-  Key10Image = NoteImage5,
+    -- Note Images
+    Key1Image = NoteImage5,
+    Key2Image = NoteImage4,
+    Key3Image = NoteImage3,
+    Key4Image = NoteImage4,
+    Key5Image = NoteImage2,
 
-  -- Hold Bodies
-  Key1HoldImage = NoteImageHold5,
-  Key2HoldImage = NoteImageHold4,
-  Key3HoldImage = NoteImageHold3,
-  Key4HoldImage = NoteImageHold4,
-  Key5HoldImage = NoteImageHold2,
+    Key6Image = NoteImage1,
+    Key7Image = NoteImage4,
+    Key8Image = NoteImage3,
+    Key9Image = NoteImage4,
+    Key10Image = NoteImage5,
 
-  Key6HoldImage = NoteImageHold1,
-  Key7HoldImage = NoteImageHold4,
-  Key8HoldImage = NoteImageHold3,
-  Key9HoldImage = NoteImageHold4,
-  Key10HoldImage = NoteImageHold5,
+    -- Hold Bodies
+    Key1HoldImage = NoteImageHold5,
+    Key2HoldImage = NoteImageHold4,
+    Key3HoldImage = NoteImageHold3,
+    Key4HoldImage = NoteImageHold4,
+    Key5HoldImage = NoteImageHold2,
 
-  -- Lane positions
-  Key1X = Channels10Positions[1],
-  Key2X = Channels10Positions[2],
-  Key3X = Channels10Positions[3],
-  Key4X = Channels10Positions[4],
-  Key5X = Channels10Positions[5],
+    Key6HoldImage = NoteImageHold1,
+    Key7HoldImage = NoteImageHold4,
+    Key8HoldImage = NoteImageHold3,
+    Key9HoldImage = NoteImageHold4,
+    Key10HoldImage = NoteImageHold5,
 
-  Key6X = Channels10Positions[6],
-  Key8X = Channels10Positions[8],
-  Key7X = Channels10Positions[7],
-  Key9X = Channels10Positions[9],
-  Key10X = Channels10Positions[10],
+    -- Lane positions
+    Key1X = Channels10Positions[1],
+    Key2X = Channels10Positions[2],
+    Key3X = Channels10Positions[3],
+    Key4X = Channels10Positions[4],
+    Key5X = Channels10Positions[5],
 
-  -- Lane Widths
-  Key1Width = Channels10Sizes[1],
-  Key2Width = Channels10Sizes[2],
-  Key3Width = Channels10Sizes[3],
-  Key4Width = Channels10Sizes[4],
-  Key5Width = Channels10Sizes[5],
-  Key6Width = Channels10Sizes[6],
-  Key7Width = Channels10Sizes[7],
-  Key8Width = Channels10Sizes[8],
-  Key9Width = Channels10Sizes[9],
-  Key10Width = Channels10Sizes[10],
+    Key6X = Channels10Positions[6],
+    Key8X = Channels10Positions[8],
+    Key7X = Channels10Positions[7],
+    Key9X = Channels10Positions[9],
+    Key10X = Channels10Positions[10],
+
+    -- Lane Widths
+    Key1Width = Channels10Sizes[1],
+    Key2Width = Channels10Sizes[2],
+    Key3Width = Channels10Sizes[3],
+    Key4Width = Channels10Sizes[4],
+    Key5Width = Channels10Sizes[5],
+    Key6Width = Channels10Sizes[6],
+    Key7Width = Channels10Sizes[7],
+    Key8Width = Channels10Sizes[8],
+    Key9Width = Channels10Sizes[9],
+    Key10Width = Channels10Sizes[10],
 }
 
 
@@ -539,11 +537,11 @@ Channels9 = {
     Key8Down = C1D,
     Key9Down = C4D,
 
-	GearHeight = GearHeightCommon,
-	GearStartX = GearStartX,
-  NoteHeight = 40,
-	GearWidth = GearWidthByChannels[9],
-  BarlineWidth = GearWidthByChannels[9],
+    GearHeight = GearHeightCommon,
+    GearStartX = GearStartX,
+    NoteHeight = 40,
+    GearWidth = GearWidthByChannels[9],
+    BarlineWidth = GearWidthByChannels[9],
 
     -- Note Images
     Key1Image = NoteImage4,
@@ -592,136 +590,136 @@ Channels9 = {
 
 -- Channels8 is, by default, 7k+1. Key1 is always the scratch channel.
 Channels8Special = {
-	-- Gear bindings
-	Key1 = C5,
-	Key2 = C4,
-	Key3 = C1,
-	Key4 = C2,
-	Key5 = C3,
-	Key6 = C2,
-	Key7 = C1,
-	Key8 = C4,
-	Key1Down = C5D,
-	Key2Down = C4D,
-	Key3Down = C1D,
-	Key4Down = C2D,
-	Key5Down = C3D,
-	Key6Down = C2D,
-	Key7Down = C1D,
-	Key8Down = C4D,
+    -- Gear bindings
+    Key1 = C5,
+    Key2 = C4,
+    Key3 = C1,
+    Key4 = C2,
+    Key5 = C3,
+    Key6 = C2,
+    Key7 = C1,
+    Key8 = C4,
+    Key1Down = C5D,
+    Key2Down = C4D,
+    Key3Down = C1D,
+    Key4Down = C2D,
+    Key5Down = C3D,
+    Key6Down = C2D,
+    Key7Down = C1D,
+    Key8Down = C4D,
 
-	GearHeight = GearHeightCommon,
-	GearStartX = GearStartX,
-    NoteHeight = 40,
-	GearWidth = Special8KWidth,
-	BarlineWidth = Special8KWidth,
-
-	-- Note Images
-	Key1Image = NoteImage5,
-	Key2Image = NoteImage4,
-	Key3Image = NoteImage1,
-	Key4Image = NoteImage2,
-	Key5Image = NoteImage3,
-	Key6Image = NoteImage2,
-	Key7Image = NoteImage1,
-	Key8Image = NoteImage4,
-
-	-- Hold Bodies
-	Key1HoldImage = NoteImageHold5,
-	Key2HoldImage = NoteImageHold4,
-	Key3HoldImage = NoteImageHold1,
-	Key4HoldImage = NoteImageHold2,
-	Key5HoldImage = NoteImageHold3,
-	Key6HoldImage = NoteImageHold2,
-	Key7HoldImage = NoteImageHold1,
-	Key8HoldImage = NoteImageHold4,
-
-	-- Lane positions
-	Key1X = Channels8PositionsSpecial[1],
-	Key2X = Channels8PositionsSpecial[2],
-	Key3X = Channels8PositionsSpecial[3],
-	Key4X = Channels8PositionsSpecial[4],
-	Key5X = Channels8PositionsSpecial[5],
-	Key6X = Channels8PositionsSpecial[6],
-	Key7X = Channels8PositionsSpecial[7],
-	Key8X = Channels8PositionsSpecial[8],
-
-		-- Lane Widths
-		Key1Width = Channels8SizesSpecial[1],
-		Key2Width = Channels8SizesSpecial[2],
-		Key3Width = Channels8SizesSpecial[3],
-		Key4Width = Channels8SizesSpecial[4],
-		Key5Width = Channels8SizesSpecial[5],
-		Key6Width = Channels8SizesSpecial[6],
-		Key7Width = Channels8SizesSpecial[7],
-		Key8Width = Channels8SizesSpecial[8]
-	}
-
-	Channels8 = {
-		-- Gear bindings
-		Key1 = C1,
-		Key2 = C2,
-		Key3 = C3,
-		Key4 = C5,
-		Key5 = C5,
-		Key6 = C3,
-		Key7 = C2,
-		Key8 = C1,
-		Key1Down = C1D,
-		Key2Down = C2D,
-		Key3Down = C3D,
-		Key4Down = C5D,
-		Key5Down = C5D,
-		Key6Down = C3D,
-		Key7Down = C2D,
-		Key8Down = C1D,
-
-		GearHeight = GearHeightCommon,
+    GearHeight = GearHeightCommon,
     GearStartX = GearStartX,
     NoteHeight = 40,
-		GearWidth = GearWidthByChannels[8],
-		BarlineWidth = GearWidthByChannels[8],
+    GearWidth = Special8KWidth,
+    BarlineWidth = Special8KWidth,
 
-		-- Note Images
-		Key1Image = NoteImage1,
-		Key2Image = NoteImage2,
-		Key3Image = NoteImage3,
-		Key4Image = NoteImage5,
-		Key5Image = NoteImage5,
-		Key6Image = NoteImage3,
-		Key7Image = NoteImage2,
-		Key8Image = NoteImage1,
+    -- Note Images
+    Key1Image = NoteImage5,
+    Key2Image = NoteImage4,
+    Key3Image = NoteImage1,
+    Key4Image = NoteImage2,
+    Key5Image = NoteImage3,
+    Key6Image = NoteImage2,
+    Key7Image = NoteImage1,
+    Key8Image = NoteImage4,
 
-		-- Hold Bodies
-		Key1HoldImage = NoteImageHold1,
-		Key2HoldImage = NoteImageHold2,
-		Key3HoldImage = NoteImageHold3,
-		Key4HoldImage = NoteImageHold5,
-		Key5HoldImage = NoteImageHold5,
-		Key6HoldImage = NoteImageHold3,
-		Key7HoldImage = NoteImageHold2,
-		Key8HoldImage = NoteImageHold1,
+    -- Hold Bodies
+    Key1HoldImage = NoteImageHold5,
+    Key2HoldImage = NoteImageHold4,
+    Key3HoldImage = NoteImageHold1,
+    Key4HoldImage = NoteImageHold2,
+    Key5HoldImage = NoteImageHold3,
+    Key6HoldImage = NoteImageHold2,
+    Key7HoldImage = NoteImageHold1,
+    Key8HoldImage = NoteImageHold4,
 
-		-- Lane positions
-		Key1X = Channels8Positions[1],
-		Key2X = Channels8Positions[2],
-		Key3X = Channels8Positions[3],
-		Key4X = Channels8Positions[4],
-		Key5X = Channels8Positions[5],
-		Key6X = Channels8Positions[6],
-		Key7X = Channels8Positions[7],
-		Key8X = Channels8Positions[8],
+    -- Lane positions
+    Key1X = Channels8PositionsSpecial[1],
+    Key2X = Channels8PositionsSpecial[2],
+    Key3X = Channels8PositionsSpecial[3],
+    Key4X = Channels8PositionsSpecial[4],
+    Key5X = Channels8PositionsSpecial[5],
+    Key6X = Channels8PositionsSpecial[6],
+    Key7X = Channels8PositionsSpecial[7],
+    Key8X = Channels8PositionsSpecial[8],
 
-		-- Lane Widths
-		Key1Width = Channels8Sizes[1],
-		Key2Width = Channels8Sizes[2],
-		Key3Width = Channels8Sizes[3],
-		Key4Width = Channels8Sizes[4],
-		Key5Width = Channels8Sizes[5],
-		Key6Width = Channels8Sizes[6],
-		Key7Width = Channels8Sizes[7],
-		Key8Width = Channels8Sizes[8]
-	}
+    -- Lane Widths
+    Key1Width = Channels8SizesSpecial[1],
+    Key2Width = Channels8SizesSpecial[2],
+    Key3Width = Channels8SizesSpecial[3],
+    Key4Width = Channels8SizesSpecial[4],
+    Key5Width = Channels8SizesSpecial[5],
+    Key6Width = Channels8SizesSpecial[6],
+    Key7Width = Channels8SizesSpecial[7],
+    Key8Width = Channels8SizesSpecial[8]
+}
+
+Channels8 = {
+    -- Gear bindings
+    Key1 = C1,
+    Key2 = C2,
+    Key3 = C3,
+    Key4 = C5,
+    Key5 = C5,
+    Key6 = C3,
+    Key7 = C2,
+    Key8 = C1,
+    Key1Down = C1D,
+    Key2Down = C2D,
+    Key3Down = C3D,
+    Key4Down = C5D,
+    Key5Down = C5D,
+    Key6Down = C3D,
+    Key7Down = C2D,
+    Key8Down = C1D,
+
+    GearHeight = GearHeightCommon,
+    GearStartX = GearStartX,
+    NoteHeight = 40,
+    GearWidth = GearWidthByChannels[8],
+    BarlineWidth = GearWidthByChannels[8],
+
+    -- Note Images
+    Key1Image = NoteImage1,
+    Key2Image = NoteImage2,
+    Key3Image = NoteImage3,
+    Key4Image = NoteImage5,
+    Key5Image = NoteImage5,
+    Key6Image = NoteImage3,
+    Key7Image = NoteImage2,
+    Key8Image = NoteImage1,
+
+    -- Hold Bodies
+    Key1HoldImage = NoteImageHold1,
+    Key2HoldImage = NoteImageHold2,
+    Key3HoldImage = NoteImageHold3,
+    Key4HoldImage = NoteImageHold5,
+    Key5HoldImage = NoteImageHold5,
+    Key6HoldImage = NoteImageHold3,
+    Key7HoldImage = NoteImageHold2,
+    Key8HoldImage = NoteImageHold1,
+
+    -- Lane positions
+    Key1X = Channels8Positions[1],
+    Key2X = Channels8Positions[2],
+    Key3X = Channels8Positions[3],
+    Key4X = Channels8Positions[4],
+    Key5X = Channels8Positions[5],
+    Key6X = Channels8Positions[6],
+    Key7X = Channels8Positions[7],
+    Key8X = Channels8Positions[8],
+
+    -- Lane Widths
+    Key1Width = Channels8Sizes[1],
+    Key2Width = Channels8Sizes[2],
+    Key3Width = Channels8Sizes[3],
+    Key4Width = Channels8Sizes[4],
+    Key5Width = Channels8Sizes[5],
+    Key6Width = Channels8Sizes[6],
+    Key7Width = Channels8Sizes[7],
+    Key8Width = Channels8Sizes[8]
+}
 
 -- 7 Channels. By default, it's o2jam-like.
 Channels7 = {
@@ -785,141 +783,141 @@ Channels7 = {
 }
 
 -- 6 Channels. By default, it's solo-like.
-	Channels6Special = {
-				Key1 = C5,
-		Key2 = C1,
-		Key3 = C2,
-		Key4 = C1,
-		Key5 = C2,
-		Key6 = C1,
-		Key1Down = C5D,
-		Key2Down = C1D,
-		Key3Down = C2D,
-		Key4Down = C1D,
-		Key5Down = C2D,
-		Key6Down = C1D,
-		Key1Image = NoteImage5,
-		Key2Image = NoteImage1,
-		Key3Image = NoteImage2,
-		Key4Image = NoteImage1,
-		Key5Image = NoteImage2,
-		Key6Image = NoteImage1,
-		Key1HoldImage = NoteImageHold5,
-		Key2HoldImage = NoteImageHold1,
-		Key3HoldImage = NoteImageHold2,
-		Key4HoldImage = NoteImageHold1,
-		Key5HoldImage = NoteImageHold2,
-		Key6HoldImage = NoteImageHold1,
+Channels6Special = {
+    Key1 = C5,
+    Key2 = C1,
+    Key3 = C2,
+    Key4 = C1,
+    Key5 = C2,
+    Key6 = C1,
+    Key1Down = C5D,
+    Key2Down = C1D,
+    Key3Down = C2D,
+    Key4Down = C1D,
+    Key5Down = C2D,
+    Key6Down = C1D,
+    Key1Image = NoteImage5,
+    Key2Image = NoteImage1,
+    Key3Image = NoteImage2,
+    Key4Image = NoteImage1,
+    Key5Image = NoteImage2,
+    Key6Image = NoteImage1,
+    Key1HoldImage = NoteImageHold5,
+    Key2HoldImage = NoteImageHold1,
+    Key3HoldImage = NoteImageHold2,
+    Key4HoldImage = NoteImageHold1,
+    Key5HoldImage = NoteImageHold2,
+    Key6HoldImage = NoteImageHold1,
 
     GearHeight = GearHeightCommon,
-		Key1Width = Channels6SizesSpecial[1],
-		Key2Width = Channels6SizesSpecial[2],
-		Key3Width = Channels6SizesSpecial[3],
-		Key4Width = Channels6SizesSpecial[4],
-		Key5Width = Channels6SizesSpecial[5],
-		Key6Width = Channels6SizesSpecial[6],
-		Key1X = Channels6PositionsSpecial[1],
-		Key2X = Channels6PositionsSpecial[2],
-		Key3X = Channels6PositionsSpecial[3],
-		Key4X = Channels6PositionsSpecial[4],
-		Key5X = Channels6PositionsSpecial[5],
-		Key6X = Channels6PositionsSpecial[6],
-		
-		GearWidth = Special6KWidth,
-		BarlineWidth = Special6KWidth,
+    Key1Width = Channels6SizesSpecial[1],
+    Key2Width = Channels6SizesSpecial[2],
+    Key3Width = Channels6SizesSpecial[3],
+    Key4Width = Channels6SizesSpecial[4],
+    Key5Width = Channels6SizesSpecial[5],
+    Key6Width = Channels6SizesSpecial[6],
+    Key1X = Channels6PositionsSpecial[1],
+    Key2X = Channels6PositionsSpecial[2],
+    Key3X = Channels6PositionsSpecial[3],
+    Key4X = Channels6PositionsSpecial[4],
+    Key5X = Channels6PositionsSpecial[5],
+    Key6X = Channels6PositionsSpecial[6],
+
+    GearWidth = Special6KWidth,
+    BarlineWidth = Special6KWidth,
     GearStartX = GearStartX,
     NoteHeight = 40
-	}
+}
 
-	Channels6 = {
+Channels6 = {
     Key1 = C4,
-		Key2 = C3,
-		Key3 = C4,
-		Key4 = C4,
-		Key5 = C3,
-		Key6 = C4,
-		Key1Down = C4D,
-		Key2Down = C3D,
-		Key3Down = C4D,
-		Key4Down = C4D,
-		Key5Down = C3D,
-		Key6Down = C4D,
-		Key1Image = NoteImage4,
-		Key2Image = NoteImage3,
-		Key3Image = NoteImage4,
-		Key4Image = NoteImage4,
-		Key5Image = NoteImage3,
-		Key6Image = NoteImage4,
-		Key1HoldImage = NoteImageHold4,
-		Key2HoldImage = NoteImageHold3,
-		Key3HoldImage = NoteImageHold4,
-		Key4HoldImage = NoteImageHold4,
-		Key5HoldImage = NoteImageHold3,
-		Key6HoldImage = NoteImageHold4,
-    
+    Key2 = C3,
+    Key3 = C4,
+    Key4 = C4,
+    Key5 = C3,
+    Key6 = C4,
+    Key1Down = C4D,
+    Key2Down = C3D,
+    Key3Down = C4D,
+    Key4Down = C4D,
+    Key5Down = C3D,
+    Key6Down = C4D,
+    Key1Image = NoteImage4,
+    Key2Image = NoteImage3,
+    Key3Image = NoteImage4,
+    Key4Image = NoteImage4,
+    Key5Image = NoteImage3,
+    Key6Image = NoteImage4,
+    Key1HoldImage = NoteImageHold4,
+    Key2HoldImage = NoteImageHold3,
+    Key3HoldImage = NoteImageHold4,
+    Key4HoldImage = NoteImageHold4,
+    Key5HoldImage = NoteImageHold3,
+    Key6HoldImage = NoteImageHold4,
+
     GearHeight = GearHeightCommon,
 
-		Key1Width = Channels6Sizes[1],
-		Key2Width = Channels6Sizes[2],
-		Key3Width = Channels6Sizes[3],
-		Key4Width = Channels6Sizes[4],
-		Key5Width = Channels6Sizes[5],
-		Key6Width = Channels6Sizes[6],
-		Key1X = Channels6Positions[1],
-		Key2X = Channels6Positions[2],
-		Key3X = Channels6Positions[3],
-		Key4X = Channels6Positions[4],
-		Key5X = Channels6Positions[5],
-		Key6X = Channels6Positions[6],
-		
-		GearWidth = GearWidthByChannels[6],
-		BarlineWidth = GearWidthByChannels[6],
+    Key1Width = Channels6Sizes[1],
+    Key2Width = Channels6Sizes[2],
+    Key3Width = Channels6Sizes[3],
+    Key4Width = Channels6Sizes[4],
+    Key5Width = Channels6Sizes[5],
+    Key6Width = Channels6Sizes[6],
+    Key1X = Channels6Positions[1],
+    Key2X = Channels6Positions[2],
+    Key3X = Channels6Positions[3],
+    Key4X = Channels6Positions[4],
+    Key5X = Channels6Positions[5],
+    Key6X = Channels6Positions[6],
+
+    GearWidth = GearWidthByChannels[6],
+    BarlineWidth = GearWidthByChannels[6],
     GearStartX = GearStartX,
     NoteHeight = 40
-	}
+}
 
 -- 5 Channels. By default, ez2dj-like.
 Channels5 = {
-	Key1 = C1,
-	Key2 = C2,
-	Key3 = C3,
-	Key4 = C2,
-	Key5 = C1,
-	Key1Down = C1D,
-	Key2Down = C2D,
-	Key3Down = C3D,
-	Key4Down = C2D,
-	Key5Down = C1D,
-	GearHeight = GearHeightCommon,
-	Key1Binding = 2,
-	Key2Binding = 3,
-	Key3Binding = 4,
-	Key4Binding = 5,
-	Key5Binding = 6,
-	Key1Image = NoteImage1,
-	Key2Image = NoteImage2,
-	Key3Image = NoteImage3,
-	Key4Image = NoteImage2,
-	Key5Image = NoteImage1,
-	Key1HoldImage = NoteImageHold1,
-	Key2HoldImage = NoteImageHold2,
-	Key3HoldImage = NoteImageHold3,
-	Key4HoldImage = NoteImageHold2,
-	Key5HoldImage = NoteImageHold1,
-	Key1Width = Channels5Sizes[1],
-	Key2Width = Channels5Sizes[2],
-	Key3Width = Channels5Sizes[3],
-	Key4Width = Channels5Sizes[4],
-	Key5Width = Channels5Sizes[5],
-	Key1X = Channels5Positions[1],
-	Key2X = Channels5Positions[2],
-	Key3X = Channels5Positions[3],
-	Key4X = Channels5Positions[4],
-	Key5X = Channels5Positions[5],
-	GearWidth = GearWidthByChannels[5],
-  BarlineWidth = GearWidthByChannels[5],
-  GearStartX = GearStartX,
-  NoteHeight = 40
+    Key1 = C1,
+    Key2 = C2,
+    Key3 = C3,
+    Key4 = C2,
+    Key5 = C1,
+    Key1Down = C1D,
+    Key2Down = C2D,
+    Key3Down = C3D,
+    Key4Down = C2D,
+    Key5Down = C1D,
+    GearHeight = GearHeightCommon,
+    Key1Binding = 2,
+    Key2Binding = 3,
+    Key3Binding = 4,
+    Key4Binding = 5,
+    Key5Binding = 6,
+    Key1Image = NoteImage1,
+    Key2Image = NoteImage2,
+    Key3Image = NoteImage3,
+    Key4Image = NoteImage2,
+    Key5Image = NoteImage1,
+    Key1HoldImage = NoteImageHold1,
+    Key2HoldImage = NoteImageHold2,
+    Key3HoldImage = NoteImageHold3,
+    Key4HoldImage = NoteImageHold2,
+    Key5HoldImage = NoteImageHold1,
+    Key1Width = Channels5Sizes[1],
+    Key2Width = Channels5Sizes[2],
+    Key3Width = Channels5Sizes[3],
+    Key4Width = Channels5Sizes[4],
+    Key5Width = Channels5Sizes[5],
+    Key1X = Channels5Positions[1],
+    Key2X = Channels5Positions[2],
+    Key3X = Channels5Positions[3],
+    Key4X = Channels5Positions[4],
+    Key5X = Channels5Positions[5],
+    GearWidth = GearWidthByChannels[5],
+    BarlineWidth = GearWidthByChannels[5],
+    GearStartX = GearStartX,
+    NoteHeight = 40
 }
 
 -- 4 Channels. By default, it's DJMax-like.
@@ -960,30 +958,30 @@ Channels4 = {
 }
 
 Channels1 = {
-	Key1 = C3,
-	Key1Down = C3D,
-	GearHeight = GearHeightCommon,
-	Key1Binding = 3,
-	Key1Image = NoteImage3,
-	Key1HoldImage = NoteImageHold3,
-	Key1Width = Channels1Sizes[1],
-	Key1X = Channels1Positions[1],
-	GearWidth = GearWidthByChannels[1],
-	BarlineWidth = GearWidthByChannels[1],
-  GearStartX = GearStartX,
-  NoteHeight = 40
+    Key1 = C3,
+    Key1Down = C3D,
+    GearHeight = GearHeightCommon,
+    Key1Binding = 3,
+    Key1Image = NoteImage3,
+    Key1HoldImage = NoteImageHold3,
+    Key1Width = Channels1Sizes[1],
+    Key1X = Channels1Positions[1],
+    GearWidth = GearWidthByChannels[1],
+    BarlineWidth = GearWidthByChannels[1],
+    GearStartX = GearStartX,
+    NoteHeight = 40
 }
 
 Noteskin = {}
 Noteskin[1] = Channels1 -- Yes, I'm completely serious. 
 Noteskin[4] = Channels4
 Noteskin[5] = Channels5
-Noteskin[6] = Channels6 
+Noteskin[6] = Channels6
 Noteskin[7] = Channels7
-Noteskin[8] = Channels8 
+Noteskin[8] = Channels8
 Noteskin[9] = Channels9
 Noteskin[10] = Channels10
-Noteskin[12] = Channels12 
+Noteskin[12] = Channels12
 Noteskin[16] = Channels16
 Noteskin.__index = Noteskin
 NoteskinSpecial = {}
