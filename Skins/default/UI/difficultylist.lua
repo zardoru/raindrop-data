@@ -1,5 +1,6 @@
 local DifficultyList = {
     Transform = Transformation(),
+    StringTransform = Transformation(),
     Font = Fonts.TruetypeFont(GetSkinFile("fonts/rounded-mgenplus-1c-light.ttf")),
     Song = nil,
     FontSize = 35,
@@ -8,12 +9,14 @@ local DifficultyList = {
     DiffNumX = 0,
     DiffChannelsX = 60,
     DifficultyIndex = Wheel.DifficultyIndex,
-    DiffCount = 1
+    DiffCount = 1,
+    TargetStringOffset = Vec2(0, 0),
 }
 
 function DifficultyList:Init()
     self.BgBox = Engine:CreateObject()
     self.SelectBox = Engine:CreateObject()
+    self.StringTransform.Parent = self.Transform
     self:OnDifficultyUpdate(self.DifficultyIndex)
 end
 
@@ -45,6 +48,9 @@ function DifficultyList:SetSong(song)
 
     self.Song = song
 
+    self.DiffCount = self.Song.DifficultyCount
+    self:OnDifficultyUpdate(self.DifficultyIndex)
+
     self.Difficulties = {}
     for i = 1, self.Song.DifficultyCount do
         table.insert(self.Difficulties, self.Song:GetDifficulty(i - 1))
@@ -70,60 +76,79 @@ function DifficultyList:SetSong(song)
 
         with(self.Strings[key], {
             Font = self.Font,
-            ChainTransformation = self.Transform,
+            Parent = self.StringTransform,
             FontSize = self.FontSize,
-            Y = itemY,
-            X = self.DiffNameX,
-            Text = "(" .. value.Channels .. ") " .. value.Name
+            Position = Vec2(self.DiffNameX, itemY),
+            Text = "(" .. value.Channels .. ") " .. value.Name,
+            Scissor = true,
+            ScissorRegion = self.Box
         })
 
         -- print(value.Level)
         with(self.DifficultyNumber[key], {
             Font = self.Font,
-            ChainTransformation = self.Transform,
+            Parent = self.StringTransform,
             FontSize = self.FontSize,
-            Y = itemY,
-            X = self.DiffNumX,
-            Text = "Lv." .. value.Level
+            Position = Vec2(self.DiffNumX, itemY),
+            Text = "Lv." .. value.Level,
+            Scissor = true,
+            ScissorRegion = self.Box
         })
-
-        -- self.DifficultyNumber[key]
 
         Engine:AddTarget(self.Strings[key])
         Engine:AddTarget(self.DifficultyNumber[key])
     end
-
-    self.DiffCount = self.Song.DifficultyCount
-    self:OnDifficultyUpdate(self.DifficultyIndex)
 end
 
 function DifficultyList:OnDifficultyUpdate(i)
+    -- local deltaDiffIndex = i - self.DifficultyIndex
     self.DifficultyIndex = i
+
+    local idx = clamp(i - 3, 0, self.DiffCount - 6)
+    print(idx)
+    self.TargetStringOffset.Y = idx * -self.ItemDistance
+    -- print("New Target", self.TargetStringOffset.Y)
+
+    self.Box = AABB(
+            self.Transform.X,
+            self.Transform.Y,
+            self.Transform.X + 400,
+            self.Transform.Y + 6 * self.ItemDistance + 5
+    )
 
     self.SelectBox.Texture = "Global/white.png"
     with(self.SelectBox, {
-        ChainTransformation = self.Transform,
-        Width = 400,
-        Height = self.ItemDistance,
-        X = 0,
-        Y = self.DifficultyIndex * self.ItemDistance + 5,
+        Parent = self.StringTransform,
+        Size = Vec2(400, self.ItemDistance),
+        Position = Vec2(0, self.DifficultyIndex * self.ItemDistance + 5),
         Red = 0.5,
         Green = 0.6,
-        Blue = 0.05
+        Blue = 0.05,
+        Scissor = true,
+        ScissorRegion = self.Box
     })
 
     self.BgBox.Texture = "Global/white.png"
     local pad = 10
+    local pos = Vec2(-pad, -pad)
+    local size = self.Box.size:add(Vec2(pad * 2, pad * 3))
+    -- print(self.Box.x, self.Box.y, self.Box.x2, self.Box.y2, size.x, size.y)
     with(self.BgBox, {
-        ChainTransformation = self.Transform,
-        Width = 400 + pad * 2,
-        Height = max(self.DiffCount, 6) * self.ItemDistance + pad * 3,
-        X = -pad,
-        Y = -pad,
+        Parent = self.Transform,
+        Size = size,
+        Position = pos,
         Red = 0.1,
         Green = 0.1,
         Blue = 0.05
     })
+end
+
+function DifficultyList:OnClick(pos)
+    if self.Box ~= nil then
+        if self.Box:contains(pos) then
+            print("click!")
+        end
+    end
 end
 
 function DifficultyList:Update(dt)
@@ -131,6 +156,11 @@ function DifficultyList:Update(dt)
         self.DiffCount = self.Song.DifficultyCount
         self:OnDifficultyUpdate(Wheel.DifficultyIndex)
     end
+
+    local deltaOffset = (self.TargetStringOffset.Y - self.StringTransform.Y) * dt
+    -- print(deltaOffset * 5, self.TargetStringOffset.Y, self.StringTransform.Y)
+    self.StringTransform.Y = self.StringTransform.Y + deltaOffset * 5
+
 end
 
 return DifficultyList
