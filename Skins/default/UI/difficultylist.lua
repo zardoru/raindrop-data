@@ -104,8 +104,8 @@ function DifficultyList:OnDifficultyUpdate(i)
     -- local deltaDiffIndex = i - self.DifficultyIndex
     self.DifficultyIndex = i
 
-    local idx = clamp(i - 3, 0, self.DiffCount - 6)
-    print(idx)
+    local idx = clamp(i - 3, 0, max(self.DiffCount - 6, 1))
+    -- print(idx)
     self.TargetStringOffset.Y = idx * -self.ItemDistance
     -- print("New Target", self.TargetStringOffset.Y)
 
@@ -131,7 +131,7 @@ function DifficultyList:OnDifficultyUpdate(i)
     self.BgBox.Texture = "Global/white.png"
     local pad = 10
     local pos = Vec2(-pad, -pad)
-    local size = self.Box.size:add(Vec2(pad * 2, pad * 3))
+    local size = self.Box.size + Vec2(pad * 2, pad * 3)
     -- print(self.Box.x, self.Box.y, self.Box.x2, self.Box.y2, size.x, size.y)
     with(self.BgBox, {
         Parent = self.Transform,
@@ -157,9 +157,9 @@ function DifficultyList:Update(dt)
         self:OnDifficultyUpdate(Wheel.DifficultyIndex)
     end
 
-    local deltaOffset = (self.TargetStringOffset.Y - self.StringTransform.Y) * dt
-    -- print(deltaOffset * 5, self.TargetStringOffset.Y, self.StringTransform.Y)
-    self.StringTransform.Y = self.StringTransform.Y + deltaOffset * 5
+    local deltaOffset = (self.TargetStringOffset - self.StringTransform.position) * dt
+    -- print(deltaOffset.Y * 5, self.TargetStringOffset.Y, self.StringTransform.Y)
+    self.StringTransform.position = self.StringTransform.position + deltaOffset * 5
 
 end
 
