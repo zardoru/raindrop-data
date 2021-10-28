@@ -236,17 +236,17 @@ function CreateWheelItems()
 	--end
 
 
-	WheelSeparator = Engine:CreateObject()
-	WheelSeparator.Texture = "Global/white.png"
-	WheelSeparator.Height = Screen.Height
-	WheelSeparator.Width = 5
-	WheelSeparator.Y = 0
+	WheelSeparator = ScreenObject {
+		Texture = "Global/white.png",
+		Size = Vec2(5, Screen.Height),
+		Y = 0
+	}
 
-	wheeltick = Engine:CreateObject()
-	wheeltick.Texture = "Global/white.png"
-	wheeltick.Height = 8
-	wheeltick.Width = 12
-	wheeltick.Layer = 25
+	wheeltick = ScreenObject {
+		Texture = "Global/white.png",
+		Size = Vec2(12, 8),
+		Layer = 25
+	}
 
 	Wheel.DisplayItemCount = ceil(Screen.Height / ItemHeight) + 1
 	--Wheel.DisplayItemOffset = - Wheel.DisplayItemCount / 2
@@ -286,7 +286,10 @@ function UpdateWheel(Delta)
 end
 
 function WheelOnScroll(yoff)
-	State.Cursor = Wheel.SelectedIndex
-	Wheel.CursorIndex = State.Cursor
-	State.TargetY = State.TargetY + yoff * ItemHeight
+	-- if Box:contains() then
+		Wheel.SelectedIndex = Wheel.SelectedIndex - yoff
+		State.Cursor = Wheel.SelectedIndex
+		Wheel.CursorIndex = State.Cursor
+		State.TargetY = State.TargetY + yoff * ItemHeight
+	-- end
 end

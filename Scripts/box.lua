@@ -75,7 +75,7 @@ function Box:CreateCorner(index, replace)
 	Object.Layer = self.Layer
 
 	if self.Transform then
-		Object.ChainTransformation = self.Transform
+		Object.Parent = self.Transform
 	end
 
 	if index == Box.TopLeft then

@@ -151,14 +151,27 @@ function map(f, t)
 end
 
 --[[
-	Warning: using pairs (underlying on the with)
-	does not guarantee order. If you're setting image with
-	ScreenObject or with, you could potentially end up
-	side effect'd at the wrong order.
+	using pairs (underlying on the with)
+	does not guarantee order.
+	but we try to set texture first.
 ]]
 function ScreenObject(t)
     local x = Engine:CreateObject()
-    return with(x, t)
+
+    -- Assign texture first, other props later.
+    if t.Texture ~= nil then
+        x.Texture = t.Texture
+    end
+
+    if type(t) == "table" then
+        for k, v in pairs(t) do
+            if k ~= 'Texture' then
+                x[k] = v
+            end
+        end
+    end
+
+    return x
 end
 
 --- Adjust a transform object into a box. Keeps aspect ratio of the transform.
@@ -202,6 +215,7 @@ function AdjustInBox(transform, params)
     Background.X = x + w / 2 - modWidth / 2
     Background.Y = y + h / 2 - modHeight / 2
 end
+
 
 librd = {
     --- Create a constructor with the following characteristics:

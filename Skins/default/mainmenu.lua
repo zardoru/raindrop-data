@@ -1,5 +1,5 @@
 skin_require "Global/FadeInScreen"
-game_require "AnimationFunctions"
+game_require "Animation"
 
 Preload = {
 	"MainMenu/play.png",
@@ -52,31 +52,35 @@ function Init()
 	ScreenFade:Init()
 	Time = 0
 		
-	targLogo = Engine:CreateObject() 
-	targLogo.Texture = "MainMenu/FRONTs.png"
-	targLogo.X = Screen.Width / 2
-	targLogo.Y = Screen.Height / 4
-	targLogo.Centered = 1
-	targLogo.Alpha = 1
-	targLogo.Layer = 31
+	targLogo = ScreenObject {
+		Texture = "MainMenu/FRONTs.png",
+		X = Screen.Width / 2,
+		Y = Screen.Height / 4,
+		Centered = 1,
+		Alpha = 1,
+		Layer = 31
+	}
 
-	targBadge = Engine:CreateObject()
-	targBadge.Texture = "MainMenu/BACKs.png"
-	targBadge.X = Screen.Width / 2
-	targBadge.Y = Screen.Height / 4
-	targBadge.Centered = 1
-	targBadge.Layer = 31
+	targBadge = ScreenObject {
+		Texture = "MainMenu/BACKs.png",
+		X = Screen.Width / 2,
+		Y = Screen.Height / 4,
+		Centered = 1,
+		Layer = 31
+	}
 	
 	font = Fonts.TruetypeFont(GetSkinFile("font.ttf"))
 
 	s = "press any key..."
-	title = StringObject2D()
-	title.Font = font
-	title.Y = Screen.Height * 3 / 4
-	title.Text = s
-	title.X = Screen.Width / 2 - title.TextSize / 2
-	title.Z = 31
-	title.FontSize = 36
+	title = with(StringObject2D(), {
+		Font = font,
+		Text = s,
+		Z = 31,
+		FontSize = 36
+	})
+
+	title.Position = Vec2(Screen.Width / 2 - title.TextSize / 2, Screen.Height * 3 / 4)
+
 	Engine:AddTarget(title)
 
 	-- Rocket UI not initialized yet...

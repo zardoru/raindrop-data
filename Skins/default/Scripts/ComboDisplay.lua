@@ -58,7 +58,7 @@ function ComboDisplay:Init()
         }
 
         if self.Transformation then
-            self.Targets[i].ChainTransformation = self.Transformation
+            self.Targets[i].Parent = self.Transformation
         end
     end
 

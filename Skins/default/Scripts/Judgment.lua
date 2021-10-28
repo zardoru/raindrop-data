@@ -48,7 +48,7 @@ function JudgmentObject:Init()
 	}
 
 	self.Transform = Transformation()
-	self.Object.ChainTransformation = self.Transform
+	self.Object.Parent = self.Transform
   
 	if self.Position then 
 		self.Transform.X = self.Position.x or self.defaultX
@@ -75,7 +75,7 @@ function JudgmentObject:Init()
 	}
 	self.IndicatorObject.Scale =  1 / self.Scale
 
-	self.IndicatorObject.ChainTransformation = self.Transform
+	self.IndicatorObject.Parent = self.Transform
   --self.Value = 0
 end
 

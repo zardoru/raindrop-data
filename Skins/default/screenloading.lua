@@ -1,6 +1,6 @@
 game_require "librd"
 skin_require "Loading/phrases"
-game_require "AnimationFunctions"
+game_require "Animation"
 
 IntroDuration = 0.35
 ExitDuration = 0.35
@@ -59,16 +59,16 @@ function Init()
 		Y = 0,
 		X = Screen.Width / 2,
 		Centered = 1,
-		ChainTransformation = BgStuff
+		Parent = BgStuff
 	})
 	
-   local divideScreenHeightInto = 9
+    local divideScreenHeightInto = 9
 	local ls = 1 / divideScreenHeightInto * Screen.Height 
 	local lx = Screen.Height / 2 - ls / 2
 	local l1 = - 1 / divideScreenHeightInto * Screen.Height
 	local l2 = 1 / divideScreenHeightInto * Screen.Height
-   local textStart = targBadge.X + targBadge.Width / 2 + 38
-   local d = 10
+    local textStart = targBadge.X + targBadge.Width / 2 + 38
+    local d = 10
    
    local genre = Global:GetDifficulty(0).Genre 
    
@@ -83,7 +83,7 @@ function Init()
 
 	ldFont = Fonts.TruetypeFont(GetSkinFile("font.ttf"));
 	strAuthor = StringObject2D()
-	strAuthor.ChainTransformation = BgStuff
+	strAuthor.Parent = BgStuff
    
    strSong = StringObject2D()
 	with (strSong, {
@@ -93,7 +93,7 @@ function Init()
 		Y = l1 - ls * 2 / 3 + d,
 		Layer = 16,
 		Text = sng.Title,
-		ChainTransformation = BgStuff
+		Parent = BgStuff
 	})
 
 	Engine:AddTarget(strSong)
@@ -105,7 +105,7 @@ function Init()
 		Y = strSong.Y + strSong.FontSize,
 		Layer = 16,
 		Text = sng.Author,
-		ChainTransformation = BgStuff
+		Parent = BgStuff
 	})
 
 	Engine:AddTarget(strAuthor)
@@ -117,7 +117,7 @@ function Init()
 		X = textStart,
 		Y = strAuthor.Y + strAuthor.FontSize,
 		Layer = 16,
-		ChainTransformation = BgStuff
+		Parent = BgStuff
 	})
 
    strGenre.Text = genre

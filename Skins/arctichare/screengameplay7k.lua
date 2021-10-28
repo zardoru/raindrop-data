@@ -10,7 +10,7 @@ game_require "TextureAtlas"
 FixedObjects = game_require "FixedObjects"
 
 game_require "utils"
-game_require "AnimationFunctions"
+game_require "Animation"
 
 -- Set up constants for everyone
 

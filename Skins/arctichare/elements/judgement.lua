@@ -32,7 +32,7 @@ local JudgmentObject = {
 			Centered = 1,
 			Alpha = 0,
 			Layer = 20,
-			ChainTransformation = self.Transform
+			Parent = self.Transform
 		}
 
 		-- force load if not preloaded
@@ -48,7 +48,7 @@ local JudgmentObject = {
 		for i=1, max_digits do
 			local obj = ScreenObject {
 				Alpha = 0,
-				ChainTransformation = self.Transform,
+				Parent = self.Transform,
 				Texture = "assets/" .. self.ComboAtlas.File,
 				Layer = self.Judgment.Layer
 			}
@@ -65,7 +65,7 @@ local JudgmentObject = {
 			Alpha = 0,
 			Centered = 1,
 			Layer = 20,
-			ChainTransformation = self.Transform
+			Parent = self.Transform
 		}
 
 		ScaleObj(self.FSIndicator)

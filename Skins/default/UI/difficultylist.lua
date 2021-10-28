@@ -17,7 +17,7 @@ function DifficultyList:Init()
     self.BgBox = Engine:CreateObject()
     self.SelectBox = Engine:CreateObject()
     self.StringTransform.Parent = self.Transform
-    self:OnDifficultyUpdate(self.DifficultyIndex)
+    self:SetSong(nil)
 end
 
 function DifficultyList:RemoveAllObjects(tbl)

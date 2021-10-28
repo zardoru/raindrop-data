@@ -5,7 +5,7 @@ end
 
 BackgroundAnimation = {Duration = 0.25}
 
-function BackgroundAnimation.Init(self)
+function BackgroundAnimation:Init()
 	if self.Initialized then
 		return
 	end
@@ -38,26 +38,21 @@ function BackgroundAnimation.Init(self)
 
 	self.Initialized = true
 	self.Blue = Engine:CreateObject()
-	self.Pink = Engine:CreateObject()
 
-	self.Pink.Texture  = "Global/pink.png"
 	self.Blue.Texture  = "Global/tile_aqua.png"
 
 	self.Blue.Height = Screen.Height
 	self.Blue.Width = Screen.Width
 	self.Blue.Shader = self.shader
 
-	self.Pink.Y = -self.Pink.Height
 	self.Blue.Y = 0
-	self.Pink.Z = 0
 	self.Blue.Z = 0
-	self.Pink.Alpha = 0
-	
+
 	self.t = 0
 end
 
 function BGAOut(frac)
-	BackgroundAnimation.Pink.Y = -BackgroundAnimation.Pink.Height * (1-frac)
+	-- BackgroundAnimation.Pink.Y = -BackgroundAnimation.Pink.Height * (1-frac)
 	BackgroundAnimation.shader:Send("persp", (frac) * 0.9 + 0.1)
 	return 1
 end
@@ -67,14 +62,14 @@ function BGAIn(frac)
 end
 
 function BackgroundAnimation:In()
-	Engine:AddAnimation(self.Pink, "BGAIn", Easing.In, BackgroundAnimation.Duration, 0)
+	Engine:AddAnimation(self.Blue, "BGAIn", Easing.In, BackgroundAnimation.Duration, 0)
 end
 
 function BackgroundAnimation:Out()
-	Engine:AddAnimation(self.Pink, "BGAOut", Easing.Out, BackgroundAnimation.Duration, 0)
+	Engine:AddAnimation(self.Blue, "BGAOut", Easing.Out, BackgroundAnimation.Duration, 0)
 end
 
-function BackgroundAnimation.UpdateObjects(self)
+function BackgroundAnimation:UpdateObjects()
 end
 
 function BackgroundAnimation:Update(Delta)

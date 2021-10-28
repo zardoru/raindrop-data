@@ -1,6 +1,6 @@
 game_require "TextureAtlas"
 game_require "utils"
-game_require "AnimationFunctions"
+game_require "Animation"
 game_require "Histogram"
 skin_require "Global/FadeInScreen"
 

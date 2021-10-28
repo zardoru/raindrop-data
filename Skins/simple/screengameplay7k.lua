@@ -9,7 +9,7 @@ game_require "FixedObjects"
 skin_require "custom_defs"
 
 game_require "utils"
-game_require "AnimationFunctions"
+game_require "Animation"
 
 -- Set up constants for everyone
 

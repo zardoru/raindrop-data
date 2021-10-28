@@ -23,7 +23,7 @@ function ProgressTick:Init()
     }
 
     if self.Transformation then
-        self.Object.ChainTransformation = self.Transformation
+        self.Object.Parent = self.Transformation
     end
 end
 
@@ -59,7 +59,7 @@ function Pulse:Init()
     self.Object.Y = self.Player.JudgmentY - self.Object.Height + 12
 
     if self.Transformation then
-        self.Object.ChainTransformation = self.Transformation
+        self.Object.Parent = self.Transformation
     end
 end
 
@@ -98,7 +98,7 @@ function MissHighlight:Init()
     end
 
     if self.Transformation then
-        self[i].ChainTransformation = self.Transformation
+        self[i].Parent = self.Transformation
     end
 end
 

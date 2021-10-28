@@ -1,10 +1,20 @@
 game_require "librd"
+game_require "Animation"
 skin_require "Global/Background"
 skin_require "Global/FadeInScreen"
 
-skin_require "song_wheel.lua"
-DifficultyList = skin_require "UI/difficultylist.lua"
+skin_require "song_wheel"
+DifficultyList = skin_require "UI.difficultylist"
 
+local TitleStart = 60
+local Title = {
+	Transform = Transformation(),
+	AnimationStartX = TitleStart,
+	AnimationEndX = 0,
+	Duration = 0.3,
+	CurrentTime = 0,
+	Ease = Ease.Out
+}
 
 -- Screen Events
 function OnSelect()
@@ -39,20 +49,30 @@ function Init()
 
     print(font_big)
 	strSongName = StringObject2D()
-    strSongName.FontSize = 80
-    strSongName.Font = font_big
-    strSongName.X = 60
-    strSongName.Y = 150
+	with(strSongName, {
+		FontSize = 80,
+		Font = font_big,
+		X = TitleStart,
+		Y = 150,
+		Parent = Title.Transform
+	})
+	Title.strSongName = strSongName
+
     Engine:AddTarget(strSongName)
 
     strSongArtist = StringObject2D()
-    strSongArtist.FontSize = 50
-    strSongArtist.Font = font_big
-    strSongArtist.X = 60
-    strSongArtist.Y = strSongName.Y + 90
+	with(strSongArtist, {
+		FontSize = 50,
+		Font = font_big,
+		X = TitleStart,
+		Y = strSongName.Y + 90,
+		Parent = Title.Transform
+	})
+	Title.strSongArtist = strSongArtist
+
     Engine:AddTarget(strSongArtist)
 
-	DifficultyList.Transform.X = 60
+	DifficultyList.Transform.X = TitleStart
 	DifficultyList.Transform.Y = strSongArtist.Y + 80
 
 	CreateWheelItems()
@@ -62,6 +82,7 @@ function updText()
 	local sng = Global:GetSelectedSong()
 
 	DifficultyList:SetSong(sng)
+	Title.CurrentTime = 0
 
 	if sng then
 		-- local diff = Global:GetDifficulty(0)
@@ -80,8 +101,6 @@ function Cleanup()
 end
 
 function ScrollEvent(xoff, yoff)
-	-- print (yoff, Wheel.SelectedIndex, Wheel.SelectedIndex - yoff)
-	Wheel.SelectedIndex = Wheel.SelectedIndex - yoff
 	WheelOnScroll(yoff)
 end
 
@@ -89,4 +108,11 @@ function Update(Delta)
 	BackgroundAnimation:Update(Delta)
 	UpdateWheel(Delta)
 	DifficultyList:Update(Delta)
+
+	Title.CurrentTime = Title.CurrentTime + Delta
+
+	local animProgress = Title.Ease(clamp(Title.CurrentTime / Title.Duration, 0, 1))
+	Title.Transform.X = mix(animProgress, Title.AnimationStartX, Title.AnimationEndX)
+	Title.strSongArtist.Alpha = animProgress
+	Title.strSongName.Alpha = animProgress
 end
