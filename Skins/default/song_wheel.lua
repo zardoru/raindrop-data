@@ -79,7 +79,7 @@ function TransformString(Item, Song, IsSelected, Index, Txt)
 end
 
 -- This recieves song and difficulty changes.
-function OnSongChange(Song, Diff)
+function OnSongChange(song, Diff)
 	updText()
 	State.Cursor = Wheel.SelectedIndex
 end
@@ -93,9 +93,9 @@ function CreateWheelItems()
 
 	WheelItems[Wheel:AddSprite(WheelBackground)] = function(Song, IsSelected, Index)
 		if IsSelected == true then
-			WheelBackground.Red = 0.1
+			WheelBackground.Red   = 0.1
 			WheelBackground.Green = 0.3
-			WheelBackground.Blue = 0.7
+			WheelBackground.Blue  = 0.7
 		else
 			if Index == Wheel.ListIndex then
 				WheelBackground.Red = 0.05
@@ -258,7 +258,7 @@ function UpdateWheel(Delta)
 	WheelSeparator.X = State.X - WheelSeparator.Width
 	wheeltick.Width = math.max(16, Screen.Width / Wheel.ItemCount)
 	wheeltick.X = (Wheel.SelectedIndex % Wheel.ItemCount) / (Wheel.ItemCount - 1) * (Screen.Width - wheeltick.Width)
-	wheeltick.Y = 86
+	wheeltick.Y = 110
 
 	local Offset = Screen.Height / 2 - ItemHeight / 2
 	-- local SelectedSongCenterY = math.floor(-Wheel.SelectedIndex * ItemHeight + Offset)

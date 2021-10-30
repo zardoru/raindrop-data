@@ -121,9 +121,9 @@ function DifficultyList:OnDifficultyUpdate(i)
         Parent = self.StringTransform,
         Size = Vec2(400, self.ItemDistance),
         Position = Vec2(0, self.DifficultyIndex * self.ItemDistance + 5),
-        Red = 0.5,
-        Green = 0.6,
-        Blue = 0.05,
+        Red   = 0.1,
+        Green = 0.3,
+        Blue  = 0.7,
         Scissor = true,
         ScissorRegion = self.Box
     })
@@ -137,9 +137,12 @@ function DifficultyList:OnDifficultyUpdate(i)
         Parent = self.Transform,
         Size = size,
         Position = pos,
-        Red = 0.1,
-        Green = 0.1,
-        Blue = 0.05
+        Red = 0,
+        Green = 0,
+        Blue = 0,
+        -- Red = 0.1,
+        -- Green = 0.1,
+        -- Blue = 0.05
     })
 end
 
