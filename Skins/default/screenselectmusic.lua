@@ -5,6 +5,7 @@ skin_require "Global/FadeInScreen"
 
 skin_require "song_wheel"
 DifficultyList = skin_require "UI.difficultylist"
+Options = skin_require "UI.options"
 
 local font
 local font_big
@@ -38,7 +39,7 @@ end
 
 
 function KeyEvent(k, c, m)
-
+	Options:KeyEvent(k, c)
 end
 
 function InitSongSelectBanner()
@@ -59,26 +60,7 @@ function InitSongSelectBanner()
 
 	Engine:AddTarget(strSongSelectTitle)
 
-
-	local pad = 10
-	bgSongSelectTicker = ScreenObject {
-		Texture = "Global/filter.png",
-		-- 410 matches then Song Wheel's width
-		Size = Vec2(Screen.Width - 410 - pad * 2, 50),
-		Position = Vec2(pad, 130),
-		Z = 20
-	}
-
-	strSongSelectInfoText = StringObject2D()
-	with(strSongSelectInfoText, {
-		Font = font,
-		FontSize = 30,
-		Position = bgSongSelectTicker.Position + Vec2(40, 0),
-		Text = "F1 for speed options. F2 for game options.",
-		Z = 21
-	})
-
-	Engine:AddTarget(strSongSelectInfoText)
+	Options:Init(font)
 end
 
 function Init()
@@ -152,12 +134,14 @@ function ScrollEvent(xoff, yoff)
 	WheelOnScroll(yoff)
 end
 
-function Update(Delta)
-	BackgroundAnimation:Update(Delta)
-	UpdateWheel(Delta)
-	DifficultyList:Update(Delta)
+function Update(deltaTime)
+	BackgroundAnimation:Update(deltaTime)
+	UpdateWheel(deltaTime)
+	DifficultyList:Update(deltaTime)
 
-	Title.CurrentTime = Title.CurrentTime + Delta
+	Options:Update(deltaTime)
+
+	Title.CurrentTime = Title.CurrentTime + deltaTime
 
 	local animProgress = Title.Ease(clamp(Title.CurrentTime / Title.Duration, 0, 1))
 	Title.Transform.X = mix(animProgress, Title.AnimationStartX, Title.AnimationEndX)

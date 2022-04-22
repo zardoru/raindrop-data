@@ -1,6 +1,6 @@
 local DifficultyList = {
     Transform = Transformation(),
-    StringTransform = Transformation(),
+    DifficultyNamesTransform = Transformation(),
     Font = Fonts.TruetypeFont(GetSkinFile("fonts/rounded-mgenplus-1c-light.ttf")),
     Song = nil,
     FontSize = 35,
@@ -16,7 +16,7 @@ local DifficultyList = {
 function DifficultyList:Init()
     self.BgBox = Engine:CreateObject()
     self.SelectBox = Engine:CreateObject()
-    self.StringTransform.Parent = self.Transform
+    self.DifficultyNamesTransform.Parent = self.Transform
     self:SetSong(nil)
 end
 
@@ -76,7 +76,7 @@ function DifficultyList:SetSong(song)
 
         with(self.Strings[key], {
             Font = self.Font,
-            Parent = self.StringTransform,
+            Parent = self.DifficultyNamesTransform,
             FontSize = self.FontSize,
             Position = Vec2(self.DiffNameX, itemY),
             Text = "(" .. value.Channels .. ") " .. value.Name,
@@ -87,7 +87,7 @@ function DifficultyList:SetSong(song)
         -- print(value.Level)
         with(self.DifficultyNumber[key], {
             Font = self.Font,
-            Parent = self.StringTransform,
+            Parent = self.DifficultyNamesTransform,
             FontSize = self.FontSize,
             Position = Vec2(self.DiffNumX, itemY),
             Text = "Lv." .. value.Level,
@@ -118,7 +118,7 @@ function DifficultyList:OnDifficultyUpdate(i)
 
     self.SelectBox.Texture = "Global/white.png"
     with(self.SelectBox, {
-        Parent = self.StringTransform,
+        Parent = self.DifficultyNamesTransform,
         Size = Vec2(400, self.ItemDistance),
         Position = Vec2(0, self.DifficultyIndex * self.ItemDistance + 5),
         Red   = 0.1,
@@ -160,9 +160,9 @@ function DifficultyList:Update(dt)
         self:OnDifficultyUpdate(Wheel.DifficultyIndex)
     end
 
-    local deltaOffset = (self.TargetStringOffset - self.StringTransform.position) * dt
+    local deltaOffset = (self.TargetStringOffset - self.DifficultyNamesTransform.position) * dt
     -- print(deltaOffset.Y * 5, self.TargetStringOffset.Y, self.StringTransform.Y)
-    self.StringTransform.position = self.StringTransform.position + deltaOffset * 5
+    self.DifficultyNamesTransform.position = self.DifficultyNamesTransform.position + deltaOffset * 5
 
 end
 
