@@ -43,6 +43,8 @@ Hitlightning = 1
 -- Time that the 'miss' layer will be shown on BMS when a miss occurs.
 OnMissBGATime = 0.5
 
+ShowCursor = 1
+
 -- Set screen filter transparency on 7K.
 ScreenFilter = 0.97
 
