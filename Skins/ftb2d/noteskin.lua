@@ -20,8 +20,8 @@ function setNoteStuff(note, i)
 end
 
 function Init()
-	Atlas = TextureAtlas:new("GameData/Skins/ftb2d/assets/notes.csv")
-	AtlasHolds = TextureAtlas:new("Gamedata/Skins/ftb2d/assets/holds.csv")
+	Atlas = TextureAtlas:new("data/skins/ftb2d/assets/notes.csv")
+	AtlasHolds = TextureAtlas:new("data/skins/ftb2d/assets/holds.csv")
 	for i=1,Notes.Channels do
 	  local MapLane = Noteskin[Notes.Channels].Map[i]
 		normalNotes[i] = Object2D()

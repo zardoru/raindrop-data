@@ -21,9 +21,9 @@ XR = 1360 / 1280
 GearWidth = 380
 GearHeight = GearHeightCommon
 
-skin_require "Scripts/ComboDisplay"
-skin_require "Scripts/Judgment"
-skin_require "Scripts/ScoreDisplay"
+skin_require "scripts/ComboDisplay"
+skin_require "scripts/Judgment"
+skin_require "scripts/ScoreDisplay"
 
 Judgment.Scale = 0.15
 Judgment.ScaleHit = 1.2

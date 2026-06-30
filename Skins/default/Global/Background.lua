@@ -12,12 +12,13 @@ function BackgroundAnimation:Init()
 
 	self.shader = Shader()
 	self.shader:Compile [[
-		#version 120
-		varying vec2 texcoord;
+		#version 330
+		in vec2 texcoord;
 		uniform sampler2D tex;
 		uniform vec4 color;
 		uniform float frac;
 		uniform float persp;
+		out vec4 FragColor;
 		void main(void) {
 			vec2 uv = texcoord - .5;
 			float z = sqrt(abs(.5*.5 - uv.x*uv.x - uv.y*uv.y)) / persp;
@@ -26,13 +27,13 @@ function BackgroundAnimation:Init()
 			uv /= z;
 			
 			uv.x += frac / 4.;
-			/*vec4 col = texture2D(tex, uv) 
+			/*vec4 col = texture(tex, uv) 
 			float v = (col.r + col.g + col.b) / 3.;
 			vec4 gs = vec4(v,v,v,1.);
 			vec4 nc = vec4(0.48, 0.79, 1., 1.);
-			gl_FragColor = gs * persp * z;
+			FragColor = gs * persp * z;
 			*/
-			gl_FragColor = texture2D(tex, vec2(mod(uv.x, 1.0), mod(uv.y, 1.0))) * (z + 0.2);
+			FragColor = texture(tex, vec2(mod(uv.x, 1.0), mod(uv.y, 1.0))) * (z + 0.2) * color;
 		}
 	]]
 

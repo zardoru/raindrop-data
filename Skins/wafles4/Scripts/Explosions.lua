@@ -1,5 +1,5 @@
 if Game:GetPlayer(0).Channels ~= 4 then
-	fallback_require "Scripts/Explosions"
+	fallback_require "scripts/Explosions"
 	return
 end
 
