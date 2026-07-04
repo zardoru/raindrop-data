@@ -257,7 +257,11 @@ function UpdateWheel(Delta)
 
 	WheelSeparator.X = State.X - WheelSeparator.Width
 	wheeltick.Width = math.max(16, Screen.Width / Wheel.ItemCount)
-	wheeltick.X = (Wheel.SelectedIndex % Wheel.ItemCount) / (Wheel.ItemCount - 1) * (Screen.Width - wheeltick.Width)
+    local cnt = Wheel.ItemCount
+    if cnt == 0 then
+        cnt = 1
+    end
+	wheeltick.X = (Wheel.SelectedIndex % cnt) / (cnt - 1) * (Screen.Width - wheeltick.Width)
 	wheeltick.Y = 110
 
 	local Offset = Screen.Height / 2 - ItemHeight / 2

@@ -25,7 +25,7 @@ end
 Ease = {
     Linear = function(t) return t  end,
     In = function(t) return t * t end,
-    Out = function(t) return (1 - math.pow(1 - t, 2)) end,
+    Out = function(t) return (1 - (1 - t)^2) end,
     ElasticSquare = function(p)
         local attn = 1 + 1 - math.asin(1.0 / p) * 2.0 / math.pi
         local pi = math.pi
