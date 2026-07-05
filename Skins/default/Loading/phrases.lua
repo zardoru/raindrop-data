@@ -5,7 +5,6 @@ Phrases = {
 		"a noodle soup a day and your skills won't decay",
 		"hey girl im kaiden want to go out",
 		"now with more drops, sadly rain does not produce dubstep.",
-		"protip: dolphins are not capable of playing music games, let alone make music for them.",
 		"top 10 bms plays",
 		"i'll only date you if you're kaiden",
         "dude nice",
