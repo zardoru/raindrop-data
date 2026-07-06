@@ -56,3 +56,18 @@ end
 function Cleanup()
 
 end
+
+return {
+	IntroDuration = IntroDuration,
+	ExitDuration = ExitDuration,
+	Init = Init,
+	Cleanup = Cleanup,
+	Update = Update,
+	KeyEvent = KeyEvent,
+	UpdateIntro = UpdateIntro,
+	UpdateExit = UpdateExit,
+	OnIntroBegin = OnIntroBegin,
+	OnIntroEnd = OnIntroEnd,
+	OnExitBegin = OnExitBegin,
+	OnExitEnd = OnExitEnd,
+}

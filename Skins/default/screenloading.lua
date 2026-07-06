@@ -147,3 +147,13 @@ function Update(Delta)
 	Acceleration = Acceleration + Delta
 	targBadge.Rotation = targBadge.Rotation + (6)
 end
+
+return {
+	IntroDuration = IntroDuration,
+	ExitDuration = ExitDuration,
+	Init = Init,
+	Cleanup = Cleanup,
+	Update = Update,
+	UpdateIntro = UpdateIntro,
+	UpdateExit = UpdateExit,
+}

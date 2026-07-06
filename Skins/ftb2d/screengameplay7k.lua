@@ -360,3 +360,17 @@ function Update(Delta)
 	end
 end
 
+return {
+	Preload = Preload,
+	Init = Init,
+	Cleanup = Cleanup,
+	Update = Update,
+	KeyEvent = KeyEvent,
+	GearKeyEvent = GearKeyEvent,
+	HitEvent = HitEvent,
+	MissEvent = MissEvent,
+	OnFullComboEvent = OnFullComboEvent,
+	OnFailureEvent = OnFailureEvent,
+	OnActivateEvent = OnActivateEvent,
+	OnSongFinishedEvent = OnSongFinishedEvent,
+}

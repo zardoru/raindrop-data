@@ -148,3 +148,24 @@ function Update(deltaTime)
 	Title.strSongArtist.Alpha = animProgress
 	Title.strSongName.Alpha = animProgress
 end
+
+return {
+	Init = Init,
+	Cleanup = Cleanup,
+	Update = Update,
+	KeyEvent = KeyEvent,
+	ScrollEvent = ScrollEvent,
+	OnSelect = OnSelect,
+	OnRestore = OnRestore,
+	OnDirectoryChange = OnDirectoryChange,
+	OnSongChange = OnSongChange,
+	OnItemClick = OnItemClick,
+	OnItemHover = OnItemHover,
+	OnItemHoverLeave = OnItemHoverLeave,
+	TransformListHorizontal = TransformListHorizontal,
+	TransformListVertical = TransformListVertical,
+	TransformListWidth = TransformListWidth,
+	TransformListHeight = TransformListHeight,
+	TransformItem = TransformItem,
+	TransformString = TransformString,
+}

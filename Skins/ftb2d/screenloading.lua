@@ -106,3 +106,13 @@ function Update(Delta)
 	end
 
 end
+
+return {
+	IntroDuration = IntroDuration,
+	ExitDuration = ExitDuration,
+	Init = Init,
+	Cleanup = Cleanup,
+	Update = Update,
+	UpdateIntro = UpdateIntro,
+	UpdateExit = UpdateExit,
+}

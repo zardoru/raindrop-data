@@ -71,11 +71,25 @@ end
 
 -- This gets called for every item - ideally you dispatch for every item.
 function TransformItem(Item, Song, IsSelected, Index)
-	WheelItems[Item](Song, IsSelected, Index);
+	local transform = WheelItems[Item]
+	if not transform then
+		_, transform = next(WheelItems)
+	end
+
+	if transform then
+		transform(Song, IsSelected, Index)
+	end
 end
 
 function TransformString(Item, Song, IsSelected, Index, Txt)
-	WheelItemStrings[Item](Song, IsSelected, Index, Txt);
+	local transform = WheelItemStrings[Item]
+	if not transform then
+		_, transform = next(WheelItemStrings)
+	end
+
+	if transform then
+		transform(Song, IsSelected, Index, Txt)
+	end
 end
 
 -- This recieves song and difficulty changes.
@@ -291,9 +305,14 @@ end
 
 function WheelOnScroll(yoff)
 	-- if Box:contains() then
-		Wheel.SelectedIndex = Wheel.SelectedIndex - yoff
+		local step = sign(yoff)
+		if step == 0 then
+			return
+		end
+
+		Wheel.SelectedIndex = Wheel.SelectedIndex - step
 		State.Cursor = Wheel.SelectedIndex
 		Wheel.CursorIndex = State.Cursor
-		State.TargetY = State.TargetY + yoff * ItemHeight
+		State.TargetY = State.TargetY + step * ItemHeight
 	-- end
 end

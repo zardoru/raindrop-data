@@ -180,3 +180,15 @@ if Notes.Channels == 4 then
 else
 	fallback_require("noteskin")
 end
+
+return {
+	Init = Init,
+	Update = Update,
+	DrawNormal = DrawNormal,
+	DrawFake = DrawFake,
+	DrawLift = DrawLift,
+	DrawMine = DrawMine,
+	DrawHoldHead = DrawHoldHead,
+	DrawHoldTail = DrawHoldTail,
+	DrawHoldBody = DrawHoldBody,
+}

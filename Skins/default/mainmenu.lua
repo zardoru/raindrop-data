@@ -105,3 +105,19 @@ function Update(Delta)
 	targBadge.Rotation = targBadge.Rotation - badgeRotSpeed * Delta
 	BackgroundAnimation:Update(Delta)
 end
+
+return {
+	Preload = Preload,
+	IntroDuration = IntroDuration,
+	ExitDuration = ExitDuration,
+	Init = Init,
+	Cleanup = Cleanup,
+	Update = Update,
+	UpdateIntro = UpdateIntro,
+	UpdateExit = UpdateExit,
+	OnRunningBegin = OnRunningBegin,
+	OnRestore = OnRestore,
+	OnIntroBegin = OnIntroBegin,
+	OnExitBegin = OnExitBegin,
+	KeyEvent = KeyEvent,
+}

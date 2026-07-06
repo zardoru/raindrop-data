@@ -106,3 +106,15 @@ DrawMine = drawMineInternal
 DrawHoldHead = drawNormalInternal
 DrawHoldTail = drawNormalInternal
 DrawHoldBody = drawHoldBodyInternal
+
+return {
+	Init = Init,
+	Update = Update,
+	DrawNormal = drawNormalInternal,
+	DrawFake = drawNormalInternal,
+	DrawLift = drawNormalInternal,
+	DrawMine = drawMineInternal,
+	DrawHoldHead = drawNormalInternal,
+	DrawHoldTail = drawNormalInternal,
+	DrawHoldBody = drawHoldBodyInternal,
+}

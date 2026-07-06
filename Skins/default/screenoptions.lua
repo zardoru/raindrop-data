@@ -47,3 +47,17 @@ end
 function OnExitEnd()
 
 end
+
+return {
+	IntroDuration = IntroDuration,
+	ExitDuration = ExitDuration,
+	Init = Init,
+	Update = Update,
+	KeyEvent = KeyEvent,
+	UpdateIntro = UpdateIntro,
+	UpdateExit = UpdateExit,
+	OnIntroBegin = OnIntroBegin,
+	OnIntroEnd = OnIntroEnd,
+	OnExitBegin = OnExitBegin,
+	OnExitEnd = OnExitEnd,
+}

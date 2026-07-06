@@ -225,3 +225,9 @@ function Update(Delta)
 	sd:Run(Delta)
 	BackgroundAnimation:Update(Delta)
 end
+
+return {
+	Init = Init,
+	Cleanup = Cleanup,
+	Update = Update,
+}

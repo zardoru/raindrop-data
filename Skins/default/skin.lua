@@ -71,3 +71,21 @@ end
 DefaultSpeedUnits = function()
 	return System.ReadConfigF("SpeedAmount", "Speed")
 end
+
+return {
+	DefaultBackground = DefaultBackground,
+	EvaluationBackground = EvaluationBackground,
+	DefaultGameplayBackground = DefaultGameplayBackground,
+	AudioManifest = AudioManifest,
+	Hitlightning = Hitlightning,
+	OnMissBGATime = OnMissBGATime,
+	ShowCursor = ShowCursor,
+	ScreenFilter = ScreenFilter,
+	Histogram = Histogram,
+	GoToSongSelectOnFailure = GoToSongSelectOnFailure,
+	InmediateActivation = InmediateActivation,
+	PlayfieldSize = PlayfieldSize,
+	UnitsPerMeasure = UnitsPerMeasure,
+	DefaultSpeedKind = DefaultSpeedKind,
+	DefaultSpeedUnits = DefaultSpeedUnits,
+}
