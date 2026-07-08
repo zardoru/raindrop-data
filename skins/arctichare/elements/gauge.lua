@@ -48,8 +48,7 @@ local Gauge = {
 			self.GaugeHealth = ScreenObject {
 				X = x + 110 * SkinScale,
 				Y = y,
-				Layer = 17,
-				Lighten = 1
+				Layer = 17
 			}
 
 			if gt == LifeType.LT_GROOVE then
@@ -95,7 +94,9 @@ local Gauge = {
 
 			self.GaugeHealth.Width = w
 			self.GaugeHealth:SetCropByPixels(0, w, 0, self.GaugeHealth.Height)
-			self.GaugeHealth.LightenFactor = beatfx
+			self.GaugeHealth.Red = 1 + beatfx
+			self.GaugeHealth.Green = 1 + beatfx
+			self.GaugeHealth.Blue = 1 + beatfx
 
 			self.HealthPCT:update(hpPCT)
 		end

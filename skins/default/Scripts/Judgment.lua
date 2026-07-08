@@ -177,13 +177,15 @@ function JudgmentObject:OnHit(JudgmentValue, Time, l, h, r, pn)
 
 	local kvalue = self.Value
 	if self.Value == 0 then
-		self.Object.Lighten = (1)
-		self.Object.LightenFactor = (2.0)
+		self.Object.Red = 3
+		self.Object.Green = 3
+		self.Object.Blue = 3
 		self.Value = 0
 		kvalue = 1
 	else
-		self.Object.Lighten = 0
-		self.Object.LightenFactor = 0
+		self.Object.Red = 1
+		self.Object.Green = 1
+		self.Object.Blue = 1
 	end
 
 	if self.LastAlternation == 0 then

@@ -63,8 +63,9 @@ function Explosions:Init()
 		local Object = Engine:CreateObject()
 		Object.Texture = "Down Tap Explosion Dim.png"
     Object.BlendMode = BlendMode.Add
-    Object.Lighten = 1
-    Object.LightenFactor = 1
+    Object.Red = 2
+    Object.Green = 2
+    Object.Blue = 2
 		Locate(Object, i)
 		
 		Object.Alpha = 0
@@ -84,7 +85,10 @@ function Explosions:Run(Delta)
 		if self.Time[Lane] < self.Duration then
 			-- local newScale = lerp(Explosions.Time[Lane], 0, Explosions.Duration, 0.5, 3)
 			self.Sprites[Lane].Alpha = lerp(self.Time[Lane], 0, Explosions.Duration, 1, 0)
-      self.Sprites[Lane].LightenFactor = lerp(self.Time[Lane], 0, Explosions.Duration, 4, 0)
+      local brightness = 1 + lerp(self.Time[Lane], 0, Explosions.Duration, 4, 0)
+      self.Sprites[Lane].Red = brightness
+      self.Sprites[Lane].Green = brightness
+      self.Sprites[Lane].Blue = brightness
 		else
 			self.Sprites[Lane].Alpha = 0
 		end
@@ -101,7 +105,10 @@ function Explosions:Run(Delta)
     local l = self.HoldFlash[Lane]
     if self.FlashTime[Lane] < self.DurationHoldEnd then
       l.Alpha = self.FlashTime[Lane] / self.DurationHoldEnd
-      l.LightenFactor = 4 * (self.FlashTime[Lane] / self.DurationHoldEnd)
+      local brightness = 1 + 4 * (self.FlashTime[Lane] / self.DurationHoldEnd)
+      l.Red = brightness
+      l.Green = brightness
+      l.Blue = brightness
     else
       l.Alpha = 0
     end

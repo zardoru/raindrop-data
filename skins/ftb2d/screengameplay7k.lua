@@ -60,6 +60,14 @@ Colours = {
 }
 Layout = {1, 2, 3, 4, 3, 2, 1}
 
+function SetKeyColor(i, factor)
+	local color = Colours[Layout[i]]
+	local value = 1 + factor
+	Key[i].Red = color[1] / 255 * value
+	Key[i].Green = color[2] / 255 * value
+	Key[i].Blue = color[3] / 255 * value
+end
+
 function MakeKeys(i)
 		KeyHold[i] = Engine:CreateObject()
 		obj = KeyHold[i]
@@ -82,12 +90,8 @@ function MakeKeys(i)
 		obj.Y = Game:GetPlayer(0).JudgmentY + obj.Height / 2 + 5
 		obj.Layer = 16
 		obj.Alpha = 1
-		obj.Lighten = 1
-		obj.LightenFactor = 0
 		
-		obj.Red = Colours[Layout[i]][1] / 255
-		obj.Green = Colours[Layout[i]][2] / 255
-		obj.Blue = Colours[Layout[i]][3] / 255
+		SetKeyColor(i, 0)
 		
 end
 
@@ -112,8 +116,7 @@ function Init()
 	
 	Sprites = GameObjects.Sprites
 	HealthBar = Sprites['hp_fill']
-	HealthBar.Lighten = 1
-	HealthBar.LightenFactor = 2
+	HealthBar.Red = 3
 	HealthBar.ScaleX = 0
 	
 	SongPosition = Sprites["songpercent"]
@@ -242,9 +245,9 @@ function GearKeyEvent (Lane, IsKeyDown)
 	Lightning[MapLane].CurrentTime = 0
 
 	if IsKeyDown == 1 then 
-		Key[MapLane].LightenFactor = 1
+		SetKeyColor(MapLane, 1)
 	else
-		Key[MapLane].LightenFactor = 0
+		SetKeyColor(MapLane, 0)
 	end
 end
 
@@ -332,8 +335,9 @@ function Update(Delta)
 	
 	local dLifebar = Game:GetPlayer(0).LifebarPercent / 100 - HealthBar.ScaleX
 	HealthBar.ScaleX = HealthBar.ScaleX + dLifebar * Delta
-	HealthBar.Green = Game:GetPlayer(0).LifebarPercent / 100
-	HealthBar.Blue = Game:GetPlayer(0).LifebarPercent / 100
+	HealthBar.Red = 3
+	HealthBar.Green = Game:GetPlayer(0).LifebarPercent / 100 * 3
+	HealthBar.Blue = Game:GetPlayer(0).LifebarPercent / 100 * 3
 	
 	UpdateText()
 	

@@ -95,11 +95,10 @@ function Jambar:Init()
   
 	with (self.BarFG, {
 		Centered = 0,
-		X = self.Noteskin.GearStartX + self.Noteskin.GearWidth + self.Width / 2 + 5,
+	  X = self.Noteskin.GearStartX + self.Noteskin.GearWidth + self.Width / 2 + 5,
 	  Layer = 25,
 		Width = Jambar.Width,
-	  Height = Jambar.Height,
-	  Lighten = 1
+	  Height = Jambar.Height
 	})
 
 	self:Run(0)
@@ -119,7 +118,10 @@ function Jambar:Run(Delta)
 
   -- Percentage from 0 to 1 of cool combo
 
-  self.BarFG.LightenFactor = 1 - fract(self.Player.Beat)
+  local brightness = 2 - fract(self.Player.Beat)
+  self.BarFG.Red = brightness
+  self.BarFG.Green = brightness
+  self.BarFG.Blue = brightness
 
   local Offset = remaining * self.Height
   self.BarFG.ScaleY = remaining

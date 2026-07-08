@@ -9,7 +9,10 @@ SuccessAnimation = {
 function fcnot2f(frac)
 	fcnotify2.Alpha = (1 - frac)
 	fcnotify2.Scale = (1 + frac * 1.5)
-	fcnotify2.LightenFactor = (0.3 * (1 - frac))
+	local brightness = 1 + 0.3 * (1 - frac)
+	fcnotify2.Red = brightness
+	fcnotify2.Green = brightness
+	fcnotify2.Blue = brightness
 	return 1
 end
 
@@ -32,7 +35,6 @@ function DoFullComboAnimation()
 	fcnotify2.Centered = 1
 	fcnotify2.Alpha = 0
 	fcnotify2.BlendMode = BlendMode.Add
-	fcnotify2.Lighten = 1
 
 	fcnotfade = getFadeFunction(1, 0, fcnotify)
 

@@ -1,6 +1,6 @@
+game_require "librd"
 
--- Wrap up the noteskin on a function in case we want to call whatever else.
-function DoWafles()
+function doMidiNote()
 	-- All notes have their origin centered.
 
 	normalNotes = {}
@@ -11,76 +11,103 @@ function DoWafles()
 	holdTailsInactive = {}
 	holdTailsActive = {}
 
+	holdHeads = {}
+
 	fTable = {1, 2, 3, 4, 6, 8, 16, 48}
 	yTable = {}
 
-	rotTable = {270, 180, 0, 90}
+	xTable = {}
+	xTableFake = {}
+
+	rotTable = {90, 0, 180, 270}
+	rotTableNotes = {270, 180, 0, 90}
 	tapSizePixels = 1024 / 8
 
-	for i=1, 8 do
-		yTable[fTable[i]] = { End = (i - 1) * tapSizePixels, Start = i * tapSizePixels }
+	function setNoteStuff(note, i, rot)
+		local chans = Notes.Channels
+		local w = Channels4['Key' .. i .. 'Width']
+		note.Width = w
+		note.X = Channels4['Key' .. i .. 'X']
+		note.Height = Channels4.NoteHeight
+		note.Layer = 14
+	  
+	  if rot then
+		note.Rotation = rot[i]
+	  end
+	end
+
+	function setBrightnessFactor(note, factor)
+		local value = 1 + factor
+		note.Red = value
+		note.Green = value
+		note.Blue = value
 	end
 
 	function Init()
-
-		function setNoteStuff(note, i)
-			note.Width = Noteskin[4]['Key' .. i .. 'Width']
-			note.X = Noteskin[4]['Key' .. i .. 'X']
-			note.Height = Noteskin[4].NoteHeight
-			note.Layer = 14
-			note.Lighten = 1
-			note.LightenFactor = 0
+		for i=1, 8 do
+			yTable[fTable[i]] = { End = (i - 1) * tapSizePixels, Start = i * tapSizePixels }
 		end
 
+		for i=1, 4 do
+		  local half = 512
+		  local frame = (i - 1) * 128
+		  local nextFrame = i * 128
+		  xTable[i] = { Start = half + frame, End = half + nextFrame }
+		  xTableFake[i] = { Start = frame, End = nextFrame }
+		end
 		for i=1,Notes.Channels do
 			normalNotes[i] = Object2D()
 			local note = normalNotes[i]
-			note.Texture = "_down tap note 1x8 (doubleres).png"
-			setNoteStuff(note, i)
+			note.Texture = "_Down Tap Note 8x8 (doubleres).png"
+			setNoteStuff(note, i, rotTableNotes)
 			
 			holdBodiesInactive[i] = Object2D()
 			note = holdBodiesInactive[i]
-			note.Texture = "holdbodyinactive.png"
+			note.Texture = "Down Hold Body Inactive (doubleres).png"
 			setNoteStuff(note, i)
 			
 			holdBodiesActive[i] = Object2D()
 			note = holdBodiesActive[i]
-			note.Texture = "holdbodyactive.png"
+			note.Texture = "Down Hold Body Active (doubleres).png"
 			bodyHeight = note.Height
 			setNoteStuff(note, i)
 			
 			holdTailsInactive[i] = Object2D()
 			note = holdTailsInactive[i]
-			note.Texture = "holdtailinactive.png"
+			note.Texture = "Down Hold BottomCap Inactive (doubleres).png"
 			setNoteStuff(note, i)
 			
 			holdTailsActive[i] = Object2D()
 			note = holdTailsActive[i]
-			note.Texture = "holdtailactive.png"
-			setNoteStuff(note, i)
+			note.Texture = "Down Hold BottomCap Active (doubleres).png"
+			setNoteStuff(note, i, tailsRot)
+			
+			
+		  
+		  holdHeads[i] = Object2D()
+		  note = holdHeads[i]
+		  note.Texture = "Down Hold Head Active.png"
+		  setNoteStuff(note, i, rotTable)
 		end
+
 	end
 
 	function drawHoldTailInternal(lane, loc, frac, active_level)
 		local note;
 		note = holdTailsInactive[lane + 1]
 		
-		if active_level ~= 0 then
+		if active_level == 2 then
 			note = holdTailsActive[lane + 1]
-		end
-		
-		if active_level == 2 then 
-			note.LightenFactor = 1
+			setBrightnessFactor(note, 1)
 		else
-			note.LightenFactor = 0
+			setBrightnessFactor(note, 0)
 		end
-		
 		
 		if Player.Upscroll then
-			note.Y = loc + Noteskin[4].NoteHeight / 2
+			note.Y = loc + Channels4.NoteHeight / 2
 			note.Rotation = 0
 		else 
-			note.Y = loc - Noteskin[4].NoteHeight / 2
+			note.Y = loc - Channels4.NoteHeight / 2
 			note.Rotation = 180
 		end
 		
@@ -90,22 +117,23 @@ function DoWafles()
 	end
 
 	function Update(delta, beat)
-		local fraction = 1 - (beat - math.floor(beat))
-		for i=1, Notes.Channels do 
-			local note = normalNotes[i]
-			note.LightenFactor = fraction
-		end 
 	end 
 
 	function drawNormalInternal(lane, loc, frac, active_level)
+		local frame = math.floor(Player.Beat * 4) % 4 + 1
 		local note = normalNotes[lane + 1]
+		local yvalue = yTable[frac] or yTable[48]
+		local xvalue = xTable[frame] or xTable[1]
 		note.Y = loc
 		
-		value = yTable[frac] or yTable[48]
-		
+		if active_level == 2 then
+			setBrightnessFactor(note, 1)
+		else
+			setBrightnessFactor(note, 0)
+		end
+
 		-- colorize note
-		note:SetCropByPixels(0, 128, value.Start, value.End)
-		note.Rotation = rotTable[lane + 1]
+		note:SetCropByPixels(xvalue.Start, xvalue.End, yvalue.Start, yvalue.End)
 		if active_level ~= 3 then
 			Notes:Render(note)
 		end
@@ -114,19 +142,13 @@ function DoWafles()
 	-- 1 is enabled. 2 is being pressed. 0 is failed. 3 is succesful hit.
 	function drawHoldBodyInternal(lane, loc, size, active_level)
 		function do_draw(lane, loc, size, active_level)
-			local note;
-		
-			if active_level == 0 then
-				note = holdBodiesInactive[lane + 1]
-				note.LightenFactor = 0
-			else
-				note = holdBodiesActive[lane + 1]
-			end 
+			local note = holdBodiesInactive[lane + 1];
 			
 			if active_level == 2 then
-				note.LightenFactor = 1
+				note = holdBodiesActive[lane + 1]
+				setBrightnessFactor(note, 1)
 			else
-				note.LightenFactor = 0
+				setBrightnessFactor(note, 0)
 			end
 		
 			note.Y = loc
@@ -143,7 +165,16 @@ function DoWafles()
 	end
 
 	function drawHoldHeadInternal(lane, loc, frac, active_level)
+	  
+	  if active_level == 2 then
+		local note = holdHeads[lane + 1]
+		note.Y = loc
+		if active_level ~= 3 then
+			Notes:Render(note)
+		end
+	  else
 		drawNormalInternal(lane, loc, frac, active_level)
+	  end
 	end
 
 	function drawMineInternal(lane, loc, frac)
@@ -153,16 +184,16 @@ function DoWafles()
 	-- From now on, only engine variables are being set.
 	-- Barline
 	Notes.BarlineEnabled = false
-	Notes.BarlineOffset = Noteskin[Notes.Channels].NoteHeight / 2
-	Notes.BarlineStartX = Noteskin[Notes.Channels].GearStartX
-	Notes.BarlineWidth = Noteskin[Notes.Channels].BarlineWidth
-	Notes.JudgmentY = Noteskin[Notes.Channels].GearHeight
-	Notes.DecreaseHoldSizeWhenBeingHit = true
+	Notes.BarlineOffset = Channels4.NoteHeight / 2
+	Notes.BarlineStartX = Channels4.GearStartX
+	Notes.BarlineWidth = 400
+	Notes.JudgmentY = Channels4.GearHeight
+	Notes.DecreaseHoldSizeWhenBeingHit = 1
 	Notes.DanglingHeads = false
 
 	-- How many extra units do you require so that the whole bounding box is accounted
 	-- when determining whether to show this note or not.
-	Notes.NoteScreenSize = Noteskin[Notes.Channels].NoteHeight / 2
+	Notes.NoteScreenSize = 50--NoteHeight / 2
 
 	DrawNormal = drawNormalInternal
 	DrawFake = drawNormalInternal
@@ -176,7 +207,7 @@ end
 
 if Notes.Channels == 4 then
 	skin_require "custom_defs"
-	DoWafles()
+	doMidiNote()
 else
 	fallback_require("noteskin")
 end

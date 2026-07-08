@@ -6,7 +6,6 @@ ExitDuration = 0
 function Init()
     obj = Engine:CreateObject()
     obj.Texture = "VSRG/auto.png"
-    obj.Lighten = 1
 end
 
 --[[ 
@@ -36,7 +35,10 @@ end
 local t = 0
 function Update(Delta)
     t = t + Delta
-    obj.LightenFactor = math.sin(t)
+    local value = 1 + math.sin(t)
+    obj.Red = value
+    obj.Green = value
+    obj.Blue = value
 end
 
 -- Exit/Outro

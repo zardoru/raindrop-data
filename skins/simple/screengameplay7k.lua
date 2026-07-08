@@ -200,7 +200,6 @@ function Init()
 
 	Pulse = Sprites["pulse"]
 	Pulse.Y = 485 * YR - Pulse.Height
-	Pulse.Lighten = 1
 	Pulse.BlendMode = BlendMode.Add
 end
 
@@ -282,7 +281,9 @@ function Update(Delta)
 	HP:SetCropByPixels(0, 352 * math.ceil(LifebarValue * 50) / 50, 0, 29)
 
 	Pulse.Alpha = 1 - clamp(beatEffect, 0.5, 1)
-	Pulse.LightenFactor = 1 - beatEffect
+	Pulse.Red = 2 - beatEffect
+	Pulse.Green = 2 - beatEffect
+	Pulse.Blue = 2 - beatEffect
 
 	if KeyArray[1] == 0 then
 		tabletick.Rotation = Beat * 360

@@ -1,42 +1,41 @@
-if Notes.Channels > 7 then
+if Notes.Channels ~= 8 then
 	fallback_require("noteskin")
 	return
 end
 
+Lanes = Notes.Channels
+
 skin_require("custom_defs")
-game_require("TextureAtlas")
 -- All notes have their origin centered.
 
+XR = 1360 / 1280
+YR = 768 / 720
 normalNotes = {}
 holdBodies = {}
 
 function setNoteStuff(note, i)
-	note.Width = Noteskin[Notes.Channels]['Key' .. i .. 'Width']
-	note.X = Noteskin[Notes.Channels]['Key' .. i .. 'X']
-	note.Height = NoteHeight
+	note.Width = Noteskin[Lanes]['Key' .. i .. 'Width'] * XR
+	note.X = Noteskin[Lanes]['Key' .. i .. 'X'] * XR
+	note.Height = NoteHeight * YR
 	note.Layer = 14
-	note.Lighten = 1
-	note.LightenFactor = 0
 end
 
 function Init()
-	Atlas = TextureAtlas:new("data/skins/ftb2d/assets/notes.csv")
-	AtlasHolds = TextureAtlas:new("data/skins/ftb2d/assets/holds.csv")
-	for i=1,Notes.Channels do
-	  local MapLane = Noteskin[Notes.Channels].Map[i]
+	for i=1,Lanes do
 		normalNotes[i] = Object2D()
 		local note = normalNotes[i]
-		local image = Noteskin[7]['Key' .. MapLane .. 'Image'] .. ".png"
-		note.Texture = Atlas.File
-		Atlas:SetObjectCrop(note, image)
+		local image = 'assets/n' .. Noteskin[8]["Key" .. i .. "Image"] .. ".png"
+		
+		print ("Set image " .. image)
+		note.Texture = image
 		setNoteStuff(note, i)
 		
 		holdBodies[i] = Object2D()
 		note = holdBodies[i]
 		
-		image = Noteskin[7]['Key' .. MapLane .. 'Image'] .. ".png"
-		note.Texture = AtlasHolds.File
-		AtlasHolds:SetObjectCrop(note, image)
+		image = 'assets/l'.. Noteskin[8]["Key" .. i .. "Image" ] .. ".png"
+		print ("Set image " .. image)
+		note.Texture = image
 		setNoteStuff(note, i)
 	end
 end
@@ -60,14 +59,20 @@ function drawHoldBodyInternal(lane, loc, size, active_level)
 	note.Height = size
 	
 	if active_level == 2 then
-		note.LightenFactor = 1
-	else
-		note.LightenFactor = 0
+		note.Red = 2
+		note.Green = 2
+		note.Blue = 2
+	elseif active_level == 1 then
+		note.Red = 1
+		note.Green = 1
+		note.Blue = 1
+	elseif active_level == 0 then
+		note.Red = 0.5
+		note.Green = 0.5
+		note.Blue = 0.5
 	end
 	
-	if active_level ~= 3 and active_level ~= 0 then
-		Notes:Render(note)
-	end
+	Notes:Render(note)
 end
 
 function drawMineInternal(lane, loc, frac)
@@ -79,8 +84,8 @@ end
 Notes.BarlineEnabled = 1
 Notes.BarlineOffset = NoteHeight / 2
 Notes.BarlineStartX = GearStartX
-Notes.BarlineWidth = Noteskin[7].BarlineWidth
-Notes.JudgmentY = 228 + NoteHeight / 2
+Notes.BarlineWidth = Noteskin[Lanes].BarlineWidth * XR
+Notes.JudgmentY = Screen.Height - 485 * YR
 Notes.DecreaseHoldSizeWhenBeingHit = 1
 Notes.DanglingHeads = 1
 
@@ -94,7 +99,7 @@ DrawLift = drawNormalInternal
 DrawMine = drawMineInternal
 
 DrawHoldHead = drawNormalInternal
-DrawHoldTail = drawMineInternal -- 'nil'
+DrawHoldTail = drawNormalInternal
 DrawHoldBody = drawHoldBodyInternal
 
 return {
@@ -105,6 +110,6 @@ return {
 	DrawLift = drawNormalInternal,
 	DrawMine = drawMineInternal,
 	DrawHoldHead = drawNormalInternal,
-	DrawHoldTail = drawMineInternal,
+	DrawHoldTail = drawNormalInternal,
 	DrawHoldBody = drawHoldBodyInternal,
 }
