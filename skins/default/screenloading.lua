@@ -41,7 +41,7 @@ function Init()
 
 	targBadge.X = 48
 	targBadge.Y = Screen.Height / 2 - 48
-	targBadge.Layer = 16
+	targBadge.Layer = 8
 
 
 	BgStuff = Transformation()
@@ -91,7 +91,7 @@ function Init()
 		FontSize = Screen.Height * 1 / 3 * 1 / 3,
 		X = textStart,
 		Y = l1 - ls * 2 / 3 + d,
-		Layer = 16,
+		Layer = 8,
 		Text = sng.Title,
 		Parent = BgStuff
 	})
@@ -103,7 +103,7 @@ function Init()
 		FontSize = Screen.Height * 1 / 3 * 1 / 4,
 		X = textStart,
 		Y = strSong.Y + strSong.FontSize,
-		Layer = 16,
+		Layer = 8,
 		Text = sng.Author,
 		Parent = BgStuff
 	})
@@ -116,7 +116,7 @@ function Init()
 		FontSize = Screen.Height * 1 / 3 * 1 / 4,
 		X = textStart,
 		Y = strAuthor.Y + strAuthor.FontSize,
-		Layer = 16,
+		Layer = 8,
 		Parent = BgStuff
 	})
 

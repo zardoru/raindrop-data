@@ -25,7 +25,7 @@ local DigitalNumbers = {
 			self.objects[i] = ScreenObject {
 				X = self.x + self.width * (i - 1),
 				Y = self.y,
-				Layer = 21
+				Layer = 11
 			}
 
 			self.objects[i].Texture = "assets/" .. self.atlas.File

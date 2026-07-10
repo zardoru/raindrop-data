@@ -22,7 +22,7 @@ function DoFullComboAnimation()
 
 	fcnotify.X = Screen.Width / 2
 	fcnotify.Y = -fcnotify.Height / 2
-	fcnotify.Z = 30
+	fcnotify.Z = 14
 	fcnotify.Centered = 1
 	fcanim = getMoveFunction(fcnotify.X, Screen.Height + fcnotify.Height/2, fcnotify.X, Screen.Height*3/4, fcnotify)
 
@@ -31,16 +31,13 @@ function DoFullComboAnimation()
 
 	fcnotify2.X = Screen.Width / 2
 	fcnotify2.Y =  Screen.Height*3/4
-	fcnotify2.Z = 30
+	fcnotify2.Z = 14
 	fcnotify2.Centered = 1
 	fcnotify2.Alpha = 0
 	fcnotify2.BlendMode = BlendMode.Add
 
 	fcnotfade = getFadeFunction(1, 0, fcnotify)
 
-	Engine:AddAnimation(fcnotify, "fcanim", Easing.Out, 0.75, 3)
-	Engine:AddAnimation(fcnotify2, "fcnot2f", Easing.Out, 0.25, 0.75 + 3)
-	Engine:AddAnimation(fcnotify, "fcnotfade", Easing.None, 0.5, 4)
 end
 
 function FadeInBlack(frac)
@@ -65,8 +62,7 @@ function FadeToBlack()
 	Black.Alpha = 0
 	Black.Width = Screen.Width
 	Black.Height = Screen.Height
-	Black.Z = 29
-	Engine:AddAnimation(Black, "FadeInBlack", Easing.None, 0.5, 3)
+	Black.Z = 13
 end
 
 function DoSuccessAnimation()
@@ -77,7 +73,7 @@ function DoSuccessAnimation()
 	StageClear.Centered = 1
 	StageClear.X = Screen.Width / 2
 	StageClear.Y = Screen.Height / 2
-	StageClear.Z = 31
+	StageClear.Z = 15
 	StageClear.Alpha = 0
 	
 
@@ -86,8 +82,6 @@ function DoSuccessAnimation()
 	end
 
 	Engine:Sort()
-	Engine:AddAnimation(StageClear, "ZoomVertIn", Easing.Out, 0.75, 3)
-	Engine:AddAnimation(StageClear, "ZoomVertOut", Easing.None, 1, 4)
 end
 
 
@@ -143,11 +137,9 @@ function DoFailAnimation()
 	FailNotif.X = Screen.Width / 2
 	FailNotif.Y = Screen.Height / 2
 
-	White.Z = 30
-	FailNotif.Z = 31
+	White.Z = 14
+	FailNotif.Z = 15
 
-	Engine:AddAnimation(White, "WhiteFailAnim", Easing.In, 0.35, 0)
-	Engine:AddAnimation(FailNotif, "FailAnim", Easing.None, 0.75, 0)
 	
 	BE = {}
 	BE.FnA = Engine:CreateObject()
@@ -169,10 +161,9 @@ function DoFailAnimation()
 	BE.FnA.Alpha = 0
 	BE.FnB.Alpha = 0
 	BE.FnB.Alpha = 0
-	BE.FnA.Z = 31
-	BE.FnB.Z = 31
-	BE.FnC.Z = 31
+	BE.FnA.Z = 15
+	BE.FnB.Z = 15
+	BE.FnC.Z = 15
 
 	Engine:Sort()
-	Engine:AddAnimation(BE.FnA, "FailBurst", Easing.Out, 0.7, 0.33 * 0.75)
 end

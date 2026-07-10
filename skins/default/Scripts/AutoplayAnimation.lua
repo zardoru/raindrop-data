@@ -13,7 +13,6 @@ function AutoAnimation:Init()
 
 	self.AutoBN.Centered = 1
 
-	Engine:AddAnimation(self.AutoBN, "BnMoveFunction", Easing.Out, 0.75, 0 )
 
 	local w = self.AutoBN.Width
 	local h = self.AutoBN.Height
@@ -21,7 +20,7 @@ function AutoAnimation:Init()
 	factor = 350 / w * 3/4
 	self.AutoBN.Width = w * factor
 	self.AutoBN.Height = h * factor
-	self.AutoBN.Layer = 28
+	self.AutoBN.Layer = 14
 	self.AutoFinishAnimation = getUncropFunction(w*factor, h*factor, w, h, self.AutoBN)
 	self.RunAutoAnimation = true
 end
@@ -30,7 +29,6 @@ librd.make_new(AutoAnimation, AutoAnimation.Init)
 
 function AutoAnimation:OnSongFinish()
 	if self.AutoBN then
-		Engine:AddAnimation (AutoBN, "AutoFinishAnimation", Easing.Out, 0.35, 0)
 		RunAutoAnimation = false
 	end
 end

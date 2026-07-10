@@ -41,7 +41,7 @@ function Explosions:Init()
 		Locate(Object, i)
 		
 		Object.Alpha = 0
-    Object.Layer = 18
+    Object.Layer = 9
     Object.BlendMode = BlendMode.Add
 		self.Sprites[i] = Object
 	end

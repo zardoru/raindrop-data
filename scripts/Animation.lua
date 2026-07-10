@@ -155,18 +155,76 @@ end
 
 librd.make_new(Timer, Timer.init)
 
------@class AnimationPlayer
---local AnimationPlayer = {}
---
---function AnimationPlayer:init()
---    self.
---end
+---@class AnimationPlayer
+local AnimationPlayer = {}
 
---librd.make_new(AnimationPlayer, AnimationPlayer.init)
+-- Create one player per screen or component, then call player:Update(delta)
+-- from that owner's Update callback. Example:
+--   local animations = AnimationPlayer()
+--   animations:Add(sprite, MyAnimation, Ease.Out, 0.25, 0)
+--   animations:Update(delta)
+function AnimationPlayer:init()
+    self.Animations = {}
+end
+
+function AnimationPlayer:Add(target, callback, ease, duration, delay)
+    if type(callback) == "string" then
+        callback = _G[callback]
+    end
+    if type(callback) ~= "function" then
+        return false
+    end
+
+    table.insert(self.Animations, {
+        Target = target,
+        Callback = callback,
+        Ease = ease or Ease.Linear,
+        Duration = math.max(duration or 0, 0),
+        Delay = math.max(delay or 0, 0),
+        Time = 0
+    })
+    return true
+end
+
+function AnimationPlayer:Stop(target)
+    for index = #self.Animations, 1, -1 do
+        if self.Animations[index].Target == target then
+            table.remove(self.Animations, index)
+        end
+    end
+end
+
+function AnimationPlayer:Update(delta)
+    for index = #self.Animations, 1, -1 do
+        local animation = self.Animations[index]
+        local remaining = delta
+
+        if animation.Delay > 0 then
+            animation.Delay = animation.Delay - remaining
+            if animation.Delay >= 0 then
+                remaining = nil
+            else
+                remaining = -animation.Delay
+                animation.Delay = 0
+            end
+        end
+
+        if remaining then
+            animation.Time = animation.Time + remaining
+            local fraction = animation.Duration == 0 and 1 or math.min(animation.Time / animation.Duration, 1)
+            local keep_running = animation.Callback(animation.Ease(fraction), animation.Target)
+            if fraction >= 1 or not keep_running then
+                table.remove(self.Animations, index)
+            end
+        end
+    end
+end
+
+librd.make_new(AnimationPlayer, AnimationPlayer.init)
 
 return {
     Ease = Ease,
     Keyframes = Keyframes,
-    Timer = Timer
-    --,AnimationPlayer = AnimationPlayer
+    Timer = Timer,
+    AnimationPlayer = AnimationPlayer
 }

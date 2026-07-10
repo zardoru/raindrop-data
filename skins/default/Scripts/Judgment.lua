@@ -41,7 +41,7 @@ function JudgmentObject:Init()
   print ("Judgment Default Pos: ", self.defaultX, self.defaultY)
   
 	self.Object = ScreenObject {
-		Layer = 28,
+		Layer = 14,
 		Centered = 1,
 		Texture = self.Atlas.File,
 		Alpha = 0
@@ -69,7 +69,7 @@ function JudgmentObject:Init()
 
 	self.IndicatorObject = ScreenObject {
 		Texture = ("VSRG/" .. self.TimingIndicator),
-		Layer = 24,
+		Layer = 12,
 		Centered = 1,
 		Alpha = 0,
 	}

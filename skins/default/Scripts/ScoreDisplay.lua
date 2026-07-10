@@ -15,7 +15,7 @@ with(ScoreDisplay, {
 with(ScoreDisplay, {
     X = Screen.Width - ScoreDisplay.W, -- Topleft
     Y = Screen.Height - ScoreDisplay.H,
-    Layer = 20
+    Layer = 10
 })
 
 function ScoreDisplay:SetName(i)

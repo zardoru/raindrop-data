@@ -17,7 +17,7 @@ function Keys:Init()
     obj.Centered = 1
     obj.X = self.Noteskin["Key" .. i .. "X"]
     obj.Texture = self.KeyAtlas.File
-    obj.Layer = 27
+    obj.Layer = 14
     
     if self.Noteskin["Key" .. i] == "" then
       obj.Alpha = 0

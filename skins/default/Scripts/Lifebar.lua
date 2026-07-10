@@ -20,7 +20,7 @@ function Lifebar:Init()
 	self.Fill2 = Engine:CreateObject()
 
 	self.Margin.Texture = self.MarginFile
-	self.Margin.Layer = 25
+	self.Margin.Layer = 13
 	self.Margin.Centered = 1
 	-- self.Margin.Width = self.Width
 
@@ -44,11 +44,11 @@ function Lifebar:Init()
 	self.Fill.Texture = self.FillFile
 	self.Fill.Width = self.FillWidth
 	self.Fill.Height = self.FillSize
-	self.Fill.Layer = 26
+	self.Fill.Layer = 13
 	self.Fill.Centered = 1
 
 	self.Fill2.Texture = self.FillFile
-	self.Fill2.Layer = 26
+	self.Fill2.Layer = 13
 	self.Fill2.Centered = 1
 	self.Fill2.BlendMode = BlendMode.Add
 	self.Fill2.Width = self.Fill.Width
@@ -96,7 +96,7 @@ function Jambar:Init()
 	with (self.BarFG, {
 		Centered = 0,
 	  X = self.Noteskin.GearStartX + self.Noteskin.GearWidth + self.Width / 2 + 5,
-	  Layer = 25,
+	  Layer = 13,
 		Width = Jambar.Width,
 	  Height = Jambar.Height
 	})

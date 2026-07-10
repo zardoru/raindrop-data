@@ -31,7 +31,7 @@ local JudgmentObject = {
 		self.Judgment = ScreenObject {
 			Centered = 1,
 			Alpha = 0,
-			Layer = 20,
+			Layer = 10,
 			Parent = self.Transform
 		}
 
@@ -64,7 +64,7 @@ local JudgmentObject = {
 		self.FSIndicator = ScreenObject {
 			Alpha = 0,
 			Centered = 1,
-			Layer = 20,
+			Layer = 10,
 			Parent = self.Transform
 		}
 

@@ -53,7 +53,7 @@ function ComboDisplay:Init()
         self.Targets[i] = ScreenObject {
             Texture = self.Atlas.File,
             Centered = 1,
-            Layer = 24,
+            Layer = 12,
             Alpha = 0
         }
 
@@ -70,7 +70,7 @@ function ComboDisplay:Init()
     if self.ExNotify then
         self.ExNotifyObject = ScreenObject {
             Centered = 1,
-            Layer = 24,
+            Layer = 12,
             Alpha = 0,
             Texture = self.ExNotifyImg
         }

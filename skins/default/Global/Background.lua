@@ -63,11 +63,9 @@ function BGAIn(frac)
 end
 
 function BackgroundAnimation:In()
-	Engine:AddAnimation(self.Blue, "BGAIn", Easing.In, BackgroundAnimation.Duration, 0)
 end
 
 function BackgroundAnimation:Out()
-	Engine:AddAnimation(self.Blue, "BGAOut", Easing.Out, BackgroundAnimation.Duration, 0)
 end
 
 function BackgroundAnimation:UpdateObjects()

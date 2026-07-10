@@ -77,7 +77,7 @@ function MakeKeys(i)
 		obj.Centered = 1
 		obj.X = Noteskin[7]["Key" .. i .. "X"]
 		obj.Y = Game:GetPlayer(0).JudgmentY + obj.Height / 2 + 5
-		obj.Layer = 16
+		obj.Layer = 8
 		obj.Alpha = 1
 		
 		Key[i] = Engine:CreateObject()
@@ -88,7 +88,7 @@ function MakeKeys(i)
 		obj.Centered = 1
 		obj.X = Noteskin[7]["Key" .. i .. "X"]
 		obj.Y = Game:GetPlayer(0).JudgmentY + obj.Height / 2 + 5
-		obj.Layer = 16
+		obj.Layer = 8
 		obj.Alpha = 1
 		
 		SetKeyColor(i, 0)
@@ -108,7 +108,7 @@ function Init()
 	Glow.Object.Y = Screen.Height - GearWidth + 25
 	Glow.Object.Height = 20
 	Glow.Object.Width = 280
-	Glow.Object.Layer = 20
+	Glow.Object.Layer = 10
 	
 	print "Creating fixed objects."
 	GameObjects = FixedObjects:new()
@@ -136,7 +136,7 @@ function Init()
 		obj.X = Noteskin[7]["Key" .. i .. "X"]
 		obj.Y = Game:GetPlayer(0).JudgmentY
 		obj.Centered = 1
-		obj.Layer = 21
+		obj.Layer = 11
 		obj.Alpha = 0
 		
 		obj.Red = Colours[Layout[i]][1] / 255
@@ -149,7 +149,7 @@ function Init()
 		obj.Width = GearWidth / 7
 		obj.X = Noteskin[7]["Key" .. i .. "X"] - obj.Width / 2
 		obj.Y = 0
-		obj.Layer = 24
+		obj.Layer = 12
 		obj.Alpha = 0
 		
 		obj.Red = Colours[Layout[i]][1] / 255
@@ -165,7 +165,7 @@ function Init()
 		obj.Texture = JudgmentAtlas.File
 		obj.Width = GearWidth / 7
 		obj.Height = 0.234 * obj.Width
-		obj.Layer = 22
+		obj.Layer = 11
 		obj.Alpha = 0
 		obj.Centered = 1
 		obj.Scale = (1)
@@ -210,13 +210,11 @@ function JUDGE(JudgmentValue, Lane)
 	end
 	
 	JudgmentAtlas:SetObjectCrop(Judgments[Lane], map[JudgmentValue] .. ".png")
-	Engine:AddAnimation(Judgments[Lane], "Judgment", Easing.In, 0.4, 0)
 end
 
 function HitEvent(JudgmentValue, TimeOff, Lane, IsHold, IsHoldRelease)
   local MapLane = Noteskin[Game:GetPlayer(0).Channels].Map[Lane]
   
-	Engine:AddAnimation(Explosions[MapLane].EffectExplosion.Object, "Explode", Easing.None, 0.25, 0)
 	Explosions[MapLane].EffectExplosion.CurrentTime = 0
 	
 	JUDGE(JudgmentValue, MapLane)
@@ -267,7 +265,7 @@ function CreateText()
 	lblCombo.X = 45
 	lblCombo.Y = 665
 	Engine:AddTarget(lblCombo)
-	lblCombo.Layer = 24
+	lblCombo.Layer = 12
 	
 	
 	lblmaxCombo = StringObject2D()
@@ -278,14 +276,14 @@ function CreateText()
 	lblmaxCombo.Y = 665
 	Engine:AddTarget(lblmaxCombo)
 	
-	lblmaxCombo.Layer = 24
+	lblmaxCombo.Layer = 12
 	
 	lblcurCombo = StringObject2D()
 	lblcurCombo.Font = miniFont 
 	lblcurCombo.FontSize = 30
 	lblcurCombo.X = 45
 	lblcurCombo.Y = 675
-	lblcurCombo.Layer = 30
+	lblcurCombo.Layer = 15
 	Engine:AddTarget(lblcurCombo)
 	
 	lblcurMaxCombo = StringObject2D()
@@ -293,7 +291,7 @@ function CreateText()
 	lblcurMaxCombo.FontSize = 30
 	lblcurMaxCombo.Text = "0"
 	lblcurMaxCombo.Y = 675
-	lblcurMaxCombo.Layer = 24
+	lblcurMaxCombo.Layer = 12
 	Engine:AddTarget(lblcurMaxCombo)
 	
 	lblScore = StringObject2D()
@@ -301,7 +299,7 @@ function CreateText()
 	lblScore.FontSize = 40
 	lblScore.Y = 700
 	lblScore.X = 45
-	lblScore.Layer = 24
+	lblScore.Layer = 12
 	Engine:AddTarget(lblScore)
 	
 	lblstScore = StringObject2D()
@@ -310,7 +308,7 @@ function CreateText()
 	lblstScore.Text = "score"
 	lblstScore.Y = 740
 	lblstScore.X = 155
-	lblstScore.Layer = 24
+	lblstScore.Layer = 12
 	
 	Engine:AddTarget(lblstScore)
 end

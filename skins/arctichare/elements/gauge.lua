@@ -10,7 +10,7 @@ local Gauge = {
 			self.ActivePlayer = ScreenObject {
 				X = x,
 				Y = y,
-		  		Layer = 17
+		  		Layer = 9
 			}
 
 			self.ActivePlayer.Texture = "assets/" .. Gauge.Atlas.File
@@ -29,7 +29,7 @@ local Gauge = {
 		self.GaugeBG = ScreenObject {
 			X = x + 110 * SkinScale,
 			Y = y,
-			Layer = 16
+			Layer = 8
 		}
 
 		local gt = Global:GetCurrentGaugeType(0)
@@ -48,7 +48,7 @@ local Gauge = {
 			self.GaugeHealth = ScreenObject {
 				X = x + 110 * SkinScale,
 				Y = y,
-				Layer = 17
+				Layer = 9
 			}
 
 			if gt == LifeType.LT_GROOVE then

@@ -16,7 +16,7 @@ MissHighlight = {
 function ProgressTick:Init()
     self.Object = ScreenObject {
         Texture = self.Image,
-        Layer = 18,
+        Layer = 9,
         X = self.Noteskin.GearStartX - 16,
         Width = 16,
         Height = 16

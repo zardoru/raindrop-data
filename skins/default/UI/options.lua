@@ -124,7 +124,7 @@ function Options:Init(font)
         -- 410 matches then Song Wheel's width
         Size = self.BaseSize,
         Parent = self.Transform,
-        Z = 20
+        Z = 10
     }
 
     self.strSongSelectInfoText = StringObject2D()
@@ -134,7 +134,7 @@ function Options:Init(font)
         Parent = self.Transform,
         Position = Vec2(40, 0),
         Text = "F1 for speed options. F2 for game options.",
-        Z = 21
+        Z = 11
     })
 
     Engine:AddTarget(self.strSongSelectInfoText)

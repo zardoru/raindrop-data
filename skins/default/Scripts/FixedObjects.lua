@@ -74,12 +74,12 @@ function StageLines:Init()
 	self.Left.Texture = self.ImageLeft
 	self.Left.X = self.Noteskin.GearStartX - self.Left.Width
 	self.Left.Height = Screen.Height
-	self.Left.Layer = 16
+	self.Left.Layer = 8
 
 	self.Right.Texture = (self.ImageRight)
 	self.Right.X = (self.Noteskin.GearStartX + self.Noteskin.GearWidth)
 	self.Right.Height = Screen.Height
-	self.Right.Layer = 20
+	self.Right.Layer = 10
 end
 
 librd.make_new(StageLines, StageLines.Init)

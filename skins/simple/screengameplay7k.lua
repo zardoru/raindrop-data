@@ -86,21 +86,21 @@ function GenText()
 	BPMText.Y = 660 * YR
 	BPMText.FontSize = 45 * YR
 	BPMText.Font = NumFont
-	BPMText.Layer = 21
+	BPMText.Layer = 11
 
 	HPText = StringObject2D()
 	HPText.X = 315 * XR
 	HPText.Y = 605 * YR
 	HPText.Font = NumFont
 	HPText.FontSize = 45 * YR
-	HPText.Layer = 21
+	HPText.Layer = 11
 
 	TitleText = StringObject2D()
 	TitleText.X = 455 * XR
 	TitleText.Y = 5 * YR
 	TitleText.Font = TitleFont
 	TitleText.FontSize = 15 * YR
-	TitleText.Layer = 21
+	TitleText.Layer = 11
 
 	sng = Global:GetSelectedSong()
 	diff = Game:GetPlayer(0).Difficulty

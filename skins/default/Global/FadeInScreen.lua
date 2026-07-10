@@ -25,7 +25,7 @@ function ScreenFade.Init()
 		Width = Screen.Width,
 		Height = Screen.Height,
 		Alpha = 0,
-		Layer = 31
+		Layer = 15
 	})
 	
 	IFadeInA1 = invert(FadeInA1)
@@ -53,8 +53,8 @@ function ScreenFade.Init()
 	
 	Black1.Height = Screen.Height/2
 	Black2.Height = Screen.Height/2
-	Black1.Z = 31
-	Black2.Z = 31
+	Black1.Z = 15
+	Black2.Z = 15
 	
 	IFadeInA1 = invert(FadeInA1)
 	IFadeInA2 = invert(FadeInA2)
@@ -63,34 +63,22 @@ end
 
 function ScreenFade.In(nobg)
 	local Delay = 0
-	Engine:StopAnimation(ScreenFade.Black)
 	
 	if not nobg then
 		BackgroundAnimation:In()
 		Delay = BackgroundAnimation.Duration
 	end
 	
-	Engine:AddAnimation(Black1, "FadeInA1", Easing.None, ScreenFade.Duration, Delay)
 	return --[[ Lines beyond are previous implementation.
-	Engine:StopAnimation(Black1)
-	Engine:StopAnimation(Black2)
-	Engine:AddAnimation(Black1, "FadeInA1", Easing.None, 0.2, 0)
-	Engine:AddAnimation(Black2, "FadeInA2", Easing.None, 0.2, 0)
 	]]
 end
 
 function ScreenFade.Out(nobg)
-	Engine:StopAnimation(ScreenFade.Black)
-	Engine:AddAnimation(nil, "IFadeInA1", Easing.None, ScreenFade.Duration, 0)
 	
 	if not nobg then
 		BackgroundAnimation:Out()
 	end
 	
 	return --[[
-	Engine:StopAnimation(Black1)
-	Engine:StopAnimation(Black2)
-	Engine:AddAnimation(Black1, "IFadeInA1", Easing.None, 0.2, 0)
-	Engine:AddAnimation(Black2, "IFadeInA2", Easing.None, 0.2, 0)
 	]]
 end

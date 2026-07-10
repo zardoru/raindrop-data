@@ -58,7 +58,7 @@ function Init()
 		Y = Screen.Height / 4,
 		Centered = 1,
 		Alpha = 1,
-		Layer = 31
+		Layer = 15
 	}
 
 	targBadge = ScreenObject {
@@ -66,7 +66,7 @@ function Init()
 		X = Screen.Width / 2,
 		Y = Screen.Height / 4,
 		Centered = 1,
-		Layer = 31
+		Layer = 15
 	}
 	
 	font = Fonts.TruetypeFont(GetSkinFile("font.ttf"))
@@ -75,7 +75,7 @@ function Init()
 	title = with(StringObject2D(), {
 		Font = font,
 		Text = s,
-		Z = 31,
+		Z = 15,
 		FontSize = 36
 	})
 

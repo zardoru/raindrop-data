@@ -46,7 +46,7 @@ function InitSongSelectBanner()
 	bgSongSelectBanner = ScreenObject {
 		Texture = "Global/filter.png",
 		Size = Vec2(Screen.Width, 120),
-		Z = 20
+		Z = 10
 	}
 
 	strSongSelectTitle = StringObject2D()
@@ -55,7 +55,7 @@ function InitSongSelectBanner()
 		FontSize = 100,
 		Position = Vec2(40, -20),
 		Text = "songselect...",
-		Z = 21
+		Z = 11
 	})
 
 	Engine:AddTarget(strSongSelectTitle)

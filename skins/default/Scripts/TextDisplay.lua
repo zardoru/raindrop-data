@@ -26,14 +26,14 @@ function PlayerText:Init()
 	self.pacemaker1.FontSize = 22
 	self.pacemaker1.X = jX - 65;
 	self.pacemaker1.Y = jY + 20;
-  	self.pacemaker1.Layer = 24;
+  	self.pacemaker1.Layer = 12;
 
 	self.pacemaker2.Text = "";
 	self.pacemaker2.Font = fnt1;
 	self.pacemaker2.FontSize = 22
 	self.pacemaker2.X = jX - 20;
 	self.pacemaker2.Y = jY + 20;
-  	self.pacemaker2.Layer = 26;
+  	self.pacemaker2.Layer = 13;
 
 	self.lifebar.Text = "0";
 	self.lifebar.Font = fnt1;
