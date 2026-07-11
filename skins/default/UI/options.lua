@@ -119,7 +119,7 @@ function Options:Init(font)
 
     self.Transform.Position = self.Position
 
-    self.bgSongSelectTicker = ScreenObject {
+    self.bgSongSelectTicker = sprite {
         Texture = "Global/filter.png",
         -- 410 matches then Song Wheel's width
         Size = self.BaseSize,

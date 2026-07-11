@@ -3,12 +3,16 @@ if BackgroundAnimation then
 	return
 end
 
+game_require "Animation"
+
 BackgroundAnimation = {Duration = 0.25}
 
 function BackgroundAnimation:Init()
 	if self.Initialized then
 		return
 	end
+
+    self.anim = nil
 
 	self.shader = Shader()
 	self.shader:Compile [[
@@ -50,28 +54,34 @@ function BackgroundAnimation:Init()
 	self.Blue.Z = 0
 
 	self.t = 0
-end
-
-function BGAOut(frac)
-	-- BackgroundAnimation.Pink.Y = -BackgroundAnimation.Pink.Height * (1-frac)
-	BackgroundAnimation.shader:Send("persp", (frac) * 0.9 + 0.1)
-	return 1
-end
-
-function BGAIn(frac)
-	return BGAOut(1-frac)
+	-- The old C++ animation runner used to initialize this through BGAIn/BGAOut.
+	-- The background shader is now self-contained, so never leave its divisor at 0.
+	self.shader:Send("persp", 1.0)
+	self.shader:Send("frac", 0.0)
 end
 
 function BackgroundAnimation:In()
+    self.anim = Tween:new(self.shader, function(shader, v)
+        shader:Send("persp", v)
+    end, 1.0, 0.1, self.Duration, Ease.In)
 end
 
 function BackgroundAnimation:Out()
+    self.anim = Tween:new(self.shader, function(shader, v)
+        shader:Send("persp", v)
+    end, 0.1, 1.0, self.Duration, Ease.Out)
 end
 
 function BackgroundAnimation:UpdateObjects()
 end
 
-function BackgroundAnimation:Update(Delta)
-	self.t = self.t + Delta
-	self.shader.Send(self.shader, "frac", self.t)
+function BackgroundAnimation:Update(dt)
+    if self.anim ~= nil then
+        if self.anim:update(dt) then
+            self.anim = nil
+        end
+    end
+
+    self.t = self.t + dt
+    self.shader.Send(self.shader, "frac", self.t)
 end

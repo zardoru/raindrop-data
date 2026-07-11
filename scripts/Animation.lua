@@ -63,168 +63,111 @@ Ease = {
     end
 }
 
----@class Keyframes
-local Keyframes = {}
+Tween = {}
 
-function Keyframes:init()
-    local keyframesByProperty = {}
-    local duration = 0
 
-    -- group keyframes by property and find overall duration
-    for _, keyframe in pairs(List) do
-        local time = keyframe[1]
-        local propertyList = keyframe[2]
-        local ease = keyframe.Ease or Ease.Linear
+function Tween:new(target, property, start_value, end_value, duration, ease, delay)
+    local tween = setmetatable({}, { __index = Tween })
+    tween.target = target
+    tween.property = property
+    tween.start_value = start_value or 0
+    tween.end_value = end_value or 0
+    tween.duration = math.max(duration or 0, 0)
+    tween.ease = ease or Ease.Linear
+    tween.delay = math.max(delay or 0, 0)
+    tween.time = 0
+    tween.on_done_callback = nil
+    return tween
+end
 
-        duration = max(duration, time)
 
-        for propName, propValue in pairs(propertyList) do
-            keyframesByProperty[propName] = {
-                Time = time,
-                Value = propValue,
-                Ease = ease
-            }
+function Tween:on_done(func)
+    assert (type(func) == "function", "tweengroup: func is not a function")
+
+    self.on_done_callback = func
+end
+
+function Tween:update(delta)
+    if self.delay > 0 then
+        self.delay = self.delay - delta
+        if self.delay >= 0 then
+            return false
         end
+        delta = -self.delay
+        self.delay = 0
     end
 
-    self.KeyframesByProperty = keyframesByProperty
-    self.Duration = duration
-    self.Loop = self.Loop or false
-end
-
-librd.make_new(Keyframes, Keyframes.init)
-
----@class Timer
-local Timer = {}
-
-function Timer:init()
-    self.CurrentTime = self.CurrentTime or 0
-end
-
-function Timer:Update(dt)
-    self.CurrentTime = self.CurrentTime + dt
-end
-
-function Timer:Reset()
-    self.CurrentTime = 0
-end
-
-function Timer:SetCurrentTime(t)
-    self.CurrentTime = t
-end
-
----@param keyframes Keyframes
-function Timer:RunAnimation(object, keyframes)
-
-    -- for every keyframed property
-    for prop, propKeyframes in pairs(keyframes.KeyframesByProperty) do
-        -- last value by default
-        local propValue = propKeyframes[#propKeyframes].Value
-
-        -- for every keyframe in this property's twine
-        for i, propKeyframe in ipairs(propKeyframes) do
-            if i + 1 > #propKeyframes then
-                break
-            end
-
-            -- is this the active keyframe?
-            local nextPropKeyframe = propKeyframes[i + 1]
-            if nextPropKeyframe.Time > self.CurrentTime then
-                -- yes, it is. eased interpolation off then current property
-                local keyframeDuration = nextPropKeyframe.Time - propKeyframe.Time
-                local positionInInterval = self.CurrentTime - propKeyframe.Time
-                local frac = propKeyframe.Ease(positionInInterval / keyframeDuration)
-
-                propValue = mix(frac, propKeyframe.Value, nextPropKeyframe.Value)
-
-                -- no reason to look at the next one
-                break
-            end
-        end
-
-        object[prop] = propValue
+    self.time = self.time + delta
+    local fraction = self.duration == 0 and 1 or math.min(self.time / self.duration, 1)
+    local value = mix(self.ease(fraction), self.start_value, self.end_value)
+    if type(self.property) == "string" then
+        self.target[self.property] = value
+    else
+        self.property(self.target, value)
     end
 
-    return self:IsAnimationDone(keyframes)
-end
-
----@param keyframes Keyframes
-function Timer:IsAnimationDone(keyframes)
-    return self.CurrentTime >= keyframes.Duration
-end
-
-librd.make_new(Timer, Timer.init)
-
----@class AnimationPlayer
-local AnimationPlayer = {}
-
--- Create one player per screen or component, then call player:Update(delta)
--- from that owner's Update callback. Example:
---   local animations = AnimationPlayer()
---   animations:Add(sprite, MyAnimation, Ease.Out, 0.25, 0)
---   animations:Update(delta)
-function AnimationPlayer:init()
-    self.Animations = {}
-end
-
-function AnimationPlayer:Add(target, callback, ease, duration, delay)
-    if type(callback) == "string" then
-        callback = _G[callback]
-    end
-    if type(callback) ~= "function" then
-        return false
+    if fraction >= 1 and self.on_done_callback then
+        self.on_done_callback()
+        self.on_done_callback = nil
     end
 
-    table.insert(self.Animations, {
-        Target = target,
-        Callback = callback,
-        Ease = ease or Ease.Linear,
-        Duration = math.max(duration or 0, 0),
-        Delay = math.max(delay or 0, 0),
-        Time = 0
-    })
-    return true
+    return fraction >= 1
 end
 
-function AnimationPlayer:Stop(target)
-    for index = #self.Animations, 1, -1 do
-        if self.Animations[index].Target == target then
-            table.remove(self.Animations, index)
-        end
+function Tween:reset()
+    self.time = 0
+end
+
+TweenGroup = {}
+
+function TweenGroup:new()
+    local ret = setmetatable({}, { __index = TweenGroup })
+    ret.tweens = {}
+    ret.next = nil
+    ret.done = false
+    ret.on_done_callback = nil
+    return ret
+end
+
+function TweenGroup:on_done(func)
+    assert (type(func) == "function", "tweengroup: func is not a function")
+
+    ret.on_done_callback = func
+end
+
+function TweenGroup:update(delta)
+    if self.next and self.done then
+        return self.next(delta)
+    end
+
+    local all_done = true
+    for _, v in pairs (self.tweens) do
+        all_done = all_done and v:update(delta)
+    end
+
+    self.done = all_done
+
+    if self.done and self.on_done_callback then
+        self.on_done_callback()
+        self.on_done_callback = nil
     end
 end
 
-function AnimationPlayer:Update(delta)
-    for index = #self.Animations, 1, -1 do
-        local animation = self.Animations[index]
-        local remaining = delta
-
-        if animation.Delay > 0 then
-            animation.Delay = animation.Delay - remaining
-            if animation.Delay >= 0 then
-                remaining = nil
-            else
-                remaining = -animation.Delay
-                animation.Delay = 0
-            end
-        end
-
-        if remaining then
-            animation.Time = animation.Time + remaining
-            local fraction = animation.Duration == 0 and 1 or math.min(animation.Time / animation.Duration, 1)
-            local keep_running = animation.Callback(animation.Ease(fraction), animation.Target)
-            if fraction >= 1 or not keep_running then
-                table.remove(self.Animations, index)
-            end
-        end
-    end
+function TweenGroup:add(tween)
+    table.insert(self.tweens, tween)
+    return self
 end
 
-librd.make_new(AnimationPlayer, AnimationPlayer.init)
+function TweenGroup:continue(runner)
+    self.next = runner or TweenGroup:new()
+    return self.next
+end
 
 return {
     Ease = Ease,
     Keyframes = Keyframes,
     Timer = Timer,
-    AnimationPlayer = AnimationPlayer
+    AnimationPlayer = AnimationPlayer,
+    Tween = Tween,
+    TweenGroup = TweenGroup
 }

@@ -155,7 +155,7 @@ end
 	does not guarantee order.
 	but we try to set texture first.
 ]]
-function ScreenObject(t)
+function sprite(t)
     local x = Engine:CreateObject()
 
     -- Assign texture first, other props later.

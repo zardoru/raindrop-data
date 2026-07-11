@@ -43,18 +43,18 @@ function KeyEvent(k, c, m)
 end
 
 function InitSongSelectBanner()
-	bgSongSelectBanner = ScreenObject {
+	bgSongSelectBanner = sprite {
 		Texture = "Global/filter.png",
-		Size = Vec2(Screen.Width, 120),
+		Size = Vec2(Screen.Width, 40),
 		Z = 10
 	}
 
 	strSongSelectTitle = StringObject2D()
 	with(strSongSelectTitle, {
 		Font = font,
-		FontSize = 100,
-		Position = Vec2(40, -20),
-		Text = "songselect...",
+		FontSize = 36,
+		Position = Vec2(20, -8),
+		Text = "song selection",
 		Z = 11
 	})
 
@@ -136,6 +136,7 @@ end
 
 function Update(deltaTime)
 	BackgroundAnimation:Update(deltaTime)
+	ScreenFade.Update(deltaTime)
 	UpdateWheel(deltaTime)
 	DifficultyList:Update(deltaTime)
 

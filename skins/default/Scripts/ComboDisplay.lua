@@ -50,7 +50,7 @@ function ComboDisplay:Init()
 
     for i = 1, 6 do
         -- Drawing targets
-        self.Targets[i] = ScreenObject {
+        self.Targets[i] = sprite {
             Texture = self.Atlas.File,
             Centered = 1,
             Layer = 12,
@@ -68,7 +68,7 @@ function ComboDisplay:Init()
     end
 
     if self.ExNotify then
-        self.ExNotifyObject = ScreenObject {
+        self.ExNotifyObject = sprite {
             Centered = 1,
             Layer = 12,
             Alpha = 0,

@@ -10,13 +10,12 @@ IntroDuration = 0.5
 ExitDuration = 1.5
 
 function UpdateIntro(p, delta)
-	local S = elastic(p)
+	local S = Ease.ElasticSquare(1.3)(p)
   
   -- At 1/3rd of the screen, please.
 	targBadge.Y = Screen.Height * 3/7 * (S) - targBadge.Height
 	targLogo.Y = targBadge.Y
 	Update(delta)
-	BGAOut(p*p)
 end
 
 function OnRunningBegin()
@@ -37,7 +36,6 @@ function UpdateExit(p, delta)
 	local ease = p*p
 	UpdateIntro(1-p, delta)
 	FadeInA1(ease)
-	BGAIn(ease)
 end
 
 function KeyEvent(k, c, mouse)
@@ -48,11 +46,10 @@ function KeyEvent(k, c, mouse)
 end
 
 function Init()
-  	elastic = Ease.ElasticSquare(1.5)
-	ScreenFade:Init()
+    ScreenFade:Init()
 	Time = 0
 		
-	targLogo = ScreenObject {
+	targLogo = sprite {
 		Texture = "MainMenu/FRONTs.png",
 		X = Screen.Width / 2,
 		Y = Screen.Height / 4,
@@ -61,7 +58,7 @@ function Init()
 		Layer = 15
 	}
 
-	targBadge = ScreenObject {
+	targBadge = sprite {
 		Texture = "MainMenu/BACKs.png",
 		X = Screen.Width / 2,
 		Y = Screen.Height / 4,
@@ -104,6 +101,7 @@ function Update(Delta)
 	badgeRotSpeed = math.max(badgeRotSpeed - Delta * 240, 120)
 	targBadge.Rotation = targBadge.Rotation - badgeRotSpeed * Delta
 	BackgroundAnimation:Update(Delta)
+	ScreenFade.Update(Delta)
 end
 
 return {

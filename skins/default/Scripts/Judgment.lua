@@ -40,7 +40,7 @@ function JudgmentObject:Init()
   self.ScaleLerp = self.ScaleLerp or function (x) return x end
   print ("Judgment Default Pos: ", self.defaultX, self.defaultY)
   
-	self.Object = ScreenObject {
+	self.Object = sprite {
 		Layer = 14,
 		Centered = 1,
 		Texture = self.Atlas.File,
@@ -67,7 +67,7 @@ function JudgmentObject:Init()
 	self.LastAlternation = 0
 	self.Time = self.FadeoutTime + self.FadeoutDuration
 
-	self.IndicatorObject = ScreenObject {
+	self.IndicatorObject = sprite {
 		Texture = ("VSRG/" .. self.TimingIndicator),
 		Layer = 12,
 		Centered = 1,

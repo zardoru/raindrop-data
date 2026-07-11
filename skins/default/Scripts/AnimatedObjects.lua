@@ -14,7 +14,7 @@ MissHighlight = {
 }
 
 function ProgressTick:Init()
-    self.Object = ScreenObject {
+    self.Object = sprite {
         Texture = self.Image,
         Layer = 9,
         X = self.Noteskin.GearStartX - 16,
@@ -81,7 +81,7 @@ function MissHighlight:Init()
     self.CurrentTime = {}
 
     for i = 1, self.Player.Channels do
-        self[i] = ScreenObject {
+        self[i] = sprite {
             Centered = 1,
             Texture = self.Image,
             X = self.Noteskin["Key" .. i .. "X"],

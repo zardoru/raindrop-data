@@ -224,6 +224,7 @@ end
 function Update(Delta)
 	sd:Run(Delta)
 	BackgroundAnimation:Update(Delta)
+	ScreenFade.Update(Delta)
 end
 
 return {

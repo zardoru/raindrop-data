@@ -28,7 +28,7 @@ local JudgmentObject = {
 		self.PacemakerBadAtlas = TextureAtlas:skin_new("assets/pace-b.csv")
 
 		-- Judgement object
-		self.Judgment = ScreenObject {
+		self.Judgment = sprite {
 			Centered = 1,
 			Alpha = 0,
 			Layer = 10,
@@ -46,7 +46,7 @@ local JudgmentObject = {
 		local ScoreKeeper = Game:GetPlayer(0).Scorekeeper
 		local max_digits = math.floor(math.log10(ScoreKeeper.MaxNotes)) + 1
 		for i=1, max_digits do
-			local obj = ScreenObject {
+			local obj = sprite {
 				Alpha = 0,
 				Parent = self.Transform,
 				Texture = "assets/" .. self.ComboAtlas.File,
@@ -61,7 +61,7 @@ local JudgmentObject = {
 		-- Pacemaker object
 
 		-- Fast/Slow indicator
-		self.FSIndicator = ScreenObject {
+		self.FSIndicator = sprite {
 			Alpha = 0,
 			Centered = 1,
 			Layer = 10,

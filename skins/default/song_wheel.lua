@@ -250,18 +250,18 @@ function CreateWheelItems()
 	--end
 
 
-	--WheelSeparator = ScreenObject {
-	--	Texture = "Global/white.png",
-	--	Size = Vec2(5, Screen.Height),
-	--	Y = 0,
-    --    Layer = 10
-	--}
+	WheelSeparator = sprite {
+		Texture = "Global/white.png",
+		Size = Vec2(5, Screen.Height),
+		Y = 0,
+        Layer = 10
+	}
 
-	--wheeltick = ScreenObject {
-	--	Texture = "Global/white.png",
-	--	Size = Vec2(12, 8),
-	--	Layer = 13
-	--}
+	wheeltick = sprite {
+		Texture = "Global/white.png",
+		Size = Vec2(12, 8),
+		Layer = 13
+	}
 
 	Wheel.DisplayItemCount = ceil(Screen.Height / ItemHeight) + 1
 	--Wheel.DisplayItemOffset = - Wheel.DisplayItemCount / 2
@@ -270,14 +270,14 @@ end
 function UpdateWheel(Delta)
 	State.X = clamp(State.X + (WheelEnterX - State.X) * Delta * WheelSpeed, WheelExitX, WheelEnterX)
 
-	--WheelSeparator.X = State.X - WheelSeparator.Width
-	--wheeltick.Width = math.max(16, Screen.Width / Wheel.ItemCount)
+	WheelSeparator.X = State.X - WheelSeparator.Width
+	wheeltick.Width = math.max(16, Screen.Width / Wheel.ItemCount)
     local cnt = Wheel.ItemCount
     if cnt == 0 then
         cnt = 1
     end
-	--wheeltick.X = (Wheel.SelectedIndex % cnt) / (cnt - 1) * (Screen.Width - wheeltick.Width)
-	--wheeltick.Y = 110
+	wheeltick.X = (Wheel.SelectedIndex % cnt) / (cnt - 1) * (Screen.Width - wheeltick.Width)
+	wheeltick.Y = 110
 
 	local Offset = Screen.Height / 2 - ItemHeight / 2
 	-- local SelectedSongCenterY = math.floor(-Wheel.SelectedIndex * ItemHeight + Offset)

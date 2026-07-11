@@ -19,7 +19,7 @@ function Histogram:GenerateObjects(w, h)
 	})
 
   for i=1,pnt_cnt do
-    local ref = ScreenObject {
+    local ref = sprite {
     	Texture = "Global/white.png",
     	Width = self.item_size
 		}

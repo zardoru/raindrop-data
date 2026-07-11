@@ -22,7 +22,7 @@ local DigitalNumbers = {
 		self.objects = {}
 
 		for i=1, self.digits do
-			self.objects[i] = ScreenObject {
+			self.objects[i] = sprite {
 				X = self.x + self.width * (i - 1),
 				Y = self.y,
 				Layer = 11

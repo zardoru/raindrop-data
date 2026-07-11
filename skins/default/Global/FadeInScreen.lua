@@ -30,35 +30,6 @@ function ScreenFade.Init()
 	
 	IFadeInA1 = invert(FadeInA1)
 	return
-	--[["Black1 = Engine:CreateObject()
-	Black2 = Engine:CreateObject()
-	
-	Black1.Image = "Global/filter.png"
-	Black2.Image = "Global/filter.png"
-	
-	Black1.Centered = 1
-	Black2.Centered = 1
-	
-	Black1.X = Screen.Width/2
-	Black2.X = Screen.Width/2
-	
-	Black1.Y = Screen.Width/4
-	Black2.Y = Screen.Width*3/4
-	
-	Black1.Alpha = 1
-	Black2.Alpha = 1
-	
-	Black1.Width = Screen.Width
-	Black2.Width = Screen.Width
-	
-	Black1.Height = Screen.Height/2
-	Black2.Height = Screen.Height/2
-	Black1.Z = 15
-	Black2.Z = 15
-	
-	IFadeInA1 = invert(FadeInA1)
-	IFadeInA2 = invert(FadeInA2)
-	]]
 end
 
 function ScreenFade.In(nobg)
@@ -68,9 +39,8 @@ function ScreenFade.In(nobg)
 		BackgroundAnimation:In()
 		Delay = BackgroundAnimation.Duration
 	end
-	
-	return --[[ Lines beyond are previous implementation.
-	]]
+	ScreenFade.Tween = Tween:new(ScreenFade.Black, "Alpha", ScreenFade.Black.Alpha, 1,
+		ScreenFade.Duration, Ease.Linear, Delay)
 end
 
 function ScreenFade.Out(nobg)
@@ -78,7 +48,12 @@ function ScreenFade.Out(nobg)
 	if not nobg then
 		BackgroundAnimation:Out()
 	end
-	
-	return --[[
-	]]
+	ScreenFade.Tween = Tween:new(ScreenFade.Black, "Alpha", ScreenFade.Black.Alpha, 0,
+		ScreenFade.Duration, Ease.Linear)
+end
+
+function ScreenFade.Update(delta)
+	if ScreenFade.Tween and ScreenFade.Tween:update(delta) then
+		ScreenFade.Tween = nil
+	end
 end

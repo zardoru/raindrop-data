@@ -7,7 +7,7 @@ local Gauge = {
 		self.ActivePlayerNumber = a
 		print "===== Building Gauge ====="
 		if on then
-			self.ActivePlayer = ScreenObject {
+			self.ActivePlayer = sprite {
 				X = x,
 				Y = y,
 		  		Layer = 9
@@ -26,7 +26,7 @@ local Gauge = {
 			ScaleObj(self.ActivePlayer)
 		end
 
-		self.GaugeBG = ScreenObject {
+		self.GaugeBG = sprite {
 			X = x + 110 * SkinScale,
 			Y = y,
 			Layer = 8
@@ -45,7 +45,7 @@ local Gauge = {
 
 		print (on, self.GaugeBG.Texture, gt)
 		if on then
-			self.GaugeHealth = ScreenObject {
+			self.GaugeHealth = sprite {
 				X = x + 110 * SkinScale,
 				Y = y,
 				Layer = 9
@@ -61,7 +61,7 @@ local Gauge = {
 
 			ScaleObj(self.GaugeHealth)
 
-			self.HealthBG = ScreenObject {
+			self.HealthBG = sprite {
 				X = x + 1740 * SkinScale,
 				Y = y,
 				Layer = 9
