@@ -79,8 +79,6 @@ function Init()
 	title.Position = Vec2(Screen.Width / 2 - title.TextSize / 2, Screen.Height * 3 / 4)
 
 	Engine:AddTarget(title)
-
-	-- Rocket UI not initialized yet...
 end
 
 function Cleanup()

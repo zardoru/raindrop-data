@@ -1,5 +1,5 @@
 if Game:GetPlayer(0).Channels > 7 then
-	fallback_require("screengameplay7k")
+	fallback_require("screengameplay")
 	return
 end
 

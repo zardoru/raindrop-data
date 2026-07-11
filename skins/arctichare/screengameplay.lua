@@ -2,7 +2,7 @@
 Channels = Game:GetPlayer(0).Channels
 
 if Channels ~= 8 and Channels ~= 6 then
-	fallback_require "screengameplay7k"
+	fallback_require "screengameplay"
 	return
 end
 
