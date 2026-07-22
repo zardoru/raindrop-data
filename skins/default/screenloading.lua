@@ -12,7 +12,7 @@ function UpdateIntro(frac, delta)
 	targBadge.Scale = badgeEase(frac)
 	targBadge.Rotation = 360 * frac 
 
-	frac =  1 - math.pow(1 - frac, 2)
+	frac =  1 - ((1 - frac) ^ 2)
 
 	if BG then
 		BG.Alpha = frac

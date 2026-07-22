@@ -170,7 +170,7 @@ function Init()
 		Lightning[i].Object.Y = Lightning[i].Object.Y + Lightning[i].Object.Height / 2
 
 		Lightning[i].Update = function(self, delta)
-			self.Object.ScaleX = 1 - math.pow(1 - self.CurrentTime / LightingTime, 0.75)
+			self.Object.ScaleX = 1 - (1 - self.CurrentTime / LightingTime) ^ 0.75
 			self.CurrentTime = max(self.CurrentTime - delta, 0)
 		end
 
@@ -271,7 +271,7 @@ function Update(Delta)
 	local SongPercentage = Game:GetPlayer(0).Time / (Game:GetPlayer(0).Duration + 3)
 
 	if Game:GetPlayer(0).Time < 0 then
-		SongPercentage = math.pow(Game:GetPlayer(0).Time / -1.5, 2)
+		SongPercentage = (Game:GetPlayer(0).Time / -1.5) ^ 2
 	end
 
 	SongPosition.Y = 53 * YR + (402 - SongPosition.Height / 2) * SongPercentage * YR

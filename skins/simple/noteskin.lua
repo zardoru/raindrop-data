@@ -17,6 +17,7 @@ function setNoteStuff(note, i)
 	note.Width = Noteskin[Lanes]['Key' .. i .. 'Width'] * XR
 	note.X = Noteskin[Lanes]['Key' .. i .. 'X'] * XR
 	note.Height = NoteHeight * YR
+	note.Centered = 1
 	note.Layer = 14
 end
 

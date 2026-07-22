@@ -38,7 +38,7 @@ function ProgressTick:Run(Delta)
             self.Object.Y = cmix(Ratio, self.Start, self.End)
         else
             self.Object.Alpha = 1 - self.Player.Time / -1.5
-            self.Object.Y = cmix(math.pow(self.Player.Time / -1.5, 2), self.Start, self.End)
+            self.Object.Y = cmix((self.Player.Time / -1.5) ^ 2, self.Start, self.End)
         end
     else
         self.Object.Alpha = 0
@@ -68,7 +68,7 @@ librd.make_new(Pulse, Pulse.Init)
 function Pulse:Run(Delta)
 
     if Game.Active ~= 0 then
-        local Beat = math.pow(1 - (self.Player.Beat - math.floor(self.Player.Beat)), 2)
+        local Beat = (1 - (self.Player.Beat - math.floor(self.Player.Beat))) ^ 2
 
         self.Object.Alpha = Beat
     else
@@ -123,4 +123,3 @@ function MissHighlight:OnMiss(t, l, h, pn)
         self.Time[l] = math.min(spb / 4, 0.5)
     end
 end
-

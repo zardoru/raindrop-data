@@ -27,6 +27,7 @@ function DoWafles()
 			note.Width = Noteskin[4]['Key' .. i .. 'Width']
 			note.X = Noteskin[4]['Key' .. i .. 'X']
 			note.Height = Noteskin[4].NoteHeight
+			note.Centered = 1
 			note.Layer = 14
 		end
 

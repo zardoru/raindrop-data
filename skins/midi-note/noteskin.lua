@@ -29,6 +29,7 @@ function doMidiNote()
 		note.Width = w
 		note.X = Channels4['Key' .. i .. 'X']
 		note.Height = Channels4.NoteHeight
+		note.Centered = 1
 		note.Layer = 14
 	  
 	  if rot then

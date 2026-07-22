@@ -76,12 +76,12 @@ function Lifebar:Run(Delta)
 	self.Fill.ScaleY = self.Display 
 	self.Fill.X = self.Position.x + self.FillOffset
 	self.Fill.Y = NewYFixed
-	self.Fill:SetCropByPixels( 0, self.Width, self.FillSize - self.FillSize * self.Display, self.FillSize )
+	self.Fill:SetCropByPixels( 0, self.Width, math.floor(self.FillSize - self.FillSize * self.Display), self.FillSize )
 
 	self.Fill2.ScaleY = Display 
 	self.Fill2.X = self.Position.x + self.FillOffset
 	self.Fill2.Y = NewY
-	self.Fill2:SetCropByPixels( 0, self.Width, self.FillSize - self.FillSize * Display, self.FillSize )
+	self.Fill2:SetCropByPixels( 0, self.Width, math.floor(self.FillSize - self.FillSize * Display), self.FillSize )
 	self.Fill2.Alpha = ( DP * self.Player.LifebarPercent / 100 )
 end
 
@@ -126,5 +126,5 @@ function Jambar:Run(Delta)
   local Offset = remaining * self.Height
   self.BarFG.ScaleY = remaining
   self.BarFG.Y = Screen.Height - Offset / 2
-  self.BarFG:SetCropByPixels( 0, self.Width, self.BarFG.Height - Offset, self.BarFG.Height )
+  self.BarFG:SetCropByPixels( 0, self.Width, math.floor(self.BarFG.Height - Offset), self.BarFG.Height )
 end

@@ -112,7 +112,7 @@ function HitLightning:Run(Delta)
 		if self.Pressed[i] == 0 then
 			if self.Times[i] <= self.OffTime[i] then
 				if self.Animate == 1 then
-					local Lerping = 1 - math.pow(1 - self.Times[i] / self.OffTime[i], 4)
+					local Lerping = 1 - (1 - self.Times[i] / self.OffTime[i]) ^ 4
 					local Additive
 					self[i].ScaleX = 1 - Lerping
 					self[i].ScaleY = 1 + 1.5 * Lerping
@@ -126,7 +126,7 @@ function HitLightning:Run(Delta)
 					self[i].Y = self.Position[i].y - Additive
 					self[i].Alpha = ( 1 - Lerping )
 				elseif self.Animate == 2 then
-					local Lerping = math.pow(self.Times[i] / self.OffTime[i], 2)
+					local Lerping = (self.Times[i] / self.OffTime[i]) ^ 2
 					local Additive = 0
 
 					Additive = self.Height / 2 * Lerping

@@ -18,6 +18,7 @@ function SetCommonNoteStuff(note, i)
 	note.Width = Noteskin[Lanes]['Key' .. i .. 'Width']
 	note.X = Noteskin[Lanes]['Key' .. i .. 'X']
 	note.Height = NoteHeight
+	note.Centered = 1
 	note.Layer = 14
 end
 

@@ -14,6 +14,7 @@ function setNoteStuff(note, i)
 	note.Width = Noteskin[Notes.Channels]['Key' .. i .. 'Width']
 	note.X = Noteskin[Notes.Channels]['Key' .. i .. 'X']
 	note.Height = NoteHeight
+	note.Centered = 1
 	note.Layer = 14
 end
 

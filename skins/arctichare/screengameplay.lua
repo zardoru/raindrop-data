@@ -122,7 +122,7 @@ function Update(Delta)
 	local SongPercentage = SongTime / (SongDuration + 3)
 
 	if SongTime < 0 then
-		SongPercentage = math.pow(SongTime / -1.5, 2)
+		SongPercentage = (SongTime / -1.5) ^ 2
 	end
 
 	Components:Update(Delta)
